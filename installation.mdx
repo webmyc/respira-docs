@@ -1,128 +1,138 @@
 ---
-title: Installation
-description: Step-by-step guide to installing and setting up the Vibe Coding WordPress plugin
+title: Installation Guide
+description: Learn how to install the Respira for WordPress plugin, set up the WordPress MCP server, and connect AI tools like Cursor or Claude to your site.
 ---
 
-## Installation Overview
+Respira enables you to use AI tools such as Cursor, Claude Code, and other MCP‑compatible assistants to safely edit and manage your WordPress site.  
+This guide walks you through installing the Respira for WordPress plugin, generating an API key, setting up the MCP server on your machine, and connecting your preferred AI assistant.  
+If you are new to Respira, see the [Introduction](/introduction) for a product overview.
 
-Installing Vibe Coding is a straightforward process that takes just a few minutes. Our plugin is designed for easy integration with existing WordPress sites, whether you're running a single blog or managing multiple wisdom economy teaching platforms.
+## Before you begin
 
-<Steps>
-  <Step title="Download Plugin" icon="download">
-    Visit the WordPress plugin repository or download Vibe Coding directly from our website.
-    
-    <CodeGroup tabs="WordPress Admin,Manual Upload">
-      ```bash
-# Via WordPress Admin
-1. Go to Plugins > Add New
-2. Search for "Vibe Coding"
-3. Click Install Now
-      ```
-      ```bash
-# Manual Upload
-1. Download vibe-coding.zip
-2. Go to Plugins > Add New > Upload Plugin
-3. Select the ZIP file and click Install Now
-      ```
-    </CodeGroup>
-  </Step>
-  <Step title="Activate Plugin" icon="check-circle">
-    After installation, activate Vibe Coding from the Plugins page.
-    
-    <Callout kind="info">Activation adds the Vibe Coding menu to your WordPress admin sidebar.</Callout>
-  </Step>
-  <Step title="Configure Settings" icon="settings">
-    Navigate to Vibe Coding > Settings to configure your AI assistant connections.
-    
-    <Expandable title="Required Settings" default-open="false">
-      - API endpoint URL
-      - Authentication credentials
-      - File permissions
-      - Backup preferences
-    </Expandable>
-  </Step>
-  <Step title="Test Connection" icon="wifi">
-    Verify your AI assistant connection and run a test edit.
-    
-    <CodeGroup tabs="Cursor,Claude Code">
-      ```javascript
-// Test with Cursor
-console.log('Testing Vibe Coding connection...');
-// Expected output: Connection successful
-      ```
-      ```python
-# Test with Claude Code
-print("Testing Vibe Coding integration...")
-# Expected output: Integration verified
-      ```
-    </CodeGroup>
-  </Step>
-</Steps>
+Make sure you have:
 
-## System Requirements
+- Access to your WordPress admin dashboard  
+- Permission to install plugins on your WordPress site  
+- Node.js installed on your local machine if you plan to run the MCP server  
+- A Respira license or active trial  
+- (Optional) A staging site if you prefer to test before going live  
 
-<Tabs>
-  <Tab title="Minimum Requirements" icon="check-circle">
-    - WordPress 5.0 or higher
-    - PHP 7.4 or higher
-    - MySQL 5.6 or higher
-    - 256MB RAM
-    - cURL extension enabled
-  </Tab>
-  <Tab title="Recommended Setup" icon="star">
-    - WordPress 6.0+
-    - PHP 8.0+
-    - 512MB+ RAM
-    - SSH access for advanced features
-    - SSL certificate
-  </Tab>
-</Tabs>
+## Step 1: Install the Respira for WordPress plugin
 
-## Troubleshooting Installation
+### Option A: Download from GitHub
 
-<ExpandableGroup>
-  <Expandable title="Plugin Won't Activate" default-open="false">
-    Check PHP version compatibility and ensure all required extensions are installed.
-    
-    ```bash
-# Check PHP version
-php --version
-    ```
-  </Expandable>
-  <Expandable title="Connection Failed" default-open="false">
-    Verify API credentials and firewall settings. Ensure outbound connections are allowed.
-    
-    ```bash
-# Test connectivity
-curl -I https://api.vibe-coding.com
-    ```
-  </Expandable>
-  <Expandable title="Permission Errors" default-open="false">
-    Adjust file permissions for the wp-content directory and plugin folders.
-    
-    ```bash
-# Fix permissions
-chmod 755 wp-content/
-chmod 644 wp-content/plugins/vibe-coding/*
-    ```
-  </Expandable>
-</ExpandableGroup>
+1. Go to [GitHub Releases](https://github.com/webmyc/respira-wordpress/releases/latest)
+2. Download `respira-for-wordpress-latest.zip`
+3. In WordPress Admin, go to Plugins → Add New → Upload Plugin
+4. Choose the ZIP file and click Install Now
+5. Click Activate Plugin
 
-<Callout kind="alert">If you encounter persistent issues, contact our support team with your WordPress version and error logs.</Callout>
+### Option B: Manual installation
 
-## Post-Installation Setup
+1. Download the plugin ZIP file
+2. Extract it to your WordPress `wp-content/plugins/` directory
+3. Go to Plugins in WordPress Admin
+4. Find Respira for WordPress and click Activate
 
-After successful installation, complete these additional steps to optimize your Vibe Coding experience:
+## Step 2: Generate an API key
 
-<Columns cols={2}>
-  <Card title="Backup Configuration" icon="save" href="#backup-setup">
-    Configure automatic backups before making AI-assisted edits.
-  </Card>
-  <Card title="Security Settings" icon="shield" href="#security-config">
-    Review and customize security settings for your environment.
-  </Card>
-</Columns>
+1. Go to Respira → API Keys in WordPress Admin
+2. Click Generate API Key
+3. Give it a name such as My Development Machine
+4. Copy and save the API key because it cannot be viewed again
 
-## Next Steps
+<Callout kind="alert">
 
-With Vibe Coding installed, you're ready to explore our usage guide and start leveraging AI assistance for WordPress development. Remember to always create backups before making significant changes, even with our secure editing environment.
+Save your API key securely. You will need it to configure the MCP server.
+
+</Callout>
+
+## Step 3: Install the WordPress MCP server
+
+The MCP server runs locally on your machine and connects your AI assistant to WordPress.  
+It is required for using Respira with Cursor, Claude Code, and other MCP‑compatible IDEs or tools.
+
+### Option A: From npm (recommended)
+
+```bash
+npm install -g @respira/wordpress-mcp-server
+```
+
+<Image
+  src="https://cursor.com/deeplink/mcp-install-dark.svg"
+  alt="Install MCP server via Cursor"
+  width="800"
+  height="200"
+/>
+
+Or run without installing globally:
+
+```bash
+npx -y @respira/wordpress-mcp-server
+```
+
+### Option B: Download ZIP file
+
+1. Go to your [Downloads page](/dashboard/downloads) (requires login)
+2. Download `respira-wordpress-mcp-server-latest.zip`
+3. Extract it to a location on your machine such as `~/.respira/mcp-server/`
+4. Configure your MCP client to point to the `dist/index.js` file
+
+## Step 4: Connect your AI assistant to WordPress
+
+See the [Configuration Guide](/configuration) for setup instructions for:
+
+- [Cursor](/configuration#configure-cursor-ide)
+- [Claude Code](/configuration#configure-claude-desktop-claude-code)
+- [Codex](/configuration#configure-other-mcp-compatible-editors)
+
+Once connected, refer to the [Usage Guide](/usage) to learn how to prompt your assistant effectively.
+
+## You are all set
+
+Once configured, you can start using AI to edit your WordPress site. Try prompting your assistant with:
+
+- List all pages on my WordPress site
+- Create a duplicate of the About page
+- Update the homepage title to Welcome
+
+## Next steps
+
+### Configuration Guide
+
+Configure Cursor, Claude Code, and other AI tools  
+[Open configuration](/configuration)
+
+### MCP Install Link Generator
+
+Generate one‑click install links  
+[Open link generator](/mcp-install)
+
+## FAQ
+
+### Do I have to use npm to install the MCP server?
+
+No. You can either install via npm or download the ZIP version from your [Downloads page](/dashboard/downloads). Both options run the same MCP server.
+
+### Do I need Node.js installed to use the MCP server?
+
+Yes. The MCP server runs locally and requires Node.js. If you do not have it yet, install Node.js first and then continue with Step 3.
+
+### Can I install Respira on a staging site first?
+
+Yes. Many users install the plugin on a staging or development site before enabling it on production.
+
+### What should I do if something fails during installation?
+
+See the [Troubleshooting](/troubleshooting) guide for common issues and solutions.  
+If you need help, you can also contact support at [word@respira.press](mailto:word@respira.press).
+
+## Ready to get started?
+
+Start free. No credit card required.  
+[Start free](/signup)
+
+Questions? Email [word@respira.press](mailto:word@respira.press)
+
+Interested in partnering?  
+[Set a meeting](https://respira.cafe/contact)

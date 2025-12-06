@@ -1,59 +1,153 @@
 ---
-title: Changelog
-description: Release history and updates for the Vibe Coding WordPress plugin
+title: "Releases"
+description: "Official changelog and release notes for Respira for WordPress and the MCP server, including download links and upgrade guidance."
 ---
 
-## Release History
+## Overview
 
-<Update label="2024-10-15" description="v2.1.0" tags={["feature", "improvement"]}>
+This page is the official changelog and download hub for both Respira for WordPress and the MCP server. You can use it to review version history, check release notes before upgrading, and download the latest stable builds. Each release is production-tested and includes notes to help you understand changes and compatibility considerations.
 
-## New Features
+## WordPress plugin releases
 
-- Enhanced Claude Code integration with improved context awareness
-- Added batch file editing capabilities for theme-wide changes
-- Introduced collaborative editing sessions for team development
-- New performance monitoring dashboard in admin panel
+<Update label="2025-12-05" description="Respira for WordPress v1.8.31" tags={["feature", "improvement"]}>
 
-## Improvements
+### Version details
 
-- Reduced API response times by 30% through optimized caching
-- Improved error handling with more detailed user feedback
-- Enhanced security validations for code generation
-- Better WordPress version compatibility checks
+- Latest stable version.
+- Released on December 5, 2025.
 
-</Update>
+### Download
 
-<Update label="2024-09-20" description="v2.0.0" tags={["feature", "breaking"]}>
+- [respira-for-wordpress-1.8.31.zip](https://respira.press/api/plugin-updates/download?version=1.8.31)
+- [respira-for-wordpress-latest.zip](https://respira.press/api/plugin-updates/download?version=1.8.31)
 
-## New Features
+### Features
 
-- Complete redesign of the AI assistant interface
-- Support for multiple AI models within single editing session
-- Advanced code review and validation features
-- Integration with popular WordPress development tools
-
-## Breaking Changes
-
-- Minimum WordPress version requirement increased to 5.0
-- API authentication method updated (backward compatible)
-- Configuration file structure simplified
+- Safe editing with automatic page duplication
+- No SSH required, works with any WordPress hosting
+- Built-in security validation for XSS and SQL injection
+- Support for 10 page builders including Gutenberg, Divi, Elementor, WPBakery, Oxygen, Bricks, Beaver Builder, Brizy, Visual Composer, and Thrive Architect
+- Page builder intelligence for Gutenberg, Elementor, and WPBakery
+- Builder and theme detection dashboard
+- Cursor and Claude Desktop integration
+- Complete audit logging
 
 </Update>
 
-<Update label="2024-08-10" description="v1.5.0" tags={["feature", "bugfix"]}>
+<Update label="2025-11-XX" description="Respira for WordPress v1.8.30" tags={["improvement"]}>
 
-## New Features
+### Version details
 
-- Initial Cursor IDE integration
-- Automatic code formatting and linting
-- File permission management system
-- Backup and restore functionality
+- Previous stable release.
+- Download link and release notes provided for compatibility testing.
 
-## Bug Fixes
+### Download
 
-- Fixed memory leaks in long editing sessions
-- Resolved compatibility issues with popular themes
-- Corrected file path handling on Windows servers
-- Improved error messages for failed operations
+- [respira-for-wordpress-1.8.30.zip](https://respira.press/api/plugin-updates/download?version=1.8.30)
+
+### Notes
+
+- Stability improvements
+- Minor performance updates
+- Compatibility enhancements for major page builders
 
 </Update>
+
+<Update label="2025-11-XX" description="Respira for WordPress v1.8.29" tags={["bugfix"]}>
+
+### Version details
+
+- Includes bug fixes for site editing and API usage.
+
+### Download
+
+- [respira-for-wordpress-1.8.29.zip](https://respira.press/api/plugin-updates/download?version=1.8.29)
+
+### Notes
+
+- Fixes for builder detection
+- Improved error messaging
+- Minor UI adjustments in admin settings
+
+</Update>
+
+## MCP server releases
+
+<Update label="2025-12-XX" description="MCP Server v1.6.0" tags={["feature", "improvement"]}>
+
+### Version details
+
+- Latest MCP server version with updated features.
+
+### Download
+
+- [mcp-server-1.6.0.tar.gz](https://respira.press/downloads/mcp-server-1.6.0.tar.gz)
+
+### Notes
+
+- New integration features for AI coding assistants
+- Improved logging and security
+- Better performance under multithreaded workloads
+
+</Update>
+
+<Update label="2025-11-XX" description="MCP Server v1.5.1" tags={["improvement"]}>
+
+### Version details
+
+- Stability and performance update.
+
+### Download
+
+- [mcp-server-1.5.1.tar.gz](https://respira.press/downloads/mcp-server-1.5.1.tar.gz)
+
+### Notes
+
+- General fixes for reliability
+- More resilient network layer handling
+- Improved configuration options
+
+</Update>
+
+<Update label="2025-10-XX" description="MCP Server v1.4.9" tags={["bugfix"]}>
+
+### Version details
+
+- Patch release focusing on bug corrections.
+
+### Download
+
+- [mcp-server-1.4.9.tar.gz](https://respira.press/downloads/mcp-server-1.4.9.tar.gz)
+
+### Notes
+
+- Fixed issues in request validation
+- Enhanced logging for debugging scenarios
+- Minor stability fixes
+
+</Update>
+
+## Installation instructions
+
+### WordPress plugin
+
+1. Download the latest plugin ZIP file from the release list above.
+2. Go to WordPress Admin → Plugins → Add New → Upload Plugin.
+3. Upload the ZIP file and click Install Now.
+4. Activate the plugin.
+5. Generate your API key from the admin menu under Respira → API Keys.
+
+### MCP server
+
+1. Download the latest MCP server archive.
+2. Extract the archive to your desired deployment location.
+3. Configure your AI coding assistant to connect to the MCP server endpoint.
+4. For detailed setup steps, see the [Installation guide](/installation).
+
+## Using this page
+
+To continue setting up or upgrading your environment, you may find these guides helpful:
+
+- [Installation](/installation)
+- [MCP Install Link Generator](/mcp-install)
+- [Usage Guide](/usage)

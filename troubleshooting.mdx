@@ -1,202 +1,100 @@
 ---
-title: Troubleshooting
-description: Common issues and solutions for Vibe Coding plugin problems
+title: Support & Troubleshooting
+description: Troubleshooting guides for Respira for WordPress, including MCP server connection issues, API key errors, page builder detection problems, and how to get direct support.
 ---
 
-## Troubleshooting Guide
+## We're here to help
 
-Even with Vibe Coding's robust design, you might encounter occasional issues. This guide covers the most common problems and their solutions, helping you maintain smooth AI-assisted WordPress development.
+This page helps you diagnose and resolve the most common Respira for WordPress issues, including MCP server errors, API key failures, page builder detection problems, and publishing or saving issues. Use these guides to quickly identify what is going wrong and how to fix it.
 
-<ExpandableGroup>
-  <Expandable title="AI Assistant Connection Issues" default-open="false">
-    <Steps>
-      <Step title="Verify API Key" icon="key">
-        Ensure your API key is correct and hasn't expired.
-        
-        ```bash
-# Test API key validity
-curl -H "Authorization: Bearer YOUR_API_KEY" \
-  https://api.vibe-coding.com/validate
-        ```
-      </Step>
-      <Step title="Check Network Connectivity" icon="wifi">
-        Verify your server can reach the AI service endpoints.
-        
-        ```bash
-# Test connectivity
-ping api.vibe-coding.com
-traceroute api.vibe-coding.com
-        ```
-      </Step>
-      <Step title="Review Firewall Settings" icon="shield">
-        Ensure outbound connections to AI services are allowed.
-      </Step>
-    </Steps>
-  </Expandable>
-  <Expandable title="Code Application Errors" default-open="false">
-    <Expandable title="Syntax Errors" default-open="false">
-      AI-generated code may contain syntax issues. Always validate before applying.
-      
-      ```php
-// Check PHP syntax
-php -l generated-code.php
-      ```
-    </Expandable>
-    <Expandable title="Compatibility Issues" default-open="false">
-      Ensure generated code is compatible with your WordPress version and theme.
-      
-      <Callout kind="alert">Test all changes on a staging site first.</Callout>
-    </Expandable>
-  </Expandable>
-  <Expandable title="File Permission Problems" default-open="false">
-    <Steps>
-      <Step title="Check File Ownership" icon="user">
-        Verify WordPress can write to target files.
-        
-        ```bash
-# Check file ownership
-ls -la wp-content/themes/your-theme/
-        ```
-      </Step>
-      <Step title="Adjust Permissions" icon="settings">
-        Set appropriate file permissions.
-        
-        ```bash
-# Fix permissions
-find wp-content/ -type f -exec chmod 644 {} \;
-find wp-content/ -type d -exec chmod 755 {} \;
-        ```
-      </Step>
-    </Steps>
-  </Expandable>
-  <Expandable title="Performance Issues" default-open="false">
-    <Expandable title="Slow Response Times" default-open="false">
-      <Tabs>
-        <Tab title="Server-Side" icon="server">
-          - Check server resources (CPU, memory)
-          - Optimize PHP configuration
-          - Enable caching mechanisms
-        </Tab>
-        <Tab title="Network Issues" icon="globe">
-          - Verify internet connection speed
-          - Check for network congestion
-          - Consider CDN usage
-        </Tab>
-      </Tabs>
-    </Expandable>
-    <Expandable title="Memory Limits" default-open="false">
-      Increase PHP memory limits for large file operations.
-      
-      ```php
-// In wp-config.php
-define('WP_MEMORY_LIMIT', '256M');
-define('WP_MAX_MEMORY_LIMIT', '512M');
-      ```
-    </Expandable>
-  </Expandable>
-</ExpandableGroup>
+### How to get help faster
 
-## Diagnostic Tools
+Before requesting support, gather the following:
 
-<Columns cols={3}>
-  <Card title="System Status" icon="activity" href="#system-status">
-    Check overall plugin health and system compatibility.
-  </Card>
-  <Card title="Error Logs" icon="file-text" href="#error-logs">
-    Review detailed error messages and stack traces.
-  </Card>
-  <Card title="API Monitor" icon="bar-chart" href="#api-monitor">
-    Monitor API usage and response times.
-  </Card>
-</Columns>
+- Exact error messages shown in WordPress or in the MCP server console  
+- Relevant logs (WordPress audit log, MCP server output)  
+- Your site URL, including protocol (https://)  
+- Respira for WordPress plugin version  
+- Whether the issue happens on a specific page, builder, or environment  
 
-<Steps>
-  <Step title="Enable Debug Mode" icon="settings">
-    Temporarily enable debugging to capture detailed error information.
-    
-    ```php
-// In wp-config.php
-define('WP_DEBUG', true);
-define('WP_DEBUG_LOG', true);
-    ```
-  </Step>
-  <Step title="Run Diagnostics" icon="search">
-    Use the built-in diagnostic tools in Vibe Coding > Diagnostics.
-  </Step>
-  <Step title="Analyze Results" icon="file-search">
-    Review diagnostic output for specific issues and recommended fixes.
-  </Step>
-</Steps>
+Providing these details helps support diagnose issues more quickly.
 
-## Common Error Messages
+## Common issues
 
-<Tabs>
-  <Tab title="Connection Errors" icon="wifi-off">
-    | Error Message | Cause | Solution |
-    |---------------|-------|----------|
-    | API key invalid | Expired or incorrect key | Regenerate API key |
-    | Timeout error | Network issues | Check connectivity, increase timeout |
-    | Rate limit exceeded | Too many requests | Wait and retry, upgrade plan |
-  </Tab>
-  <Tab title="Permission Errors" icon="lock">
-    | Error Message | Cause | Solution |
-    | File not writable | Incorrect permissions | Adjust file permissions |
-    | Access denied | User role restrictions | Check user capabilities |
-    | Directory locked | Security settings | Review file restrictions |
-  </Tab>
-  <Tab title="Code Errors" icon="alert-triangle">
-    | Error Message | Cause | Solution |
-    | Syntax error | Invalid PHP/JS/CSS | Review and correct syntax |
-    | Undefined function | Missing dependencies | Install required plugins/themes |
-    | Version incompatibility | WordPress/PHP version | Update or use compatible code |
-  </Tab>
-</Tabs>
+### MCP server not connecting
 
-## Recovery Procedures
+- Verify the path to the MCP server is correct.  
+- Check that Node.js is installed by running `node --version`.  
+- Ensure the MCP server is built with `npm run build` and started correctly.  
+- Review the MCP server console output for runtime errors.  
+- Confirm your system firewall or host environment is not blocking local connections.
 
-<ExpandableGroup>
-  <Expandable title="Restore from Backup" default-open="false">
-    Use Vibe Coding's automatic backups to revert problematic changes.
-    
-    <Steps>
-      <Step title="Access Backups" icon="history">Go to Vibe Coding > Backups</Step>
-      <Step title="Select Restore Point" icon="rotate-ccw">Choose the backup version to restore</Step>
-      <Step title="Confirm Restoration" icon="check">Apply the backup and verify site functionality</Step>
-    </Steps>
-  </Expandable>
-  <Expandable title="Manual Recovery" default-open="false">
-    For severe issues, manually restore files from backups.
-    
-    ```bash
-# Restore from backup
-cp backup/wp-content/themes/your-theme/style.css \
-   wp-content/themes/your-theme/style.css
-    ```
-  </Expandable>
-</ExpandableGroup>
+### API key not working
 
-<Callout kind="danger">If you encounter persistent issues that prevent site access, contact our emergency support team immediately.</Callout>
+- Confirm the API key is entered exactly as provided with no extra spaces or line breaks.  
+- Check that the API key is active inside WordPress admin.  
+- Ensure your site URL is correct and includes the full protocol (`https://`).  
+- Review the audit log in WordPress admin for failed API requests.  
+- Verify that the key is assigned to the correct environment or domain.
 
-## Prevention Best Practices
+### Page builder not detected
 
-<Columns cols={2}>
-  <Card title="Regular Backups" icon="save" href="#regular-backups">
-    Enable automatic backups and verify they're working.
-  </Card>
-  <Card title="Staging Testing" icon="test-tube" href="#staging-testing">
-    Always test changes on staging environments first.
-  </Card>
-</Columns>
+- Confirm the intended page builder plugin is installed and active.  
+- Make sure the page or post you are viewing was created with that builder.  
+- Some page builders require the PRO version of Respira.  
+- If detection still fails, check for JavaScript errors in the browser console.
 
-<Callout kind="tip">Regular maintenance and proactive monitoring prevent most issues before they occur.</Callout>
+### Changes not saving
 
-## Getting Help
+- Respira uses a duplicate-first workflow; verify whether you are editing a duplicate instead of the original page.  
+- Ensure your WordPress account has permission to edit the page or post.  
+- Review the audit log for validation or publishing errors.  
+- Confirm that content validation is passing based on your security settings.  
+- If drafts are not updating, clear any server-level or plugin caching.
 
-If these troubleshooting steps don't resolve your issue:
+## Helpful resources
 
-1. Gather diagnostic information from Vibe Coding > Diagnostics
-2. Include error logs and system information
-3. Contact our support team with detailed problem description
-4. Provide steps to reproduce the issue
+- [Introduction](/introduction)  
+- [Installation](/installation)  
+- [Configuration](/configuration)  
+- [Usage Guide](/usage)  
+- [Prompts & Examples](/prompts)  
+- [MCP Install Link Generator](/mcp-install)  
+- [API Reference](/api-reference)  
+- [Release History](/changelog)
 
-Our support team specializes in Vibe Coding and WordPress AI integration issues, ensuring you get back to productive development quickly.
+## FAQ
+
+### How do I know if the MCP server is running?
+
+Open the terminal or command prompt where you started the server. If it is running, you should see active logs without shutdown messages. If no window is open, restart the server manually and watch for errors.
+
+### What should I do if edits are not appearing on my site?
+
+First check whether you are editing a duplicate page. Then verify user permissions, the audit log, and any caching layers. If the MCP server is offline, certain actions may not process correctly.
+
+### Can I use Respira on a staging or local site?
+
+Yes. Ensure the API key and site URL in WordPress match the environment you are using. Local development requires the MCP server to be running on your machine.
+
+### What information should I include when contacting support?
+
+Include your site URL, plugin version, a description of the issue, and any logs or exact error messages. This helps support reproduce and diagnose the problem quickly.
+
+### How do I contact support?
+
+- Email: [word@respira.press](mailto:word@respira.press)  
+- Use the account dashboard for license‑specific support options
+
+## Community
+
+Join the community to ask questions, share ideas, and follow development:
+
+[GitHub Discussions](https://github.com/webmyc/respira-wordpress/discussions)  
+[Product Roadmap](https://github.com/webmyc/respira-wordpress/projects)
+
+## Direct support
+
+Respira for WordPress is a commercial plugin with dedicated support. For direct assistance, contact the team using the channels above and include as much diagnostic information as possible.
+
+**Note:** Respira for WordPress is not listed in the WordPress.org directory. All support is provided directly through our team.
