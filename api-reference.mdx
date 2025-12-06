@@ -1,0 +1,246 @@
+---
+title: "API Reference"
+description: "Complete REST API reference for Respira for WordPress, including endpoints for pages, posts, analysis, AEO, and plugin management."
+---
+
+## Overview
+
+Respira for WordPress exposes a REST API that lets you retrieve site data, analyze content, optimize performance, and manage plugins programmatically. This page provides a structured reference to all available endpoints.
+
+## Base URL
+
+All endpoints use the same base URL:
+
+```
+https://your-site.com/wp-json/respira/v1/
+```
+
+## Authentication
+
+Include your API key with every request:
+
+```
+X-Respira-API-Key: respira_your-api-key-here
+```
+
+The API key identifies and authorizes the calling application.
+
+## Site and content
+
+### Get site context
+
+Returns high-level information about the WordPress site.
+
+```
+GET /site/context
+```
+
+### List pages
+
+Retrieves all pages on the site.
+
+```
+GET /pages
+```
+
+### Read page
+
+Fetches the content and metadata for a specific page.
+
+```
+GET /pages/{id}
+```
+
+### Create page duplicate
+
+Creates a copy of a page for safe editing without modifying the original.
+
+```
+POST /pages/{id}/duplicate
+```
+
+### Update page
+
+Updates page content, title, or related attributes.
+
+```
+POST /pages/{id}
+```
+
+### List posts
+
+Retrieves all posts on the site.
+
+```
+GET /posts
+```
+
+### Read post
+
+Fetches the content and metadata for a specific post.
+
+```
+GET /posts/{id}
+```
+
+### Get builder info
+
+Detects installed and active page builders.
+
+```
+GET /builders
+```
+
+## Page speed analysis
+
+### Analyze performance
+
+Analyzes performance metrics such as load time, image optimization, CSS and JS size, caching behavior, and plugin performance.
+
+```
+GET /analyze/performance/{page_id}
+```
+
+### Get Core Web Vitals
+
+Returns LCP, FID, and CLS scores for a page.
+
+```
+GET /analyze/core-web-vitals/{page_id}
+```
+
+### Analyze images
+
+Identifies large images, missing alt text, and other optimization opportunities.
+
+```
+GET /analyze/images/{page_id}
+```
+
+## SEO analysis
+
+### Analyze SEO
+
+Provides a comprehensive SEO audit including meta tags, headings, schema, internal links, and content quality.
+
+```
+GET /analyze/seo/{page_id}
+```
+
+### Check SEO issues
+
+Returns common SEO issues and quick recommendations.
+
+```
+GET /analyze/seo-issues/{page_id}
+```
+
+### Analyze readability
+
+Evaluates readability using metrics such as Flesch Reading Ease, sentence length, and paragraph structure.
+
+```
+GET /analyze/readability/{page_id}
+```
+
+## AI Engine Optimization (AEO)
+
+### Analyze AEO
+
+Analyzes content clarity, semantic HTML, schema usage, entity structure, content depth, and AI search readiness.
+
+```
+GET /analyze/aeo/{page_id}
+```
+
+### Check structured data
+
+Reviews schema markup and structured data for AI parsing compatibility.
+
+```
+GET /analyze/structured-data/{page_id}
+```
+
+## Plugin management
+
+<Callout kind="alert">
+
+Plugin management is experimental and disabled by default. Enable it in Respira settings in the WordPress admin before using these endpoints.
+
+</Callout>
+
+### List plugins
+
+Lists installed plugins with status, version, and update availability.
+
+```
+GET /plugins
+```
+
+### Install plugin
+
+Installs a plugin from WordPress.org or a ZIP URL.
+
+```
+POST /plugins/install
+```
+
+Example request body:
+
+```
+{ "slug_or_url": "plugin-slug", "source": "wordpress.org" }
+```
+
+### Activate plugin
+
+Activates a plugin.
+
+```
+POST /plugins/{slug}/activate
+```
+
+### Deactivate plugin
+
+Deactivates a plugin.
+
+```
+POST /plugins/{slug}/deactivate
+```
+
+### Update plugin
+
+Updates a plugin to the latest version.
+
+```
+POST /plugins/{slug}/update
+```
+
+### Delete plugin
+
+Permanently deletes a plugin. The plugin must be deactivated first.
+
+```
+DELETE /plugins/{slug}
+```
+
+## Response format
+
+Success and error responses follow a consistent structure:
+
+```
+{
+  "success": true,
+  "data": { ... }
+}
+
+{
+  "success": false,
+  "message": "Error message"
+}
+```
+
+## Related documentation
+
+- [Configuration](/configuration)
+- [Full Documentation](/documentation)
+- [GitHub Discussions: API Reference](https://github.com/respira-wp/respira/discussions)
