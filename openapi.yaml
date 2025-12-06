@@ -1,0 +1,219 @@
+openapi: '3.0.0'
+info:
+  version: 1.0.0
+  title: Vibe Coding API
+  license:
+    name: MIT
+servers:
+  - url: https://api.vibe-coding.com/v1
+paths:
+  /sites:
+    get:
+      summary: List all managed WordPress sites
+      operationId: listSites
+      parameters:
+        - name: limit
+          in: query
+          description: How many items to return at one time (max 100)
+          required: false
+          schema:
+            type: integer
+            format: int32
+      responses:
+        200:
+          description: A paginated array of managed WordPress sites
+          headers:
+            x-next:
+              description: A link to the next page of responses
+              schema:
+                type: string
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/Sites'
+        default:
+          description: unexpected error
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/Error'
+    post:
+      summary: Register a new WordPress site for AI-assisted editing
+      operationId: createSites
+      responses:
+        201:
+          description: Site registration successful
+        default:
+          description: unexpected error
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/Error'
+  /sites/{siteId}:
+    get:
+      summary: Retrieve details for a specific WordPress site
+      operationId: showSiteById
+      parameters:
+        - name: siteId
+          in: path
+          required: true
+          description: The unique identifier of the WordPress site to retrieve
+          schema:
+            type: string
+      responses:
+        200:
+          description: Detailed information about the specified WordPress site
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/Sites'
+        default:
+          description: unexpected error
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/Error'
+  /plugins:
+    get:
+      summary: List all Vibe Coding plugins available for installation
+      operationId: listPlugins
+      parameters:
+        - name: limit
+          in: query
+          description: How many items to return at one time (max 100)
+          required: false
+          schema:
+            type: integer
+            format: int32
+      responses:
+        200:
+          description: A paginated array of available Vibe Coding plugins
+          headers:
+            x-next:
+              description: A link to the next page of responses
+              schema:
+                type: string
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/Plugins'
+        default:
+          description: unexpected error
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/Error'
+    post:
+      summary: Install a new Vibe Coding plugin on a WordPress site
+      operationId: installPlugin
+      responses:
+        201:
+          description: Plugin installation initiated successfully
+        default:
+          description: unexpected error
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/Error'
+  /edits:
+    get:
+      summary: List recent AI-assisted code edits across all sites
+      operationId: listEdits
+      parameters:
+        - name: limit
+          in: query
+          description: How many items to return at one time (max 100)
+          required: false
+          schema:
+            type: integer
+            format: int32
+      responses:
+        200:
+          description: A paginated array of recent code edits
+          headers:
+            x-next:
+              description: A link to the next page of responses
+              schema:
+                type: string
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/Edits'
+        default:
+          description: unexpected error
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/Error'
+components:
+  schemas:
+    Site:
+      required:
+        - id
+        - name
+      properties:
+        id:
+          type: integer
+          format: int64
+        name:
+          type: string
+        url:
+          type: string
+        status:
+          type: string
+          enum: [active, inactive, suspended]
+    Sites:
+      type: array
+      items:
+        $ref: '#/components/schemas/Site'
+    Plugin:
+      required:
+        - id
+        - name
+      properties:
+        id:
+          type: integer
+          format: int64
+        name:
+          type: string
+        version:
+          type: string
+        description:
+          type: string
+    Plugins:
+      type: array
+      items:
+        $ref: '#/components/schemas/Plugin'
+    Edit:
+      required:
+        - id
+        - siteId
+      properties:
+        id:
+          type: integer
+          format: int64
+        siteId:
+          type: integer
+          format: int64
+        filePath:
+          type: string
+        changeType:
+          type: string
+          enum: [create, update, delete]
+        timestamp:
+          type: string
+          format: date-time
+    Edits:
+      type: array
+      items:
+        $ref: '#/components/schemas/Edit'
+    Error:
+      required:
+        - code
+        - message
+      properties:
+        code:
+          type: integer
+          format: int32
+        message:
+          type: string

@@ -1,0 +1,202 @@
+---
+title: Troubleshooting
+description: Common issues and solutions for Vibe Coding plugin problems
+---
+
+## Troubleshooting Guide
+
+Even with Vibe Coding's robust design, you might encounter occasional issues. This guide covers the most common problems and their solutions, helping you maintain smooth AI-assisted WordPress development.
+
+<ExpandableGroup>
+  <Expandable title="AI Assistant Connection Issues" default-open="false">
+    <Steps>
+      <Step title="Verify API Key" icon="key">
+        Ensure your API key is correct and hasn't expired.
+        
+        ```bash
+# Test API key validity
+curl -H "Authorization: Bearer YOUR_API_KEY" \
+  https://api.vibe-coding.com/validate
+        ```
+      </Step>
+      <Step title="Check Network Connectivity" icon="wifi">
+        Verify your server can reach the AI service endpoints.
+        
+        ```bash
+# Test connectivity
+ping api.vibe-coding.com
+traceroute api.vibe-coding.com
+        ```
+      </Step>
+      <Step title="Review Firewall Settings" icon="shield">
+        Ensure outbound connections to AI services are allowed.
+      </Step>
+    </Steps>
+  </Expandable>
+  <Expandable title="Code Application Errors" default-open="false">
+    <Expandable title="Syntax Errors" default-open="false">
+      AI-generated code may contain syntax issues. Always validate before applying.
+      
+      ```php
+// Check PHP syntax
+php -l generated-code.php
+      ```
+    </Expandable>
+    <Expandable title="Compatibility Issues" default-open="false">
+      Ensure generated code is compatible with your WordPress version and theme.
+      
+      <Callout kind="alert">Test all changes on a staging site first.</Callout>
+    </Expandable>
+  </Expandable>
+  <Expandable title="File Permission Problems" default-open="false">
+    <Steps>
+      <Step title="Check File Ownership" icon="user">
+        Verify WordPress can write to target files.
+        
+        ```bash
+# Check file ownership
+ls -la wp-content/themes/your-theme/
+        ```
+      </Step>
+      <Step title="Adjust Permissions" icon="settings">
+        Set appropriate file permissions.
+        
+        ```bash
+# Fix permissions
+find wp-content/ -type f -exec chmod 644 {} \;
+find wp-content/ -type d -exec chmod 755 {} \;
+        ```
+      </Step>
+    </Steps>
+  </Expandable>
+  <Expandable title="Performance Issues" default-open="false">
+    <Expandable title="Slow Response Times" default-open="false">
+      <Tabs>
+        <Tab title="Server-Side" icon="server">
+          - Check server resources (CPU, memory)
+          - Optimize PHP configuration
+          - Enable caching mechanisms
+        </Tab>
+        <Tab title="Network Issues" icon="globe">
+          - Verify internet connection speed
+          - Check for network congestion
+          - Consider CDN usage
+        </Tab>
+      </Tabs>
+    </Expandable>
+    <Expandable title="Memory Limits" default-open="false">
+      Increase PHP memory limits for large file operations.
+      
+      ```php
+// In wp-config.php
+define('WP_MEMORY_LIMIT', '256M');
+define('WP_MAX_MEMORY_LIMIT', '512M');
+      ```
+    </Expandable>
+  </Expandable>
+</ExpandableGroup>
+
+## Diagnostic Tools
+
+<Columns cols={3}>
+  <Card title="System Status" icon="activity" href="#system-status">
+    Check overall plugin health and system compatibility.
+  </Card>
+  <Card title="Error Logs" icon="file-text" href="#error-logs">
+    Review detailed error messages and stack traces.
+  </Card>
+  <Card title="API Monitor" icon="bar-chart" href="#api-monitor">
+    Monitor API usage and response times.
+  </Card>
+</Columns>
+
+<Steps>
+  <Step title="Enable Debug Mode" icon="settings">
+    Temporarily enable debugging to capture detailed error information.
+    
+    ```php
+// In wp-config.php
+define('WP_DEBUG', true);
+define('WP_DEBUG_LOG', true);
+    ```
+  </Step>
+  <Step title="Run Diagnostics" icon="search">
+    Use the built-in diagnostic tools in Vibe Coding > Diagnostics.
+  </Step>
+  <Step title="Analyze Results" icon="file-search">
+    Review diagnostic output for specific issues and recommended fixes.
+  </Step>
+</Steps>
+
+## Common Error Messages
+
+<Tabs>
+  <Tab title="Connection Errors" icon="wifi-off">
+    | Error Message | Cause | Solution |
+    |---------------|-------|----------|
+    | API key invalid | Expired or incorrect key | Regenerate API key |
+    | Timeout error | Network issues | Check connectivity, increase timeout |
+    | Rate limit exceeded | Too many requests | Wait and retry, upgrade plan |
+  </Tab>
+  <Tab title="Permission Errors" icon="lock">
+    | Error Message | Cause | Solution |
+    | File not writable | Incorrect permissions | Adjust file permissions |
+    | Access denied | User role restrictions | Check user capabilities |
+    | Directory locked | Security settings | Review file restrictions |
+  </Tab>
+  <Tab title="Code Errors" icon="alert-triangle">
+    | Error Message | Cause | Solution |
+    | Syntax error | Invalid PHP/JS/CSS | Review and correct syntax |
+    | Undefined function | Missing dependencies | Install required plugins/themes |
+    | Version incompatibility | WordPress/PHP version | Update or use compatible code |
+  </Tab>
+</Tabs>
+
+## Recovery Procedures
+
+<ExpandableGroup>
+  <Expandable title="Restore from Backup" default-open="false">
+    Use Vibe Coding's automatic backups to revert problematic changes.
+    
+    <Steps>
+      <Step title="Access Backups" icon="history">Go to Vibe Coding > Backups</Step>
+      <Step title="Select Restore Point" icon="rotate-ccw">Choose the backup version to restore</Step>
+      <Step title="Confirm Restoration" icon="check">Apply the backup and verify site functionality</Step>
+    </Steps>
+  </Expandable>
+  <Expandable title="Manual Recovery" default-open="false">
+    For severe issues, manually restore files from backups.
+    
+    ```bash
+# Restore from backup
+cp backup/wp-content/themes/your-theme/style.css \
+   wp-content/themes/your-theme/style.css
+    ```
+  </Expandable>
+</ExpandableGroup>
+
+<Callout kind="danger">If you encounter persistent issues that prevent site access, contact our emergency support team immediately.</Callout>
+
+## Prevention Best Practices
+
+<Columns cols={2}>
+  <Card title="Regular Backups" icon="save" href="#regular-backups">
+    Enable automatic backups and verify they're working.
+  </Card>
+  <Card title="Staging Testing" icon="test-tube" href="#staging-testing">
+    Always test changes on staging environments first.
+  </Card>
+</Columns>
+
+<Callout kind="tip">Regular maintenance and proactive monitoring prevent most issues before they occur.</Callout>
+
+## Getting Help
+
+If these troubleshooting steps don't resolve your issue:
+
+1. Gather diagnostic information from Vibe Coding > Diagnostics
+2. Include error logs and system information
+3. Contact our support team with detailed problem description
+4. Provide steps to reproduce the issue
+
+Our support team specializes in Vibe Coding and WordPress AI integration issues, ensuring you get back to productive development quickly.

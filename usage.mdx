@@ -1,0 +1,169 @@
+---
+title: Usage Guide
+description: Comprehensive guide to using Vibe Coding for AI-assisted WordPress editing
+---
+
+## Using Vibe Coding Effectively
+
+Vibe Coding transforms how you interact with WordPress code by providing a secure bridge between your AI coding assistants and your website. This guide covers the core workflows and best practices for maximizing productivity while maintaining site security.
+
+<Steps>
+  <Step title="Access the Editor" icon="edit">
+    From your WordPress admin dashboard, navigate to Vibe Coding > Code Editor.
+    
+    <Callout kind="tip">The editor interface provides a familiar coding environment with WordPress-specific features.</Callout>
+  </Step>
+  <Step title="Connect AI Assistant" icon="link">
+    Select your preferred AI assistant (Cursor or Claude Code) from the connection dropdown.
+    
+    <CodeGroup tabs="Cursor Setup,Claude Setup">
+      ```javascript
+// Cursor configuration
+const vibeConfig = {
+  apiKey: 'your-cursor-api-key',
+  endpoint: 'https://api.vibe-coding.com/cursor'
+};
+      ```
+      ```python
+# Claude Code configuration
+vibe_config = {
+    "api_key": "your-claude-api-key",
+    "endpoint": "https://api.vibe-coding.com/claude"
+}
+      ```
+    </CodeGroup>
+  </Step>
+  <Step title="Select Files" icon="file-text">
+    Choose the WordPress files you want to edit from the file browser.
+    
+    <Expandable title="Common Edit Targets" default-open="false">
+      - Theme files (functions.php, style.css)
+      - Plugin configurations
+      - Custom post types
+      - Widget areas
+    </Expandable>
+  </Step>
+  <Step title="AI-Assisted Editing" icon="sparkles">
+    Describe the changes you want to make, and let your AI assistant generate the code.
+    
+    <Tabs>
+      <Tab title="Theme Customization" icon="palette">
+        "Add a custom header style with responsive design"
+        
+        ```css
+/* AI-generated CSS */
+.custom-header {
+  background: linear-gradient(45deg, #7cb0a4, #5a8f82);
+  padding: 2rem;
+}
+
+@media (max-width: 768px) {
+  .custom-header {
+    padding: 1rem;
+  }
+}
+        ```
+      </Tab>
+      <Tab title="Function Enhancement" icon="code">
+        "Create a custom shortcode for wisdom quotes"
+        
+        ```php
+function wisdom_quote_shortcode($atts) {
+  $atts = shortcode_atts([
+    'author' => 'Anonymous',
+    'text' => 'Share your wisdom'
+  ], $atts);
+  
+  return '<blockquote class="wisdom-quote">'
+    . '<p>' . esc_html($atts['text']) . '</p>'
+    . '<cite>' . esc_html($atts['author']) . '</cite>'
+    . '</blockquote>';
+}
+add_shortcode('wisdom_quote', 'wisdom_quote_shortcode');
+        ```
+      </Tab>
+    </Tabs>
+  </Step>
+  <Step title="Review and Apply" icon="check-circle">
+    Review the AI-generated code, make any necessary adjustments, and apply the changes.
+    
+    <Callout kind="alert">Always review AI-generated code for security and compatibility before applying changes.</Callout>
+  </Step>
+</Steps>
+
+## Advanced Workflows
+
+<ExpandableGroup>
+  <Expandable title="Batch Editing" default-open="false">
+    Make coordinated changes across multiple files for comprehensive updates.
+    
+    <Steps>
+      <Step title="Select Multiple Files" icon="files">Choose related files from the file browser.</Step>
+      <Step title="Define Changes" icon="edit-3">Describe the batch operation to your AI assistant.</Step>
+      <Step title="Review All Changes" icon="eye">Examine each modified file before applying.</Step>
+    </Steps>
+  </Expandable>
+  <Expandable title="Version Control Integration" default-open="false">
+    Connect with Git repositories for better change tracking.
+    
+    ```bash
+# Initialize Git in theme directory
+git init
+git add .
+git commit -m "Initial Vibe Coding setup"
+    ```
+  </Expandable>
+  <Expandable title="Collaborative Editing" default-open="false">
+    Share editing sessions with team members for collaborative development.
+    
+    <Columns cols={2}>
+      <Card title="Session Sharing" icon="share-2" href="#session-sharing">
+        Generate shareable links for real-time collaboration.
+      </Card>
+      <Card title="Review Workflow" icon="users" href="#review-workflow">
+        Implement peer review processes for AI-generated code.
+      </Card>
+    </Columns>
+  </Expandable>
+</ExpandableGroup>
+
+## Best Practices
+
+<Tabs>
+  <Tab title="Security" icon="shield">
+    - Always backup before major changes
+    - Review AI-generated code for vulnerabilities
+    - Use environment-specific configurations
+    - Limit editing permissions appropriately
+  </Tab>
+  <Tab title="Performance" icon="zap">
+    - Test changes on staging environments first
+    - Monitor site performance after edits
+    - Optimize images and assets
+    - Cache static resources
+  </Tab>
+  <Tab title="Maintenance" icon="settings">
+    - Keep plugins and themes updated
+    - Regularly audit user permissions
+    - Monitor error logs
+    - Document custom modifications
+  </Tab>
+</Tabs>
+
+<Callout kind="info">Remember, Vibe Coding enhances your development workflow but doesn't replace the need for understanding WordPress fundamentals.</Callout>
+
+## Common Use Cases
+
+<Columns cols={3}>
+  <Card title="Content Management" icon="file-text" href="#content-management">
+    Streamline content creation and management workflows.
+  </Card>
+  <Card title="E-commerce Integration" icon="shopping-cart" href="#ecommerce-integration">
+    Add custom functionality to WooCommerce stores.
+  </Card>
+  <Card title="Membership Sites" icon="users" href="#membership-sites">
+    Enhance membership plugin capabilities.
+  </Card>
+</Columns>
+
+By following these guidelines, you'll harness the full potential of AI-assisted WordPress development while maintaining the security and reliability your wisdom economy content deserves.

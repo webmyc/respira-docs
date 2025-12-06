@@ -1,0 +1,109 @@
+{
+  "name": "Vibe Coding Documentation",
+  "initialRoute": "introduction",
+  "colors": {
+    "light": {
+      "brand": "#7cb0a4",
+      "heading": "#1a1a1a",
+      "text": "#374151"
+    },
+    "dark": {
+      "brand": "#5a8f82",
+      "heading": "#f2f2f2",
+      "text": "#c1c1c1"
+    }
+  },
+  "navigation": {
+    "tabs": [
+      {
+        "tab": "Documentation",
+        "icon": "book",
+        "groups": [
+          {
+            "group": "Getting Started",
+            "icon": "rocket",
+            "pages": [
+              {
+                "title": "Introduction",
+                "path": "introduction",
+                "icon": "star"
+              },
+              {
+                "title": "Installation",
+                "path": "installation",
+                "icon": "download"
+              }
+            ]
+          },
+          {
+            "group": "Core Features",
+            "icon": "zap",
+            "pages": [
+              {
+                "title": "Usage Guide",
+                "path": "usage",
+                "icon": "edit"
+              },
+              {
+                "title": "Configuration",
+                "path": "configuration",
+                "icon": "settings"
+              }
+            ]
+          },
+          {
+            "group": "Support",
+            "icon": "help-circle",
+            "pages": [
+              {
+                "title": "Troubleshooting",
+                "path": "troubleshooting",
+                "icon": "alert-circle"
+              }
+            ]
+          }
+        ]
+      },
+      {
+        "tab": "API Reference",
+        "icon": "code",
+        "groups": [
+          {
+            "group": "Endpoints",
+            "icon": "terminal",
+            "openapi": "openapi.yaml"
+          }
+        ]
+      },
+      {
+        "tab": "Changelog",
+        "icon": "clock",
+        "pages": [
+          {
+            "title": "Release History",
+            "path": "changelog",
+            "icon": "history"
+          }
+        ]
+      }
+    ]
+  },
+  "navbar": {
+    "actions": {
+      "primary": {
+        "title": "Download Plugin",
+        "link": "https://wordpress.org/plugins/vibe-coding"
+      },
+      "links": [
+        {
+          "title": "GitHub",
+          "link": "https://github.com/respira/vibe-coding"
+        },
+        {
+          "title": "Support",
+          "link": "https://support.vibe-coding.com"
+        }
+      ]
+    }
+  }
+}
