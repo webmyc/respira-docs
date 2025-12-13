@@ -3,12 +3,12 @@
   "initialRoute": "introduction",
   "colors": {
     "light": {
-      "brand": "#10b981",
+      "brand": "#7cb0a4",
       "heading": "#1a1a1a",
       "text": "#374151"
     },
     "dark": {
-      "brand": "#34d399",
+      "brand": "#5a8f82",
       "heading": "#f2f2f2",
       "text": "#c1c1c1"
     }
@@ -108,23 +108,21 @@
     "actions": {
       "primary": {
         "title": "Download Plugin",
-        "link": "https://respira.press/releases"
+        "link": "https://www.respira.press/releases"
       },
       "links": [
         {
-          "title": "Get Started",
-          "link": "https://respira.press/getting-started"
+          "title": "GitHub",
+          "link": "https://github.com/respira/vibe-coding"
         },
         {
           "title": "Support",
-          "link": "https://respira.press/support"
+          "link": "https://support.vibe-coding.com"
         }
       ]
     }
   },
-  "favicon": "https://respira.press/favicon.ico",
-  "seo": {
-    "title": "Respira for WordPress Documentation",
-    "description": "The only WordPress MCP with page builder support. Edit Divi, Elementor, Bricks + 7 more builders with AI."
-  }
+  "favicon": "https://blob-cdn.documentation.ai/org-cccb5697-cdca-444e-8aec-fdc429b7b40e/doc-3378e7db-0241-430e-87fd-d23f651dc2d8/1765036350188-b1ybrl18djb-RESPIRA-LOGO.png?q=85&fm=auto&auto=compress%2Cformat",
+  "logo-dark": "https://blob-cdn.documentation.ai/org-cccb5697-cdca-444e-8aec-fdc429b7b40e/doc-3378e7db-0241-430e-87fd-d23f651dc2d8/1765638205074-pyjrepoob9-RESPIRA-LOGO-dark.png?q=85&fm=auto&auto=compress%2Cformat",
+  "logo-light": "https://blob-cdn.documentation.ai/org-cccb5697-cdca-444e-8aec-fdc429b7b40e/doc-3378e7db-0241-430e-87fd-d23f651dc2d8/1765638205074-pyjrepoob9-RESPIRA-LOGO-dark.png?q=85&fm=auto&auto=compress%2Cformat"
 }
