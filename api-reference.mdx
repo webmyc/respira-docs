@@ -1,11 +1,11 @@
 ---
 title: "API Reference"
-description: "Complete REST API reference for Respira for WordPress, including endpoints for pages, posts, analysis, AEO, and plugin management."
+description: "Complete REST API reference for Respira for WordPress, including 60+ endpoints for pages, posts, menus, taxonomies, media, users, analysis, and more."
 ---
 
 ## Overview
 
-Respira for WordPress exposes a REST API that lets you retrieve site data, analyze content, optimize performance, and manage plugins programmatically. This page provides a structured reference to all available endpoints.
+Respira for WordPress exposes a comprehensive REST API with 60+ tools for managing your WordPress site. This page provides a complete reference to all available endpoints.
 
 ## Base URL
 
@@ -23,29 +23,51 @@ Include your API key with every request:
 X-Respira-API-Key: respira_your-api-key-here
 ```
 
-The API key identifies and authorizes the calling application.
-
-## Site and content
+## Site Context
 
 ### Get site context
 
-Returns high-level information about the WordPress site.
+Returns comprehensive information about the WordPress site including version, theme, plugins, and detected page builders.
 
 ```
-GET /site/context
+GET /context/site-info
 ```
+
+### Get theme docs
+
+Returns theme documentation and available template files.
+
+```
+GET /context/theme-docs
+```
+
+### Get builder info
+
+Returns information about the active page builder including available modules/widgets.
+
+```
+GET /context/builder-info
+```
+
+## Pages
 
 ### List pages
 
-Retrieves all pages on the site.
+List all pages with optional filtering.
 
 ```
 GET /pages
 ```
 
+Query parameters:
+- `status` - Filter by status (publish, draft, pending)
+- `search` - Search term
+- `page` - Page number for pagination
+- `perPage` - Items per page
+
 ### Read page
 
-Fetches the content and metadata for a specific page.
+Get full content of a specific page including meta data and builder information.
 
 ```
 GET /pages/{id}
@@ -53,23 +75,43 @@ GET /pages/{id}
 
 ### Create page duplicate
 
-Creates a copy of a page for safe editing without modifying the original.
+Create a duplicate of an existing page for safe editing.
 
 ```
 POST /pages/{id}/duplicate
 ```
 
+<Callout kind="info">
+Always use this before making changes to an original page. Edit the duplicate, then approve in WordPress admin (Respira → Approve Edits).
+</Callout>
+
 ### Update page
 
-Updates page content, title, or related attributes.
+Update a page. Respira automatically creates a duplicate for safety.
 
 ```
-POST /pages/{id}
+PUT /pages/{id}
 ```
+
+Body parameters:
+- `title` - New page title
+- `content` - New page content (HTML)
+- `status` - Page status (publish, draft, pending)
+- `meta` - Post meta data
+
+### Delete page
+
+Delete a page. Only works on Respira-created duplicates by default.
+
+```
+DELETE /pages/{id}
+```
+
+## Posts
 
 ### List posts
 
-Retrieves all posts on the site.
+List all blog posts with optional filtering.
 
 ```
 GET /posts
@@ -77,25 +119,437 @@ GET /posts
 
 ### Read post
 
-Fetches the content and metadata for a specific post.
+Get full content of a specific post.
 
 ```
 GET /posts/{id}
 ```
 
-### Get builder info
+### Create post duplicate
 
-Detects installed and active page builders.
+Create a duplicate of an existing post for safe editing.
 
 ```
-GET /builders
+POST /posts/{id}/duplicate
 ```
 
-## Page speed analysis
+### Update post
+
+Update a post. Respira automatically creates a duplicate for safety.
+
+```
+PUT /posts/{id}
+```
+
+### Delete post
+
+Delete a post. Only works on Respira-created duplicates by default.
+
+```
+DELETE /posts/{id}
+```
+
+## Custom Post Types
+
+### List post types
+
+List all registered post types.
+
+```
+GET /post-types
+```
+
+### Get post type
+
+Get post type details.
+
+```
+GET /post-types/{type}
+```
+
+### List custom posts
+
+List posts of a custom post type.
+
+```
+GET /post-types/{type}/posts
+```
+
+### Get custom post
+
+Get custom post details.
+
+```
+GET /post-types/{type}/posts/{id}
+```
+
+### Create custom post
+
+Create a new custom post.
+
+```
+POST /post-types/{type}/posts
+```
+
+### Update custom post
+
+Update a custom post.
+
+```
+PUT /post-types/{type}/posts/{id}
+```
+
+### Delete custom post
+
+Delete a custom post.
+
+```
+DELETE /post-types/{type}/posts/{id}
+```
+
+## Page Builder Tools
+
+### Extract builder content
+
+Extract structured content from a page builder (Divi, Elementor, Bricks, etc.).
+
+```
+GET /builder/{builder}/pages/{id}/content
+```
+
+### Inject builder content
+
+Inject structured content into a page builder.
+
+```
+POST /builder/{builder}/pages/{id}/content
+```
+
+### Update module
+
+Update a specific module within a page builder page. Supports finding modules by admin_label, path, or type.
+
+```
+PUT /builder/{builder}/pages/{id}/module
+```
+
+Body parameters:
+- `moduleIdentifier` - Object with `admin_label`, `path`, or `type`
+- `updates` - Object with `content` and/or `attributes`
+
+## Media
+
+### List media
+
+List all media files (images, videos, etc.).
+
+```
+GET /media
+```
+
+### Get media
+
+Get single media item details.
+
+```
+GET /media/{id}
+```
+
+### Upload media
+
+Upload a media file to WordPress.
+
+```
+POST /media
+```
+
+Body parameters:
+- `file` - File content as base64 string, URL, or file path
+- `filename` - Filename for the uploaded file
+- `mimeType` - MIME type (e.g., image/jpeg)
+- `alt` - Alt text for images
+- `title` - Media title
+- `caption` - Media caption
+
+### Update media
+
+Update media metadata (title, alt text, caption).
+
+```
+PUT /media/{id}
+```
+
+### Delete media
+
+Delete a media file.
+
+```
+DELETE /media/{id}
+```
+
+## Menus
+
+### List menus
+
+List all navigation menus.
+
+```
+GET /menus
+```
+
+### Get menu
+
+Get menu with all items and hierarchy.
+
+```
+GET /menus/{id}
+```
+
+### Get menu locations
+
+Get all registered menu locations.
+
+```
+GET /menus/locations
+```
+
+### Create menu
+
+Create a new navigation menu.
+
+```
+POST /menus
+```
+
+### Update menu
+
+Update a menu.
+
+```
+PUT /menus/{id}
+```
+
+### Delete menu
+
+Delete a menu.
+
+```
+DELETE /menus/{id}
+```
+
+### Create menu item
+
+Add an item to a menu.
+
+```
+POST /menus/{id}/items
+```
+
+### Update menu item
+
+Update a menu item.
+
+```
+PUT /menus/{id}/items/{item_id}
+```
+
+### Delete menu item
+
+Delete a menu item.
+
+```
+DELETE /menus/{id}/items/{item_id}
+```
+
+### Assign menu location
+
+Assign a menu to a theme location.
+
+```
+POST /menus/{id}/location
+```
+
+## Taxonomies
+
+### List taxonomies
+
+List all registered taxonomies.
+
+```
+GET /taxonomies
+```
+
+### Get taxonomy
+
+Get taxonomy details.
+
+```
+GET /taxonomies/{taxonomy}
+```
+
+### List terms
+
+List terms in a taxonomy.
+
+```
+GET /taxonomies/{taxonomy}/terms
+```
+
+### Get term
+
+Get term details.
+
+```
+GET /taxonomies/{taxonomy}/terms/{id}
+```
+
+### Create term
+
+Create a new term.
+
+```
+POST /taxonomies/{taxonomy}/terms
+```
+
+### Update term
+
+Update a term.
+
+```
+PUT /taxonomies/{taxonomy}/terms/{id}
+```
+
+### Delete term
+
+Delete a term.
+
+```
+DELETE /taxonomies/{taxonomy}/terms/{id}
+```
+
+## Users
+
+### List users
+
+List all users with optional filtering.
+
+```
+GET /users
+```
+
+### Get user
+
+Get user details by ID.
+
+```
+GET /users/{id}
+```
+
+### Create user
+
+Create a new user.
+
+```
+POST /users
+```
+
+### Update user
+
+Update user information.
+
+```
+PUT /users/{id}
+```
+
+### Delete user
+
+Delete a user.
+
+```
+DELETE /users/{id}
+```
+
+## Comments
+
+### List comments
+
+List all comments with optional filtering.
+
+```
+GET /comments
+```
+
+### Get comment
+
+Get comment details.
+
+```
+GET /comments/{id}
+```
+
+### Create comment
+
+Create a new comment.
+
+```
+POST /comments
+```
+
+### Update comment
+
+Update a comment.
+
+```
+PUT /comments/{id}
+```
+
+### Delete comment
+
+Delete a comment.
+
+```
+DELETE /comments/{id}
+```
+
+## Options
+
+### List options
+
+List WordPress options (with optional search filter).
+
+```
+GET /options
+```
+
+### Get option
+
+Get option value by name.
+
+```
+GET /options/{option}
+```
+
+### Update option
+
+Update an option value.
+
+```
+PUT /options/{option}
+```
+
+### Delete option
+
+Delete an option.
+
+```
+DELETE /options/{option}
+```
+
+## Performance Analysis
 
 ### Analyze performance
 
-Analyzes performance metrics such as load time, image optimization, CSS and JS size, caching behavior, and plugin performance.
+Analyze page performance including load time, images, CSS/JS, caching, and plugin impact.
 
 ```
 GET /analyze/performance/{page_id}
@@ -103,7 +557,7 @@ GET /analyze/performance/{page_id}
 
 ### Get Core Web Vitals
 
-Returns LCP, FID, and CLS scores for a page.
+Get Core Web Vitals metrics (LCP, FID, CLS) for a page.
 
 ```
 GET /analyze/core-web-vitals/{page_id}
@@ -111,17 +565,17 @@ GET /analyze/core-web-vitals/{page_id}
 
 ### Analyze images
 
-Identifies large images, missing alt text, and other optimization opportunities.
+Analyze image optimization opportunities including missing alt text and large files.
 
 ```
 GET /analyze/images/{page_id}
 ```
 
-## SEO analysis
+## SEO Analysis
 
 ### Analyze SEO
 
-Provides a comprehensive SEO audit including meta tags, headings, schema, internal links, and content quality.
+Comprehensive SEO analysis including meta tags, headings, image alt text, internal linking, and schema markup.
 
 ```
 GET /analyze/seo/{page_id}
@@ -129,7 +583,7 @@ GET /analyze/seo/{page_id}
 
 ### Check SEO issues
 
-Returns common SEO issues and quick recommendations.
+Quick check for common SEO issues with recommendations.
 
 ```
 GET /analyze/seo-issues/{page_id}
@@ -137,7 +591,7 @@ GET /analyze/seo-issues/{page_id}
 
 ### Analyze readability
 
-Evaluates readability using metrics such as Flesch Reading Ease, sentence length, and paragraph structure.
+Analyze content readability including Flesch Reading Ease score and paragraph structure.
 
 ```
 GET /analyze/readability/{page_id}
@@ -147,7 +601,7 @@ GET /analyze/readability/{page_id}
 
 ### Analyze AEO
 
-Analyzes content clarity, semantic HTML, schema usage, entity structure, content depth, and AI search readiness.
+Analyze content for AI search engine optimization (Perplexity, ChatGPT). Checks structured data, content clarity, and semantic HTML.
 
 ```
 GET /analyze/aeo/{page_id}
@@ -155,23 +609,31 @@ GET /analyze/aeo/{page_id}
 
 ### Check structured data
 
-Reviews schema markup and structured data for AI parsing compatibility.
+Check schema markup and structured data (JSON-LD, microdata) for AI parsing.
 
 ```
 GET /analyze/structured-data/{page_id}
 ```
 
-## Plugin management
+## Security
+
+### Validate security
+
+Validate content for security issues before saving.
+
+```
+POST /security/validate
+```
+
+## Plugin Management (Experimental)
 
 <Callout kind="alert">
-
-Plugin management is experimental and disabled by default. Enable it in Respira settings in the WordPress admin before using these endpoints.
-
+Plugin management is experimental and disabled by default. Enable in Respira settings before use.
 </Callout>
 
 ### List plugins
 
-Lists installed plugins with status, version, and update availability.
+List all installed plugins with status and update availability.
 
 ```
 GET /plugins
@@ -179,21 +641,15 @@ GET /plugins
 
 ### Install plugin
 
-Installs a plugin from WordPress.org or a ZIP URL.
+Install a plugin from WordPress.org or ZIP URL.
 
 ```
 POST /plugins/install
 ```
 
-Example request body:
-
-```
-{ "slug_or_url": "plugin-slug", "source": "wordpress.org" }
-```
-
 ### Activate plugin
 
-Activates a plugin.
+Activate a plugin.
 
 ```
 POST /plugins/{slug}/activate
@@ -201,7 +657,7 @@ POST /plugins/{slug}/activate
 
 ### Deactivate plugin
 
-Deactivates a plugin.
+Deactivate a plugin.
 
 ```
 POST /plugins/{slug}/deactivate
@@ -209,7 +665,7 @@ POST /plugins/{slug}/deactivate
 
 ### Update plugin
 
-Updates a plugin to the latest version.
+Update a plugin to latest version.
 
 ```
 POST /plugins/{slug}/update
@@ -217,30 +673,44 @@ POST /plugins/{slug}/update
 
 ### Delete plugin
 
-Permanently deletes a plugin. The plugin must be deactivated first.
+Delete a plugin (must be deactivated first).
 
 ```
 DELETE /plugins/{slug}
 ```
 
-## Response format
+## Multi-Site
 
-Success and error responses follow a consistent structure:
+### Switch site
+
+Switch to a different WordPress site (for multi-site setups).
 
 ```
+POST /sites/switch
+```
+
+## Response Format
+
+All responses follow this structure:
+
+**Success:**
+```json
 {
   "success": true,
   "data": { ... }
 }
+```
 
+**Error:**
+```json
 {
   "success": false,
   "message": "Error message"
 }
 ```
 
-## Related documentation
+## Related Documentation
 
 - [Configuration](/configuration)
-- [Full Documentation](/documentation)
-- [GitHub Discussions: API Reference](https://github.com/respira-wp/respira/discussions)
+- [Installation](/installation)
+- [Troubleshooting](/troubleshooting)

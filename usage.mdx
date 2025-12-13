@@ -1,169 +1,291 @@
 ---
 title: Usage Guide
-description: Comprehensive guide to using Vibe Coding for AI-assisted WordPress editing
+description: Comprehensive guide to using Respira for WordPress for AI-assisted WordPress editing with Cursor, Claude Code, and Windsurf.
 ---
 
-## Using Vibe Coding Effectively
+## Using Respira for WordPress
 
-Vibe Coding transforms how you interact with WordPress code by providing a secure bridge between your AI coding assistants and your website. This guide covers the core workflows and best practices for maximizing productivity while maintaining site security.
+Respira for WordPress transforms how you interact with your WordPress site by providing a secure bridge between AI coding assistants and your website. This guide covers the core workflows and best practices for maximizing productivity while maintaining site security.
+
+## Core Workflow
 
 <Steps>
-  <Step title="Access the Editor" icon="edit">
-    From your WordPress admin dashboard, navigate to Vibe Coding > Code Editor.
-    
-    <Callout kind="tip">The editor interface provides a familiar coding environment with WordPress-specific features.</Callout>
-  </Step>
-  <Step title="Connect AI Assistant" icon="link">
-    Select your preferred AI assistant (Cursor or Claude Code) from the connection dropdown.
-    
-    <CodeGroup tabs="Cursor Setup,Claude Setup">
-      ```javascript
-// Cursor configuration
-const vibeConfig = {
-  apiKey: 'your-cursor-api-key',
-  endpoint: 'https://api.vibe-coding.com/cursor'
-};
-      ```
-      ```python
-# Claude Code configuration
-vibe_config = {
-    "api_key": "your-claude-api-key",
-    "endpoint": "https://api.vibe-coding.com/claude"
-}
-      ```
-    </CodeGroup>
-  </Step>
-  <Step title="Select Files" icon="file-text">
-    Choose the WordPress files you want to edit from the file browser.
-    
-    <Expandable title="Common Edit Targets" default-open="false">
-      - Theme files (functions.php, style.css)
-      - Plugin configurations
-      - Custom post types
-      - Widget areas
-    </Expandable>
-  </Step>
-  <Step title="AI-Assisted Editing" icon="sparkles">
-    Describe the changes you want to make, and let your AI assistant generate the code.
-    
-    <Tabs>
-      <Tab title="Theme Customization" icon="palette">
-        "Add a custom header style with responsive design"
-        
-        ```css
-/* AI-generated CSS */
-.custom-header {
-  background: linear-gradient(45deg, #7cb0a4, #5a8f82);
-  padding: 2rem;
-}
+  <Step title="Connect Your AI Assistant" icon="link">
+    Ensure your AI assistant (Cursor, Claude Code, or Windsurf) is configured with the Respira MCP server.
 
-@media (max-width: 768px) {
-  .custom-header {
-    padding: 1rem;
-  }
-}
-        ```
+    <Callout kind="tip">Run `npx @respira/wordpress-mcp-server --test` to verify your connection.</Callout>
+  </Step>
+  <Step title="Explore Your Site" icon="search">
+    Start by asking your AI assistant to show you what's on your site.
+
+    Example prompts:
+    - "List all pages on my WordPress site"
+    - "Get the structure of my homepage"
+    - "Show me the sections on the About page"
+  </Step>
+  <Step title="Request Changes" icon="edit">
+    Describe the changes you want using natural language.
+
+    <Tabs>
+      <Tab title="Content Updates" icon="file-text">
+        "Change the headline on my About page to 'Our Story'"
+
+        "Update the hero section text to be more conversational"
       </Tab>
-      <Tab title="Function Enhancement" icon="code">
-        "Create a custom shortcode for wisdom quotes"
-        
-        ```php
-function wisdom_quote_shortcode($atts) {
-  $atts = shortcode_atts([
-    'author' => 'Anonymous',
-    'text' => 'Share your wisdom'
-  ], $atts);
-  
-  return '<blockquote class="wisdom-quote">'
-    . '<p>' . esc_html($atts['text']) . '</p>'
-    . '<cite>' . esc_html($atts['author']) . '</cite>'
-    . '</blockquote>';
-}
-add_shortcode('wisdom_quote', 'wisdom_quote_shortcode');
-        ```
+      <Tab title="Design Changes" icon="palette">
+        "Change all green buttons to blue (#2563eb)"
+
+        "Make the hero section full-width with more padding"
+      </Tab>
+      <Tab title="SEO Optimization" icon="search">
+        "Analyze the SEO of my homepage and suggest improvements"
+
+        "Add descriptive alt text to all images"
       </Tab>
     </Tabs>
   </Step>
-  <Step title="Review and Apply" icon="check-circle">
-    Review the AI-generated code, make any necessary adjustments, and apply the changes.
-    
-    <Callout kind="alert">Always review AI-generated code for security and compatibility before applying changes.</Callout>
+  <Step title="Review Duplicates" icon="copy">
+    Respira automatically creates duplicates before making changes. Review them in WordPress Admin.
+
+    <Callout kind="info">Go to **Respira → Approve Edits** to review and approve changes before they go live.</Callout>
+  </Step>
+  <Step title="Approve and Publish" icon="check-circle">
+    Once satisfied with the changes, approve the duplicate to replace the original page.
+
+    <Callout kind="alert">Always review changes before approving. This keeps your live site safe.</Callout>
   </Step>
 </Steps>
 
-## Advanced Workflows
+## Working with Page Builders
+
+Respira supports 10 page builders. Each builder stores content differently, but Respira handles the translation automatically.
+
+### Supported Builders
+
+<Columns cols={2}>
+  <Card title="Visual Builders" icon="layout">
+    - Divi
+    - Elementor
+    - Bricks
+    - Oxygen
+    - WPBakery
+  </Card>
+  <Card title="More Builders" icon="grid">
+    - Gutenberg (Block Editor)
+    - Beaver Builder
+    - Brizy
+    - Visual Composer
+    - Thrive Architect
+  </Card>
+</Columns>
+
+### Module-Level Editing
+
+For precise control, you can update specific modules without modifying the entire page:
+
+```
+Update the module with admin_label "Hero Section" on page ID 123.
+Change the heading text to "Welcome to Our Site".
+```
+
+This is especially useful for Divi and Elementor where pages have many modules.
+
+## Analysis Tools
+
+Respira includes built-in analysis tools to help you optimize your site.
+
+### SEO Analysis
+
+```
+Analyze the SEO of my homepage
+```
+
+Returns:
+- Meta tags and descriptions
+- Heading structure (H1, H2, etc.)
+- Image alt text coverage
+- Internal linking
+- Content quality metrics
+
+### Performance Analysis
+
+```
+Analyze the performance of my homepage
+```
+
+Returns:
+- Load time estimates
+- Image optimization opportunities
+- CSS/JS optimization suggestions
+- Caching recommendations
+
+### Core Web Vitals
+
+```
+Get Core Web Vitals for my homepage
+```
+
+Returns:
+- LCP (Largest Contentful Paint)
+- FID (First Input Delay)
+- CLS (Cumulative Layout Shift)
+
+### AEO (AI Engine Optimization)
+
+```
+Analyze my homepage for AI search engines
+```
+
+Returns:
+- Structured data coverage
+- Content clarity score
+- FAQ opportunities
+- Entity recognition
+
+## Common Workflows
 
 <ExpandableGroup>
-  <Expandable title="Batch Editing" default-open="false">
-    Make coordinated changes across multiple files for comprehensive updates.
-    
-    <Steps>
-      <Step title="Select Multiple Files" icon="files">Choose related files from the file browser.</Step>
-      <Step title="Define Changes" icon="edit-3">Describe the batch operation to your AI assistant.</Step>
-      <Step title="Review All Changes" icon="eye">Examine each modified file before applying.</Step>
-    </Steps>
-  </Expandable>
-  <Expandable title="Version Control Integration" default-open="false">
-    Connect with Git repositories for better change tracking.
-    
-    ```bash
-# Initialize Git in theme directory
-git init
-git add .
-git commit -m "Initial Vibe Coding setup"
+  <Expandable title="Bulk Content Updates" default-open="false">
+    Make coordinated changes across multiple pages.
+
+    Example:
+    ```
+    Update the footer copyright year to 2025 on all pages
+    ```
+
+    Or:
+    ```
+    Find all pages with "Contact" in the title and add a new CTA section
     ```
   </Expandable>
-  <Expandable title="Collaborative Editing" default-open="false">
-    Share editing sessions with team members for collaborative development.
-    
-    <Columns cols={2}>
-      <Card title="Session Sharing" icon="share-2" href="#session-sharing">
-        Generate shareable links for real-time collaboration.
-      </Card>
-      <Card title="Review Workflow" icon="users" href="#review-workflow">
-        Implement peer review processes for AI-generated code.
-      </Card>
-    </Columns>
+  <Expandable title="Menu Management" default-open="false">
+    Create, update, and organize navigation menus.
+
+    Example:
+    ```
+    List all menus on my site
+    ```
+
+    ```
+    Add a new menu item for "Services" after "About" in the main menu
+    ```
+  </Expandable>
+  <Expandable title="Media Management" default-open="false">
+    Upload, organize, and optimize media files.
+
+    Example:
+    ```
+    List all images in my media library
+    ```
+
+    ```
+    Find images without alt text and suggest descriptions
+    ```
+  </Expandable>
+  <Expandable title="Taxonomy Management" default-open="false">
+    Work with categories, tags, and custom taxonomies.
+
+    Example:
+    ```
+    List all categories on my blog
+    ```
+
+    ```
+    Create a new category called "Tutorials" with slug "tutorials"
+    ```
   </Expandable>
 </ExpandableGroup>
 
 ## Best Practices
 
 <Tabs>
-  <Tab title="Security" icon="shield">
-    - Always backup before major changes
-    - Review AI-generated code for vulnerabilities
-    - Use environment-specific configurations
-    - Limit editing permissions appropriately
+  <Tab title="Safety" icon="shield">
+    - Always review changes before approving
+    - Use duplicates for major changes
+    - Check the audit log regularly
+    - Test on staging before production
   </Tab>
-  <Tab title="Performance" icon="zap">
-    - Test changes on staging environments first
-    - Monitor site performance after edits
-    - Optimize images and assets
-    - Cache static resources
+  <Tab title="Efficiency" icon="zap">
+    - Be specific in your prompts
+    - Reference sections by name or admin_label
+    - Combine related changes in one prompt
+    - Use analysis tools before making changes
   </Tab>
-  <Tab title="Maintenance" icon="settings">
-    - Keep plugins and themes updated
-    - Regularly audit user permissions
-    - Monitor error logs
-    - Document custom modifications
+  <Tab title="Organization" icon="folder">
+    - Name duplicates descriptively
+    - Use clear admin_labels for modules
+    - Document major changes
+    - Keep the approval queue manageable
   </Tab>
 </Tabs>
 
-<Callout kind="info">Remember, Vibe Coding enhances your development workflow but doesn't replace the need for understanding WordPress fundamentals.</Callout>
+## Multi-Site Management
 
-## Common Use Cases
+If you manage multiple WordPress sites, you can switch between them:
 
-<Columns cols={3}>
-  <Card title="Content Management" icon="file-text" href="#content-management">
-    Streamline content creation and management workflows.
+```
+Switch to the staging site
+```
+
+Or use the CLI to list configured sites:
+
+```bash
+npx @respira/wordpress-mcp-server --list
+```
+
+Configure multiple sites in `~/.respira/config.json`:
+
+```json
+{
+  "sites": [
+    {
+      "id": "production",
+      "name": "Production Site",
+      "url": "https://mysite.com",
+      "apiKey": "respira_prod_key",
+      "default": true
+    },
+    {
+      "id": "staging",
+      "name": "Staging Site",
+      "url": "https://staging.mysite.com",
+      "apiKey": "respira_staging_key"
+    }
+  ]
+}
+```
+
+## Troubleshooting
+
+### Connection Issues
+
+Run the connection test:
+
+```bash
+npx @respira/wordpress-mcp-server --test
+```
+
+### Changes Not Appearing
+
+1. Check if you're editing a duplicate (intended behavior)
+2. Go to **Respira → Approve Edits** to approve changes
+3. Clear any caching plugins after approval
+
+### Page Builder Not Detected
+
+1. Ensure the builder plugin is active
+2. Verify the page was created with that builder
+3. Check the audit log for detection errors
+
+For more help, see the [Troubleshooting](/troubleshooting) guide.
+
+## Next Steps
+
+<Columns cols={2}>
+  <Card title="Prompts & Examples" icon="book-open" href="/prompts">
+    Ready-to-use prompts for common tasks
   </Card>
-  <Card title="E-commerce Integration" icon="shopping-cart" href="#ecommerce-integration">
-    Add custom functionality to WooCommerce stores.
-  </Card>
-  <Card title="Membership Sites" icon="users" href="#membership-sites">
-    Enhance membership plugin capabilities.
+  <Card title="API Reference" icon="code" href="/api-reference">
+    Complete endpoint documentation
   </Card>
 </Columns>
-
-By following these guidelines, you'll harness the full potential of AI-assisted WordPress development while maintaining the security and reliability your wisdom economy content deserves.

@@ -1,173 +1,209 @@
 ---
-title: Configuration
-description: Detailed configuration options and settings for the Vibe Coding plugin
+title: Configuration Guide
+description: Configure Respira for WordPress with Cursor, Claude Code, Windsurf, and other AI coding assistants. Step-by-step MCP server setup and multi-site configuration.
 ---
 
-## Configuration Overview
+## Quick Setup with Wizard
 
-Vibe Coding offers extensive configuration options to customize your AI-assisted editing experience. Proper configuration ensures optimal performance, security, and integration with your preferred AI coding assistants.
+The fastest way to configure Respira is using the interactive setup wizard:
 
-<Steps>
-  <Step title="Access Settings" icon="settings">
-    Navigate to Vibe Coding > Settings in your WordPress admin dashboard.
-  </Step>
-  <Step title="AI Assistant Setup" icon="cpu">
-    Configure your AI assistant connections and preferences.
-    
-    <Tabs>
-      <Tab title="Cursor Configuration" icon="terminal">
-        <ParamField body="apiKey" param-type="string" required="true">
-          Your Cursor API key for authentication.
-        </ParamField>
-        <ParamField body="model" param-type="string" required="false">
-          Preferred Cursor model (default: gpt-4).
-        </ParamField>
-        <ParamField body="timeout" param-type="integer" required="false">
-          Request timeout in seconds (default: 30).
-        </ParamField>
-      </Tab>
-      <Tab title="Claude Code Setup" icon="code">
-        <ParamField body="apiKey" param-type="string" required="true">
-          Your Claude API key.
-        </ParamField>
-        <ParamField body="maxTokens" param-type="integer" required="false">
-          Maximum tokens per request (default: 4096).
-        </ParamField>
-        <ParamField body="temperature" param-type="number" required="false">
-          Response creativity level (0.0-1.0, default: 0.7).
-        </ParamField>
-      </Tab>
-    </Tabs>
-  </Step>
-  <Step title="Security Settings" icon="shield">
-    Configure security parameters and access controls.
-    
-    <Expandable title="File Permissions" default-open="false">
-      <ParamField body="allowedExtensions" param-type="array" required="false">
-        File extensions allowed for editing (default: php, css, js, html).
-      </ParamField>
-      <ParamField body="restrictedPaths" param-type="array" required="false">
-        Paths that cannot be edited (e.g., wp-config.php).
-      </ParamField>
-    </Expandable>
-  </Step>
-  <Step title="Backup Configuration" icon="save">
-    Set up automatic backups and recovery options.
-    
-    <ParamField body="autoBackup" param-type="boolean" required="false">
-      Enable automatic backups before changes (default: true).
-    </ParamField>
-    <ParamField body="backupRetention" param-type="integer" required="false">
-      Number of backup versions to retain (default: 10).
-    </ParamField>
-  </Step>
-</Steps>
+```bash
+npx @respira/wordpress-mcp-server --setup
+```
 
-## Advanced Settings
+The wizard will guide you through configuration, validate your connection, and generate all config files automatically.
 
-<ExpandableGroup>
-  <Expandable title="Performance Tuning" default-open="false">
-    <ParamField body="cacheEnabled" param-type="boolean" required="false">
-      Enable response caching (default: true).
-    </ParamField>
-    <ParamField body="batchSize" param-type="integer" required="false">
-      Maximum files to process in batch operations (default: 5).
-    </ParamField>
-    <ParamField body="concurrency" param-type="integer" required="false">
-      Number of concurrent AI requests (default: 2).
-    </ParamField>
-  </Expandable>
-  <Expandable title="Integration Options" default-open="false">
-    <ParamField body="webhookUrl" param-type="string" required="false">
-      Webhook URL for change notifications.
-    </ParamField>
-    <ParamField body="gitIntegration" param-type="boolean" required="false">
-      Enable Git repository integration (default: false).
-    </ParamField>
-    <ParamField body="collaboration" param-type="boolean" required="false">
-      Allow collaborative editing sessions (default: false).
-    </ParamField>
-  </Expandable>
-</ExpandableGroup>
+### CLI Options
 
-## Environment-Specific Configurations
+```bash
+npx @respira/wordpress-mcp-server --setup   # Run setup wizard
+npx @respira/wordpress-mcp-server --list    # List configured sites
+npx @respira/wordpress-mcp-server --test    # Test connection to default site
+npx @respira/wordpress-mcp-server --help    # Show help
+```
 
-<Tabs>
-  <Tab title="Development" icon="code">
-    ```json
+## Cursor
+
+Configure Respira to work with Cursor IDE.
+
+### Option 1: One-Click Install
+
+Click this button to automatically add Respira to Cursor:
+
+<a href="cursor://anysphere.cursor-deeplink/mcp/install?name=respira-wordpress&config=eyJjb21tYW5kIjoibnB4IiwiYXJncyI6WyIteSIsIkByZXNwaXJhL3dvcmRwcmVzcy1tY3Atc2VydmVyIl19">
+  <Image
+    src="https://cursor.com/deeplink/mcp-install-dark.svg"
+    alt="Add to Cursor"
+    width="200"
+    height="50"
+  />
+</a>
+
+### Option 2: Manual Configuration
+
+Create or edit `.cursor/mcp.json` in your project root:
+
+```json
 {
-  "environment": "development",
-  "debugMode": true,
-  "autoBackup": false,
-  "allowedExtensions": ["php", "css", "js", "html", "txt"]
+  "mcpServers": {
+    "respira-wordpress": {
+      "command": "npx",
+      "args": ["-y", "@respira/wordpress-mcp-server"]
+    }
+  }
 }
-    ```
-  </Tab>
-  <Tab title="Staging" icon="server">
-    ```json
-{
-  "environment": "staging",
-  "debugMode": false,
-  "autoBackup": true,
-  "backupRetention": 20
-}
-    ```
-  </Tab>
-  <Tab title="Production" icon="globe">
-    ```json
-{
-  "environment": "production",
-  "debugMode": false,
-  "autoBackup": true,
-  "restrictedPaths": ["wp-config.php", "wp-admin"]
-}
-    ```
-  </Tab>
-</Tabs>
+```
 
-## User Permissions
+Then create your site configuration by running:
+
+```bash
+npx @respira/wordpress-mcp-server --setup
+```
+
+Or manually create `~/.respira/config.json`:
+
+```json
+{
+  "sites": [
+    {
+      "id": "my-site",
+      "name": "My WordPress Site",
+      "url": "https://your-site.com",
+      "apiKey": "respira_your-api-key-here",
+      "default": true
+    }
+  ]
+}
+```
+
+Restart Cursor to load the MCP server configuration.
+
+## Claude Code
+
+Configure Respira to work with Claude Code (CLI) or Claude Desktop.
+
+### For Claude Code (CLI)
+
+Add to `~/.claude.json`:
+
+```json
+{
+  "mcpServers": {
+    "respira-wordpress": {
+      "command": "npx",
+      "args": ["-y", "@respira/wordpress-mcp-server"]
+    }
+  }
+}
+```
+
+### For Claude Desktop
+
+Find your configuration file:
+
+- **macOS:** `~/Library/Application Support/Claude/claude_desktop_config.json`
+- **Windows:** `%APPDATA%\Claude\claude_desktop_config.json`
+- **Linux:** `~/.config/Claude/claude_desktop_config.json`
+
+Add the same configuration shown above.
+
+Then create your site configuration:
+
+```bash
+npx @respira/wordpress-mcp-server --setup
+```
+
+Restart Claude Code or Claude Desktop to load the configuration.
+
+## Windsurf
+
+Configure Respira to work with Windsurf (Codeium).
+
+Add to your Windsurf MCP configuration:
+
+```json
+{
+  "mcpServers": {
+    "respira-wordpress": {
+      "command": "npx",
+      "args": ["-y", "@respira/wordpress-mcp-server"]
+    }
+  }
+}
+```
+
+Then run `npx @respira/wordpress-mcp-server --setup` to create your site configuration.
+
+## Multiple WordPress Sites
+
+You can configure multiple WordPress sites using the setup wizard or manually.
+
+### Option 1: Use the Setup Wizard
+
+Run `npx @respira/wordpress-mcp-server --setup` and follow the prompts. You can add multiple sites and the wizard will ask if you want to add another after each one.
+
+### Option 2: Manual Configuration
+
+Create or edit `~/.respira/config.json`:
+
+```json
+{
+  "sites": [
+    {
+      "id": "production",
+      "name": "Production Site",
+      "url": "https://mysite.com",
+      "apiKey": "respira_prod_key",
+      "default": true
+    },
+    {
+      "id": "staging",
+      "name": "Staging Site",
+      "url": "https://staging.mysite.com",
+      "apiKey": "respira_staging_key"
+    }
+  ]
+}
+```
+
+### Managing Sites
+
+- `--list` - View all configured sites
+- `--test` - Test connection to the default site
+- Use `wordpress_switch_site` in your AI assistant to switch between sites
+
+## Troubleshooting
+
+### MCP Server Not Connecting
+
+- Run `npx @respira/wordpress-mcp-server --test` to test your connection
+- Check that Node.js 18+ is installed: `node --version`
+- Verify your config file exists at `~/.respira/config.json`
+- Run `npx @respira/wordpress-mcp-server --list` to see configured sites
+
+### API Key Not Working
+
+- API key should start with `respira_`
+- Verify the API key is active in WordPress admin (Respira → API Keys)
+- Ensure your WordPress site URL includes `https://`
+- Check that the Respira plugin is installed and activated on WordPress
+
+### Windows: 'npx' Not Recognized
+
+- Use full path: `C:\Program Files\nodejs\npx.cmd`
+- Or install globally: `npm install -g @respira/wordpress-mcp-server`
+
+### Need More Help?
+
+Visit our [Troubleshooting page](/troubleshooting) or contact [word@respira.press](mailto:word@respira.press).
+
+## Next Steps
 
 <Columns cols={2}>
-  <Card title="Role-Based Access" icon="users" href="#role-access">
-    Configure editing permissions based on user roles.
+  <Card title="Installation Guide" icon="download" href="/installation">
+    Learn how to install Respira
   </Card>
-  <Card title="File Restrictions" icon="file-x" href="#file-restrictions">
-    Set file-specific access controls.
+  <Card title="API Reference" icon="code" href="/api-reference">
+    Complete API endpoint documentation
   </Card>
 </Columns>
-
-<ParamField body="userRoles" param-type="array" required="false">
-  User roles allowed to use Vibe Coding (default: administrator, editor).
-</ParamField>
-
-## Troubleshooting Configuration Issues
-
-<ExpandableGroup>
-  <Expandable title="Connection Problems" default-open="false">
-    Verify API keys and network connectivity.
-    
-    ```bash
-# Test API connection
-curl -X POST https://api.vibe-coding.com/test \
-  -H "Authorization: Bearer YOUR_API_KEY" \
-  -H "Content-Type: application/json" \
-  -d '{"test": "connection"}'
-    ```
-  </Expandable>
-  <Expandable title="Permission Errors" default-open="false">
-    Check WordPress file permissions and user capabilities.
-    
-    ```bash
-# Check file permissions
-ls -la wp-content/plugins/vibe-coding/
-    ```
-  </Expandable>
-</ExpandableGroup>
-
-<Callout kind="info">Configuration changes take effect immediately, but always test in a staging environment before applying to production.</Callout>
-
-## Configuration Validation
-
-Vibe Coding includes built-in validation to ensure your settings are optimal and secure. The plugin will alert you to potential issues and suggest improvements.
-
-<Callout kind="tip">Use the configuration validator in Settings > Validation to check your current setup.</Callout>

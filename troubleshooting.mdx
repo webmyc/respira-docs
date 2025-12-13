@@ -5,96 +5,131 @@ description: Troubleshooting guides for Respira for WordPress, including MCP ser
 
 ## We're here to help
 
-This page helps you diagnose and resolve the most common Respira for WordPress issues, including MCP server errors, API key failures, page builder detection problems, and publishing or saving issues. Use these guides to quickly identify what is going wrong and how to fix it.
+This page helps you diagnose and resolve the most common Respira for WordPress issues, including MCP server errors, API key failures, page builder detection problems, and publishing or saving issues.
 
-### How to get help faster
+## Quick Diagnostics
+
+Before diving into specific issues, run these commands to check your setup:
+
+```bash
+# Test your connection
+npx @respira/wordpress-mcp-server --test
+
+# List configured sites
+npx @respira/wordpress-mcp-server --list
+
+# Re-run setup wizard
+npx @respira/wordpress-mcp-server --setup
+```
+
+### Gathering information for support
 
 Before requesting support, gather the following:
 
-- Exact error messages shown in WordPress or in the MCP server console  
-- Relevant logs (WordPress audit log, MCP server output)  
-- Your site URL, including protocol (https://)  
-- Respira for WordPress plugin version  
-- Whether the issue happens on a specific page, builder, or environment  
-
-Providing these details helps support diagnose issues more quickly.
+- Exact error messages shown in WordPress or in the MCP server console
+- Output from `--test` command
+- Your site URL, including protocol (https://)
+- Respira for WordPress plugin version
+- Whether the issue happens on a specific page, builder, or environment
 
 ## Common issues
 
 ### MCP server not connecting
 
-- Verify the path to the MCP server is correct.  
-- Check that Node.js is installed by running `node --version`.  
-- Ensure the MCP server is built with `npm run build` and started correctly.  
-- Review the MCP server console output for runtime errors.  
-- Confirm your system firewall or host environment is not blocking local connections.
+**Quick fix:** Run the setup wizard again:
+
+```bash
+npx @respira/wordpress-mcp-server --setup
+```
+
+**Other checks:**
+
+- Check that Node.js 18+ is installed: `node --version`
+- Verify your config file exists at `~/.respira/config.json`
+- Run `npx @respira/wordpress-mcp-server --test` to test your connection
+- Review the MCP server console output for runtime errors
+- Confirm your system firewall or host environment is not blocking local connections
+- Restart your AI assistant (Cursor, Claude Code, etc.) after configuration changes
 
 ### API key not working
 
-- Confirm the API key is entered exactly as provided with no extra spaces or line breaks.  
-- Check that the API key is active inside WordPress admin.  
-- Ensure your site URL is correct and includes the full protocol (`https://`).  
-- Review the audit log in WordPress admin for failed API requests.  
-- Verify that the key is assigned to the correct environment or domain.
+- Confirm the API key starts with `respira_` and has no extra spaces
+- Check that the API key is active in WordPress Admin (Respira → API Keys)
+- Ensure your site URL is correct and includes `https://`
+- Review the audit log in WordPress Admin for failed API requests
+- Verify the key hasn't expired or been revoked
+- Try generating a new API key
 
 ### Page builder not detected
 
-- Confirm the intended page builder plugin is installed and active.  
-- Make sure the page or post you are viewing was created with that builder.  
-- Some page builders require the PRO version of Respira.  
-- If detection still fails, check for JavaScript errors in the browser console.
+- Confirm the intended page builder plugin is installed and active
+- Make sure the page or post was created with that builder
+- Some page builders require specific Respira license tiers
+- If detection still fails, check for JavaScript errors in the browser console
+- Try reading the page directly: "Read page ID 123"
 
 ### Changes not saving
 
-- Respira uses a duplicate-first workflow; verify whether you are editing a duplicate instead of the original page.  
-- Ensure your WordPress account has permission to edit the page or post.  
-- Review the audit log for validation or publishing errors.  
-- Confirm that content validation is passing based on your security settings.  
-- If drafts are not updating, clear any server-level or plugin caching.
+- Respira uses a duplicate-first workflow—verify you're reviewing the duplicate
+- Ensure your WordPress account has permission to edit the page or post
+- Review the audit log for validation or publishing errors
+- Confirm that content validation is passing
+- If drafts are not updating, clear any server-level or plugin caching
+
+### Windows: 'npx' not recognized
+
+If you see "'npx' is not recognized as an internal or external command":
+
+- Use the full path: `C:\Program Files\nodejs\npx.cmd`
+- Or install globally: `npm install -g @respira/wordpress-mcp-server`
+- Ensure Node.js is in your system PATH
+
+### Site URL mismatch
+
+The site URL in your config must match exactly what WordPress reports:
+
+1. In WordPress Admin, go to **Settings → General**
+2. Copy the "WordPress Address (URL)" exactly
+3. Update `~/.respira/config.json` with this URL
+4. Re-run `npx @respira/wordpress-mcp-server --test`
 
 ## Helpful resources
 
-- [Introduction](/introduction)  
-- [Installation](/installation)  
-- [Configuration](/configuration)  
-- [Usage Guide](/usage)  
-- [Prompts & Examples](/prompts)  
-- [MCP Install Link Generator](/mcp-install)  
-- [API Reference](/api-reference)  
+- [Introduction](/introduction)
+- [Installation](/installation)
+- [Configuration](/configuration)
+- [Usage Guide](/usage)
+- [Prompts & Examples](/prompts)
+- [API Reference](/api-reference)
 - [Release History](/changelog)
 
 ## FAQ
 
 ### How do I know if the MCP server is running?
 
-Open the terminal or command prompt where you started the server. If it is running, you should see active logs without shutdown messages. If no window is open, restart the server manually and watch for errors.
+Run `npx @respira/wordpress-mcp-server --test` to check the connection. If successful, you'll see a confirmation message with your site details.
 
 ### What should I do if edits are not appearing on my site?
 
-First check whether you are editing a duplicate page. Then verify user permissions, the audit log, and any caching layers. If the MCP server is offline, certain actions may not process correctly.
+First check whether you are editing a duplicate page (this is expected behavior). Go to **Respira → Approve Edits** in WordPress Admin to approve changes. Also verify user permissions and clear any caching layers.
 
 ### Can I use Respira on a staging or local site?
 
-Yes. Ensure the API key and site URL in WordPress match the environment you are using. Local development requires the MCP server to be running on your machine.
+Yes. Ensure the API key and site URL in `~/.respira/config.json` match the environment you are using. For local development, the MCP server runs on your machine alongside the AI assistant.
+
+### How do I switch between multiple WordPress sites?
+
+Use `wordpress_switch_site` in your AI assistant, or configure multiple sites in `~/.respira/config.json` and use `--list` to see them.
 
 ### What information should I include when contacting support?
 
-Include your site URL, plugin version, a description of the issue, and any logs or exact error messages. This helps support reproduce and diagnose the problem quickly.
+Include your site URL, plugin version, output from `--test` command, a description of the issue, and any logs or exact error messages.
 
 ### How do I contact support?
 
-- Email: [word@respira.press](mailto:word@respira.press)  
-- Use the account dashboard for license‑specific support options
-
-## Community
-
-Join the community to ask questions, share ideas, and follow development:
-
-[GitHub Discussions](https://github.com/webmyc/respira-wordpress/discussions)  
-[Product Roadmap](https://github.com/webmyc/respira-wordpress/projects)
+- Email: [word@respira.press](mailto:word@respira.press)
+- Use the account dashboard for license-specific support options
 
 ## Direct support
 
 Respira for WordPress is a commercial plugin with dedicated support. For direct assistance, contact the team using the channels above and include as much diagnostic information as possible.
-
-**Note:** Respira for WordPress is not listed in the WordPress.org directory. All support is provided directly through our team.

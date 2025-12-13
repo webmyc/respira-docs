@@ -1,50 +1,86 @@
 ---
 title: "MCP Install Link Generator"
-description: "Generate one-click install links for the Respira WordPress MCP server for use in Cursor and Claude, with guidance for manual setup and licensing requirements."
+description: "Generate one-click install links for the Respira WordPress MCP server for use in Cursor, Claude Code, and Windsurf, with guidance for setup and licensing requirements."
 ---
 
 ## Overview
 
-This page explains how to generate and use one-click MCP install links for the Respira WordPress MCP server. These links allow fast installation in Cursor or Claude Desktop, while still requiring valid licensing and configuration on your WordPress site.
+This page explains how to install the Respira WordPress MCP server. You can use the interactive setup wizard, a one-click install link for Cursor, or install manually.
 
-You can use the generator to create a deep link that your MCP client recognizes automatically, or you can install the server manually.
+## Quick Install Methods
 
-## Quick install
+### Method 1: Interactive Setup Wizard (Recommended)
 
-You can install the Respira WordPress MCP server into Cursor or Claude Desktop with a one-click deep link. The link configures the MCP client to use the server but does not include any site credentials.
+The fastest and easiest way to get started:
 
-![Install MCP Server](https://cursor.com/deeplink/mcp-install-dark.svg)
+```bash
+npx @respira/wordpress-mcp-server --setup
+```
 
-### License requirements
+The setup wizard will:
 
-The MCP server requires a valid license and API key. The install link only adds the MCP server entry to your MCP client and does not activate or configure the WordPress connection.
+- Guide you through configuration step-by-step
+- Validate your WordPress URL and API key
+- Test your connection before saving
+- Generate the config file automatically
+- Show you what to add to your AI tool
+
+### Method 2: One-Click Install for Cursor
+
+Click the button below to add the MCP server to Cursor automatically:
+
+<a href="cursor://anysphere.cursor-deeplink/mcp/install?name=respira-wordpress&config=eyJjb21tYW5kIjoibnB4IiwiYXJncyI6WyIteSIsIkByZXNwaXJhL3dvcmRwcmVzcy1tY3Atc2VydmVyIl19">
+  <Image
+    src="https://cursor.com/deeplink/mcp-install-dark.svg"
+    alt="Add to Cursor"
+    width="200"
+    height="50"
+  />
+</a>
+
+After clicking, run the setup wizard to configure your site:
+
+```bash
+npx @respira/wordpress-mcp-server --setup
+```
+
+### Method 3: npm Installation
+
+Install globally:
+
+```bash
+npm install -g @respira/wordpress-mcp-server
+```
+
+Or run without installing:
+
+```bash
+npx -y @respira/wordpress-mcp-server
+```
+
+## CLI Options
+
+```bash
+npx @respira/wordpress-mcp-server --setup   # Run setup wizard
+npx @respira/wordpress-mcp-server --list    # List configured sites
+npx @respira/wordpress-mcp-server --test    # Test connection to default site
+npx @respira/wordpress-mcp-server --help    # Show help
+```
+
+## License Requirements
+
+The MCP server requires a valid license and API key. The install link only adds the MCP server entry to your MCP client—it does not activate or configure the WordPress connection.
 
 You must still:
 
-- Have an active Respira license or free trial  
-- Install the Respira WordPress plugin on your site  
-- Generate an API key from WordPress Admin under Respira  
-- Configure the server with your site URL and API key after installation  
+- Have an active Respira license or free trial
+- Install the Respira WordPress plugin on your site
+- Generate an API key from WordPress Admin under Respira
+- Configure the server with your site URL and API key
 
-Using an install link does not bypass licensing. The server cannot connect to a site without valid credentials.
+## Manual Configuration
 
-## Choose an installation method
-
-You can install the MCP server using npm (recommended), download it manually, or rely entirely on the generated install link.
-
-### npm installation (recommended)
-
-The npm package manages updates and dependencies automatically. You can configure your WordPress site URL and API key later in the configuration file located at `~/.respira/config.json`.
-
-### Release archive (alternative)
-
-If you prefer a manual approach, you can download a release archive from the [Respira Releases page](https://www.respira.press/releases) and place it in a permanent directory before configuring your MCP client.
-
-## Manual installation steps
-
-1. Download the MCP server from the downloads page for your account.
-2. Extract the ZIP file to a permanent location, for example `~/.respira/mcp-server/`.
-3. Create a configuration file at `~/.respira/config.json`:
+If you prefer manual setup, create a configuration file at `~/.respira/config.json`:
 
 ```json
 {
@@ -56,46 +92,76 @@ If you prefer a manual approach, you can download a release archive from the [Re
       "apiKey": "respira_your-api-key-here",
       "default": true
     }
-  ],
-  "preferences": {
-    "autoDuplicate": true,
-    "securityChecks": true
-  }
+  ]
 }
 ```
 
-4. Configure your MCP client to point to the server entry point at `dist/index.js`. For Cursor, add an entry similar to the following in `.cursor/mcp.json`:
+Then configure your AI assistant:
+
+### Cursor
+
+Add to `.cursor/mcp.json` in your project root:
 
 ```json
 {
   "mcpServers": {
     "respira-wordpress": {
-      "command": "node",
-      "args": ["~/.respira/mcp-server/dist/index.js"]
+      "command": "npx",
+      "args": ["-y", "@respira/wordpress-mcp-server"]
     }
   }
 }
 ```
 
-## How MCP install links work
+### Claude Code
+
+Add to `~/.claude.json`:
+
+```json
+{
+  "mcpServers": {
+    "respira-wordpress": {
+      "command": "npx",
+      "args": ["-y", "@respira/wordpress-mcp-server"]
+    }
+  }
+}
+```
+
+### Windsurf
+
+Add to your Windsurf MCP configuration:
+
+```json
+{
+  "mcpServers": {
+    "respira-wordpress": {
+      "command": "npx",
+      "args": ["-y", "@respira/wordpress-mcp-server"]
+    }
+  }
+}
+```
+
+## How MCP Install Links Work
 
 An MCP install link uses a URL format recognized by Cursor and Claude Desktop. When you click a link:
 
-1. Your browser opens the deep link.  
-2. Cursor or Claude Desktop detects the installation request.  
-3. A new MCP server entry is added to your MCP settings.  
-4. You may need to restart your client for the new server to activate.  
+1. Your browser opens the deep link
+2. Cursor or Claude Desktop detects the installation request
+3. A new MCP server entry is added to your MCP settings
+4. You may need to restart your client for the new server to activate
 
 The install link only sets up the MCP server reference. You must still configure:
 
-- The WordPress plugin  
-- Your license or trial  
-- An API key  
-- The MCP server configuration file with your site URL and API key  
+- The WordPress plugin
+- Your license or trial
+- An API key
+- The MCP server configuration file with your site URL and API key
 
-## Next steps
+## Next Steps
 
-- Continue with the [Installation guide](/installation) if you have not installed the plugin or server components.  
-- Configure your environment using the [Configuration guide](/configuration).  
-- See the [Usage guide](/usage) to start working with the MCP server.  
-- Visit [Troubleshooting](/troubleshooting) for common errors and fixes.
+- [Installation Guide](/installation) — Complete setup instructions
+- [Configuration Guide](/configuration) — Configure your AI assistant
+- [Usage Guide](/usage) — Start working with the MCP server
+- [Troubleshooting](/troubleshooting) — Common errors and fixes

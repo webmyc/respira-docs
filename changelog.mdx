@@ -1,153 +1,186 @@
 ---
 title: "Releases"
-description: "Official changelog and release notes for Respira for WordPress and the MCP server, including download links and upgrade guidance."
+description: "Official changelog and release notes for Respira for WordPress plugin and MCP server, including download links and upgrade guidance."
 ---
 
 ## Overview
 
-This page is the official changelog and download hub for both Respira for WordPress and the MCP server. You can use it to review version history, check release notes before upgrading, and download the latest stable builds. Each release is production-tested and includes notes to help you understand changes and compatibility considerations.
+This page is the official changelog and download hub for both Respira for WordPress and the MCP server. You can use it to review version history, check release notes before upgrading, and download the latest stable builds.
 
-## WordPress plugin releases
+## WordPress Plugin Releases
 
-<Update label="2025-12-05" description="Respira for WordPress v1.8.31" tags={["feature", "improvement"]}>
+<Update label="2025-12-13" description="Respira for WordPress v1.8.42" tags={["feature", "improvement"]}>
 
-### Version details
+### Latest stable version
 
-- Latest stable version.
-- Released on December 5, 2025.
+Download: [respira-for-wordpress-1.8.42.zip](https://respira.press/releases)
 
-### Download
+### What's New
 
-- [respira-for-wordpress-1.8.31.zip](https://respira.press/api/plugin-updates/download?version=1.8.31)
-- [respira-for-wordpress-latest.zip](https://respira.press/api/plugin-updates/download?version=1.8.31)
+- **Admin login-as-client** - Swap Supabase session for admin impersonation
+- **Trial extension API** - GET endpoint respects impersonation auth
+- **Admin client view** - Behaves like real client session
+- **Elementor cache clearing** - Fixed method call syntax
+- **Custom CSS regeneration** - Regenerate Elementor CSS cache after updates
 
 ### Features
 
 - Safe editing with automatic page duplication
 - No SSH required, works with any WordPress hosting
 - Built-in security validation for XSS and SQL injection
-- Support for 10 page builders including Gutenberg, Divi, Elementor, WPBakery, Oxygen, Bricks, Beaver Builder, Brizy, Visual Composer, and Thrive Architect
-- Page builder intelligence for Gutenberg, Elementor, and WPBakery
-- Builder and theme detection dashboard
-- Cursor and Claude Desktop integration
+- Support for 10 page builders: Gutenberg, Divi, Elementor, WPBakery, Oxygen, Bricks, Beaver Builder, Brizy, Visual Composer, Thrive Architect
+- Full menu management with hierarchy
+- Taxonomy management (categories, tags, custom)
+- User and comment management
+- SEO, AEO, and performance analysis
+- Core Web Vitals monitoring
+- WPML multilingual support
 - Complete audit logging
 
 </Update>
 
-<Update label="2025-11-XX" description="Respira for WordPress v1.8.30" tags={["improvement"]}>
-
-### Version details
-
-- Previous stable release.
-- Download link and release notes provided for compatibility testing.
+<Update label="2025-12-10" description="Respira for WordPress v1.8.41" tags={["improvement"]}>
 
 ### Download
 
-- [respira-for-wordpress-1.8.30.zip](https://respira.press/api/plugin-updates/download?version=1.8.30)
+[respira-for-wordpress-1.8.41.zip](https://respira.press/releases)
 
 ### Notes
 
 - Stability improvements
-- Minor performance updates
-- Compatibility enhancements for major page builders
+- Performance optimizations
+- Page builder compatibility enhancements
 
 </Update>
 
-<Update label="2025-11-XX" description="Respira for WordPress v1.8.29" tags={["bugfix"]}>
-
-### Version details
-
-- Includes bug fixes for site editing and API usage.
+<Update label="2025-12-05" description="Respira for WordPress v1.8.40" tags={["feature"]}>
 
 ### Download
 
-- [respira-for-wordpress-1.8.29.zip](https://respira.press/api/plugin-updates/download?version=1.8.29)
+[respira-for-wordpress-1.8.40.zip](https://respira.press/releases)
 
 ### Notes
 
-- Fixes for builder detection
+- Added custom CSS API endpoints
+- Enhanced Elementor cache management
+- Improved builder detection
+
+</Update>
+
+## MCP Server Releases
+
+<Update label="2025-12-13" description="MCP Server v2.0.8" tags={["feature", "improvement"]}>
+
+### Latest MCP server version
+
+Install: `npx @respira/wordpress-mcp-server`
+
+npm: [@respira/wordpress-mcp-server](https://www.npmjs.com/package/@respira/wordpress-mcp-server)
+
+### What's New
+
+- **Interactive setup wizard** - Run `--setup` to configure step-by-step
+- **CLI options** - `--list`, `--test`, `--help` for site management
+- **Connection testing** - Validate before saving configuration
+- **Sentry monitoring** - Error tracking for better reliability
+- **60+ tools** - Comprehensive WordPress management
+
+### Features
+
+- 10 page builder support (Divi, Elementor, Bricks, Oxygen, Gutenberg, etc.)
+- Module-level content updates
+- Duplicate-before-edit safety
+- SEO and performance analysis with Core Web Vitals
+- WPML multilingual support
+- Full menu management with hierarchy
+
+### CLI Options
+
+```bash
+npx @respira/wordpress-mcp-server --setup   # Run setup wizard
+npx @respira/wordpress-mcp-server --list    # List configured sites
+npx @respira/wordpress-mcp-server --test    # Test default site connection
+npx @respira/wordpress-mcp-server --help    # Show help
+```
+
+</Update>
+
+<Update label="2025-12-01" description="MCP Server v2.0.7" tags={["bugfix"]}>
+
+### Notes
+
+- Fixed axios interceptor async handling
+- Resolved `[object Promise]` error in plugin installation
 - Improved error messaging
-- Minor UI adjustments in admin settings
 
 </Update>
 
-## MCP server releases
-
-<Update label="2025-12-XX" description="MCP Server v1.6.0" tags={["feature", "improvement"]}>
-
-### Version details
-
-- Latest MCP server version with updated features.
-
-### Download
-
-- [mcp-server-1.6.0.tar.gz](https://respira.press/downloads/mcp-server-1.6.0.tar.gz)
+<Update label="2025-11-25" description="MCP Server v2.0.6" tags={["improvement"]}>
 
 ### Notes
 
-- New integration features for AI coding assistants
-- Improved logging and security
-- Better performance under multithreaded workloads
+- Updated npm package description
+- Added SEO-focused keywords
+- Improved documentation
 
 </Update>
 
-<Update label="2025-11-XX" description="MCP Server v1.5.1" tags={["improvement"]}>
+## Respira for WordPress Lite
 
-### Version details
+<Update label="2025-12-10" description="Respira Lite v1.0.2" tags={["feature"]}>
 
-- Stability and performance update.
+### Free version for WordPress.org
 
-### Download
+A limited free version with Gutenberg support.
 
-- [mcp-server-1.5.1.tar.gz](https://respira.press/downloads/mcp-server-1.5.1.tar.gz)
+### Features
 
-### Notes
+- Gutenberg (Block Editor) support
+- 30 edits per month
+- 3-day audit log
+- Read-only menu endpoints
+- Read-only taxonomy endpoints
+- Security validation (XSS, SQL injection)
+- REST API access
 
-- General fixes for reliability
-- More resilient network layer handling
-- Improved configuration options
+### What's New in 1.0.2
 
-</Update>
-
-<Update label="2025-10-XX" description="MCP Server v1.4.9" tags={["bugfix"]}>
-
-### Version details
-
-- Patch release focusing on bug corrections.
-
-### Download
-
-- [mcp-server-1.4.9.tar.gz](https://respira.press/downloads/mcp-server-1.4.9.tar.gz)
-
-### Notes
-
-- Fixed issues in request validation
-- Enhanced logging for debugging scenarios
-- Minor stability fixes
+- Added `/usage` endpoint for checking edit limits
+- Added read-only menu endpoints (GET /menus, GET /menus/{id})
+- Added read-only taxonomy endpoints
+- Added 3 API key limit enforcement
+- Added automatic audit log cleanup
 
 </Update>
 
-## Installation instructions
+## Installation Instructions
 
-### WordPress plugin
+### WordPress Plugin
 
-1. Download the latest plugin ZIP file from the release list above.
-2. Go to WordPress Admin → Plugins → Add New → Upload Plugin.
-3. Upload the ZIP file and click Install Now.
-4. Activate the plugin.
-5. Generate your API key from the admin menu under Respira → API Keys.
+1. Download the latest plugin ZIP from the links above
+2. Go to **WordPress Admin → Plugins → Add New → Upload Plugin**
+3. Upload the ZIP file and click **Install Now**
+4. Activate the plugin
+5. Go to **Respira → API Keys** to generate your API key
 
-### MCP server
+### MCP Server
 
-1. Download the latest MCP server archive.
-2. Extract the archive to your desired deployment location.
-3. Configure your AI coding assistant to connect to the MCP server endpoint.
-4. For detailed setup steps, see the [Installation guide](/installation).
+The easiest way is the setup wizard:
 
-## Using this page
+```bash
+npx @respira/wordpress-mcp-server --setup
+```
 
-To continue setting up or upgrading your environment, you may find these guides helpful:
+Or install globally:
+
+```bash
+npm install -g @respira/wordpress-mcp-server
+```
+
+For detailed setup, see the [Installation guide](/installation).
+
+## Related Documentation
 
 - [Installation](/installation)
-- [MCP Install Link Generator](/mcp-install)
+- [Configuration](/configuration)
 - [Usage Guide](/usage)

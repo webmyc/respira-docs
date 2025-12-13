@@ -1,69 +1,94 @@
 ---
 title: Installation Guide
-description: Learn how to install the Respira for WordPress plugin, set up the WordPress MCP server, and connect AI tools like Cursor or Claude to your site.
+description: Install Respira for WordPress, set up the MCP server with the interactive setup wizard, and connect AI tools like Cursor, Claude Code, or Windsurf.
 ---
 
-Respira enables you to use AI tools such as Cursor, Claude Code, and other MCP‑compatible assistants to safely edit and manage your WordPress site.  
-This guide walks you through installing the Respira for WordPress plugin, generating an API key, setting up the MCP server on your machine, and connecting your preferred AI assistant.  
+Respira enables you to use AI tools such as Cursor, Claude Code, Windsurf, and other MCP-compatible assistants to safely edit and manage your WordPress site.
+
+This guide walks you through installing the Respira for WordPress plugin, generating an API key, setting up the MCP server on your machine, and connecting your preferred AI assistant.
+
 If you are new to Respira, see the [Introduction](/introduction) for a product overview.
 
 ## Before you begin
 
 Make sure you have:
 
-- Access to your WordPress admin dashboard  
-- Permission to install plugins on your WordPress site  
-- Node.js installed on your local machine if you plan to run the MCP server  
-- A Respira license or active trial  
-- (Optional) A staging site if you prefer to test before going live  
+- Access to your WordPress admin dashboard
+- Permission to install plugins on your WordPress site
+- Node.js 18+ installed on your local machine
+- A Respira license or active trial
+- (Optional) A staging site if you prefer to test before going live
 
 ## Step 1: Install the Respira for WordPress plugin
 
-### Option A: Download from GitHub
+### Option A: Download from respira.press (Recommended)
 
-1. Go to [GitHub Releases](https://github.com/webmyc/respira-wordpress/releases/latest)
-2. Download `respira-for-wordpress-latest.zip`
-3. In WordPress Admin, go to Plugins → Add New → Upload Plugin
-4. Choose the ZIP file and click Install Now
-5. Click Activate Plugin
+1. Go to [respira.press/releases](https://respira.press/releases)
+2. Download the latest `respira-for-wordpress-x.x.x.zip`
+3. In WordPress Admin, go to **Plugins → Add New → Upload Plugin**
+4. Choose the ZIP file and click **Install Now**
+5. Click **Activate Plugin**
 
 ### Option B: Manual installation
 
 1. Download the plugin ZIP file
 2. Extract it to your WordPress `wp-content/plugins/` directory
-3. Go to Plugins in WordPress Admin
-4. Find Respira for WordPress and click Activate
+3. Go to **Plugins** in WordPress Admin
+4. Find **Respira for WordPress** and click **Activate**
 
 ## Step 2: Generate an API key
 
-1. Go to Respira → API Keys in WordPress Admin
-2. Click Generate API Key
-3. Give it a name such as My Development Machine
-4. Copy and save the API key because it cannot be viewed again
+1. Go to **Respira → API Keys** in WordPress Admin
+2. Click **Generate API Key**
+3. Give it a name such as `My Development Machine`
+4. Copy and save the API key — it cannot be viewed again
 
 <Callout kind="alert">
-
-Save your API key securely. You will need it to configure the MCP server.
-
+Save your API key securely. It starts with `respira_` and you will need it to configure the MCP server.
 </Callout>
 
-## Step 3: Install the WordPress MCP server
+## Step 3: Install the MCP server
 
-The MCP server runs locally on your machine and connects your AI assistant to WordPress.  
-It is required for using Respira with Cursor, Claude Code, and other MCP‑compatible IDEs or tools.
+The MCP server runs locally on your machine and connects your AI assistant to WordPress.
 
-### Option A: From npm (recommended)
+### Option A: Interactive Setup Wizard (Recommended)
+
+The easiest way to get started. The wizard guides you through configuration step-by-step:
+
+```bash
+npx @respira/wordpress-mcp-server --setup
+```
+
+The setup wizard will:
+
+- Guide you through configuration step-by-step
+- Validate your WordPress URL and API key
+- Test your connection before saving
+- Generate the config file automatically
+- Show you what to add to your AI tool
+
+### Option B: One-Click Install for Cursor
+
+If you're using Cursor, click the button below to install automatically:
+
+<a href="cursor://anysphere.cursor-deeplink/mcp/install?name=respira-wordpress&config=eyJjb21tYW5kIjoibnB4IiwiYXJncyI6WyIteSIsIkByZXNwaXJhL3dvcmRwcmVzcy1tY3Atc2VydmVyIl19">
+  <Image
+    src="https://cursor.com/deeplink/mcp-install-dark.svg"
+    alt="Add to Cursor"
+    width="200"
+    height="50"
+  />
+</a>
+
+After installing, run `npx @respira/wordpress-mcp-server --setup` to create your site configuration.
+
+### Option C: Manual npm Installation
+
+Install globally with npm:
 
 ```bash
 npm install -g @respira/wordpress-mcp-server
 ```
-
-<Image
-  src="https://cursor.com/deeplink/mcp-install-dark.svg"
-  alt="Install MCP server via Cursor"
-  width="800"
-  height="200"
-/>
 
 Or run without installing globally:
 
@@ -71,20 +96,41 @@ Or run without installing globally:
 npx -y @respira/wordpress-mcp-server
 ```
 
-### Option B: Download ZIP file
+### CLI Options
 
-1. Go to your [Downloads page](/dashboard/downloads) (requires login)
-2. Download `respira-wordpress-mcp-server-latest.zip`
-3. Extract it to a location on your machine such as `~/.respira/mcp-server/`
-4. Configure your MCP client to point to the `dist/index.js` file
+```bash
+npx @respira/wordpress-mcp-server --setup   # Run setup wizard
+npx @respira/wordpress-mcp-server --list    # List configured sites
+npx @respira/wordpress-mcp-server --test    # Test connection to default site
+npx @respira/wordpress-mcp-server --help    # Show help
+```
 
-## Step 4: Connect your AI assistant to WordPress
+## Step 4: Create site configuration
+
+If you didn't use the setup wizard, create the config file manually at `~/.respira/config.json`:
+
+```json
+{
+  "sites": [
+    {
+      "id": "my-site",
+      "name": "My WordPress Site",
+      "url": "https://your-site.com",
+      "apiKey": "respira_your-api-key-here",
+      "default": true
+    }
+  ]
+}
+```
+
+## Step 5: Connect your AI assistant
 
 See the [Configuration Guide](/configuration) for setup instructions for:
 
-- [Cursor](/configuration#configure-cursor-ide)
-- [Claude Code](/configuration#configure-claude-desktop-claude-code)
-- [Codex](/configuration#configure-other-mcp-compatible-editors)
+- [Cursor](/configuration#cursor)
+- [Claude Code](/configuration#claude-code)
+- [Windsurf](/configuration#windsurf)
+- [Claude Desktop](/configuration#claude-desktop)
 
 Once connected, refer to the [Usage Guide](/usage) to learn how to prompt your assistant effectively.
 
@@ -92,31 +138,31 @@ Once connected, refer to the [Usage Guide](/usage) to learn how to prompt your a
 
 Once configured, you can start using AI to edit your WordPress site. Try prompting your assistant with:
 
-- List all pages on my WordPress site
-- Create a duplicate of the About page
-- Update the homepage title to Welcome
+- "List all pages on my WordPress site"
+- "Create a duplicate of the About page"
+- "Update the homepage title to 'Welcome'"
+- "Analyze the SEO of my homepage"
 
 ## Next steps
 
-### Configuration Guide
-
-Configure Cursor, Claude Code, and other AI tools  
-[Open configuration](/configuration)
-
-### MCP Install Link Generator
-
-Generate one‑click install links  
-[Open link generator](/mcp-install)
+<Columns cols={2}>
+  <Card title="Configuration Guide" icon="settings" href="/configuration">
+    Configure Cursor, Claude Code, and other AI tools
+  </Card>
+  <Card title="Usage Guide" icon="book-open" href="/usage">
+    Learn how to use Respira effectively
+  </Card>
+</Columns>
 
 ## FAQ
 
 ### Do I have to use npm to install the MCP server?
 
-No. You can either install via npm or download the ZIP version from your [Downloads page](/dashboard/downloads). Both options run the same MCP server.
+No. You can use the setup wizard (`npx @respira/wordpress-mcp-server --setup`), install globally via npm, or run with npx without installing. All options use the same MCP server.
 
-### Do I need Node.js installed to use the MCP server?
+### Do I need Node.js installed?
 
-Yes. The MCP server runs locally and requires Node.js. If you do not have it yet, install Node.js first and then continue with Step 3.
+Yes. The MCP server requires Node.js 18 or higher. Check your version with `node --version`.
 
 ### Can I install Respira on a staging site first?
 
@@ -124,15 +170,18 @@ Yes. Many users install the plugin on a staging or development site before enabl
 
 ### What should I do if something fails during installation?
 
-See the [Troubleshooting](/troubleshooting) guide for common issues and solutions.  
-If you need help, you can also contact support at [word@respira.press](mailto:word@respira.press).
+Run `npx @respira/wordpress-mcp-server --test` to test your connection. See the [Troubleshooting](/troubleshooting) guide for common issues and solutions.
+
+If you need help, contact support at [word@respira.press](mailto:word@respira.press).
+
+### How do I manage multiple WordPress sites?
+
+Run the setup wizard again and add another site, or edit `~/.respira/config.json` directly. Use `wordpress_switch_site` in your AI assistant to switch between sites.
 
 ## Ready to get started?
 
-Start free. No credit card required.  
-[Start free](/signup)
+Start free. No credit card required.
+
+[Start free](https://respira.press/signup)
 
 Questions? Email [word@respira.press](mailto:word@respira.press)
-
-Interested in partnering?  
-[Set a meeting](https://respira.cafe/contact)
