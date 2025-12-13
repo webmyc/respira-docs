@@ -11,184 +11,954 @@ These prompts work best when Respira is fully installed and configured. If you h
 
 For more background, also visit the [Introduction](/introduction), [Usage Guide](/usage), and [Troubleshooting](/troubleshooting).
 
-## How to use these prompts
+<Tip>
+**Click to copy:** All prompts on this page have a copy button. Click any code block to copy the prompt to your clipboard.
+</Tip>
 
-1. Analyze the structure of the page before making changes.  
-2. Clearly state your goals such as SEO, design, accessibility, or performance.  
-3. Apply changes to a duplicate page for safe testing.  
-4. Iterate in small steps and review results in the audit log.  
+---
 
-## Best-practice workflow for WordPress AI editing
+## Featured Prompt: Complete Homepage Redesign
 
-### Step 1: Get your page structure
+This master prompt demonstrates how to leverage AI for a comprehensive homepage redesign. It combines research, design, SEO, AEO, performance optimization, and implementation into a single powerful workflow.
 
-Ask the AI to fetch and summarize the structure of a page.
+<Info>
+**Before using this prompt:** Feed your AI assistant context about your brand by sharing relevant URLs, previous conversations, and brand guidelines. The more context you provide, the better the result.
+</Info>
 
-Example:  
-`Get the structure of my homepage and show me what sections it has.`
+```text Complete Homepage Redesign Prompt
+Hey, I need you to redesign my homepage using everything you know about me and my brand.
 
-### Step 2: Request improvements for a specific goal
+First, analyze these resources to understand who I am and what I do:
+- My current website: [YOUR_CURRENT_SITE_URL]
+- My portfolio/work: [YOUR_PORTFOLIO_URL]
+- My LinkedIn: [YOUR_LINKEDIN_URL]
+- My GitHub: [YOUR_GITHUB_URL]
+- Any other relevant URLs: [ADDITIONAL_URLS]
 
-Example:  
-`Analyze this page and suggest improvements for my goal.`
+Based on this research, design a completely new homepage for [YOUR_DOMAIN] that:
 
-Replace `my goal` with:
+**Design Requirements:**
+- Super simple business card style layout
+- Looks amazing on both mobile and desktop (mobile-first)
+- Modern, clean aesthetic with intentional whitespace
+- Fresh color palette that matches my current brand identity
+- Use relevant images and logos you find on the pages I mentioned
 
-- **Design:** better visual hierarchy and spacing  
-- **SEO:** search engine optimization  
-- **Readability:** easier to read and understand  
-- **Conversions:** higher conversion rates  
-- **Performance:** faster loading times  
-- **Accessibility:** better accessibility  
-- **Mobile:** mobile responsiveness  
-- **Engagement:** user engagement
+**Performance Requirements:**
+- Loads blazing fast (target < 2s load time)
+- Optimized images with proper sizing and lazy loading
+- Minimal CSS and JavaScript
+- Core Web Vitals compliant (LCP < 2.5s, CLS < 0.1, INP < 200ms)
 
-### Step 3: Review and apply changes
+**SEO & AEO Requirements:**
+- Proper heading hierarchy (single H1, logical H2-H6 structure)
+- Schema markup for Person/Organization
+- Semantic HTML structure for AI parsability
+- Clear, scannable content with entity recognition
+- FAQ section for featured snippet opportunities
+- Meta description optimized for both search and AI engines
 
-Example:  
-`That looks good, apply those changes to a duplicate page so I can review.`
+**Technical Implementation:**
+Since you're connected to my site via Respira for WordPress MCP, please:
+1. Create a duplicate of my current homepage first
+2. Build the new layout using [DIVI/ELEMENTOR] builder
+3. Include all custom CSS needed for the page
+4. Make it production-ready
 
-## Prompt examples by category
+Output a complete implementation including:
+- Full page structure with all modules
+- Custom CSS for the page
+- Any custom code modules needed
+- Image optimization recommendations
+```
 
-### Content updates (copy and messaging)
+<Warning>
+**Adapt this prompt to your reality:** Replace all bracketed placeholders with your actual URLs and preferences. The more specific you are, the better the AI can serve you.
+</Warning>
 
-- Simple text change:  
-  `Change the headline on my About page to "Welcome to Our Story".`
+---
 
-- Bulk updates:  
-  `Update all button texts from "Learn More" to "Get Started" across all pages.`
+## How to Use These Prompts
 
-- Rewrite content:  
-  `Rewrite the hero section to be more conversational and friendly.`
+1. **Analyze first:** Get the structure of the page before making changes.
+2. **State your goals:** Be clear about SEO, design, accessibility, or performance objectives.
+3. **Use duplicates:** Apply changes to a duplicate page for safe testing.
+4. **Iterate:** Make changes in small steps and review results in the audit log.
 
-- Add new content:  
-  `Add a paragraph about our company history after the mission statement.`
+---
 
-### Design changes (layout and styling)
+## Best-Practice Workflow
 
-- Color updates:  
-  `Change all green buttons to blue (#2563eb).`
+### Step 1: Get Your Page Structure
 
-- Layout adjustments:  
-  `Make the hero section full-width and add more padding.`
+```text
+Get the structure of my homepage and show me what sections it has.
+```
 
-- Responsive fixes:  
-  `Fix the mobile layout; the text is overlapping on small screens.`
+### Step 2: Request Improvements
 
-- Typography:  
-  `Increase the font size of all headings by 2px and make them bolder.`
+```text
+Analyze this page and suggest improvements for [YOUR_GOAL].
+```
 
-### SEO optimization for WordPress pages
+Replace `[YOUR_GOAL]` with: **SEO**, **Design**, **Readability**, **Conversions**, **Performance**, **Accessibility**, **Mobile**, or **Engagement**.
 
-- Heading structure:  
-  `Analyze the heading structure and fix any SEO issues.`
+### Step 3: Apply Changes Safely
 
-- Meta and keyword adjustments:  
-  `Add relevant keywords to the page titles and headings.`
+```text
+That looks good, apply those changes to a duplicate page so I can review.
+```
 
-- Content optimization:  
-  `Optimize the content for the keyword "WordPress development services".`
+---
 
-- Image optimization:  
-  `Add descriptive alt text to all images without existing alt text.`
+## Comprehensive SEO Prompts
 
-### Structure changes (sections and layout flow)
+### Full SEO Audit
 
-- Add sections:  
-  `Add a testimonials section after the features section.`
+```text Full SEO Audit
+Run a comprehensive SEO audit on my homepage (page ID: [PAGE_ID]).
 
-- Reorder content:  
-  `Move the pricing section above the FAQ section.`
+Analyze and report on:
+1. Meta tags (title, description, canonical, robots)
+2. Heading hierarchy (H1-H6 structure and keyword usage)
+3. Content quality (word count, keyword density, readability)
+4. Image optimization (alt text, file sizes, lazy loading)
+5. Internal linking structure
+6. Schema markup presence and validity
+7. Mobile-friendliness indicators
+8. Page speed factors affecting SEO
 
-- Remove elements:  
-  `Remove the old banner at the top of the homepage.`
+For each issue found, provide:
+- Current state
+- Recommended fix
+- Priority level (critical/high/medium/low)
+- Implementation steps
 
-- Duplicate sections:  
-  `Copy the hero section from the homepage to the About page.`
+Then create an actionable plan to fix all issues, starting with critical ones.
+```
 
-### Module-level updates (Divi and Elementor modules)
+### Keyword Optimization
 
-These prompts help adjust specific modules without modifying the entire page.
+```text Keyword Optimization
+Optimize my [PAGE_NAME] page for the primary keyword "[TARGET_KEYWORD]" and these secondary keywords: [KEYWORD_2], [KEYWORD_3], [KEYWORD_4].
 
-- Update by admin label (Divi):  
-  `Update the module with admin_label "Current Reports Code" on page ID 251783. Change the content to [new HTML].`
+Please:
+1. Analyze current keyword usage and density
+2. Rewrite the H1 to include the primary keyword naturally
+3. Update H2s to include secondary keywords where relevant
+4. Optimize the first paragraph to include the primary keyword in the first 100 words
+5. Add the primary keyword to image alt text where contextually appropriate
+6. Suggest meta title and description with keywords
+7. Identify opportunities to add keywords without keyword stuffing
 
-- Update module styling:  
-  `Find the module with admin_label "Hero Section" and update its background color to #1a1a1a.`
+Apply changes to a duplicate page for review.
+```
 
-- Update module settings:  
-  `In the "Features Grid" module, change the number of columns from 3 to 4.`
+### Heading Structure Fix
 
-- Extract and modify module:  
-  `Extract the "Testimonials" module, update the testimonial text, and inject it back.`
+```text Fix Heading Structure
+Analyze the heading structure on page ID [PAGE_ID] and fix any SEO issues:
 
-### Performance optimization (speed and Core Web Vitals)
+1. Ensure there's exactly one H1 tag
+2. Check H2-H6 hierarchy is logical (no skipping levels)
+3. Make sure headings contain relevant keywords
+4. Verify headings accurately describe the content below them
+5. Check heading length (should be descriptive but concise)
 
-- Analyze page speed:  
-  `Analyze the performance of my homepage and suggest optimizations.`
+Show me the current structure, what's wrong, and apply the fixes to a duplicate.
+```
 
-- Optimize images:  
-  `Check all images on the About page and suggest size optimizations.`
+### Meta Tags Optimization
 
-- Core Web Vitals:  
-  `Get Core Web Vitals scores for the homepage and identify issues.`
+```text Meta Tags Optimization
+Optimize all meta tags for my [PAGE_NAME] page targeting "[TARGET_KEYWORD]":
 
-### Advanced workflows (bulk and multi-step edits)
+1. Create a compelling meta title (50-60 characters) that:
+   - Includes the primary keyword near the beginning
+   - Has a clear value proposition
+   - Encourages clicks
 
-- Bulk operations:  
-  `Update the footer copyright year to 2025 on all pages.`
+2. Write a meta description (150-160 characters) that:
+   - Includes the primary keyword naturally
+   - Has a clear call-to-action
+   - Summarizes the page value
 
-- Multi-step workflow:  
-  `Create a duplicate of the homepage, update the hero text, change button colors to match the new brand, and optimize for SEO.`
+3. Add/update Open Graph tags for social sharing
+4. Add/update Twitter Card tags
+5. Ensure canonical URL is correct
 
-- Conditional updates:  
-  `Find all pages with "Contact" in the title and add a new CTA section.`
+Apply these changes and show me the before/after comparison.
+```
 
-- Template updates:  
-  `Update the blog post template to include an author bio and related posts.`
+---
 
-## Pro tips
+## Core Web Vitals & Performance Prompts
 
-- **Be specific:**  
-  Clear instructions lead to better results, for example:  
-  `Change the hero button color to #2563eb.`
+### Complete Performance Audit
 
-- **Reference sections:**  
-  Help the AI locate content:  
-  `In the testimonials section...`
+```text Complete Performance Audit
+Run a complete performance audit on page ID [PAGE_ID].
 
-- **Ask for analysis first:**  
-  Let the AI understand the page before editing.
+Analyze:
+1. **Core Web Vitals:**
+   - LCP (Largest Contentful Paint) - target < 2.5s
+   - INP (Interaction to Next Paint) - target < 200ms
+   - CLS (Cumulative Layout Shift) - target < 0.1
 
-- **Use duplicates:**  
-  Test major changes safely.
+2. **Loading Performance:**
+   - Total page size and number of requests
+   - Render-blocking resources
+   - Unused CSS/JavaScript
+   - Third-party script impact
 
-- **Iterate:**  
-  Make changes in small steps.
+3. **Image Optimization:**
+   - Unoptimized images (wrong format, oversized)
+   - Missing lazy loading
+   - Missing width/height attributes (causing CLS)
 
-- **Check logs:**  
-  Review the audit log to confirm changes.
+4. **Caching & Delivery:**
+   - Browser caching headers
+   - Compression (gzip/brotli)
+   - CDN usage
 
-- **Use module admin_label values:**  
-  Especially important for Divi and Elementor edits.
+Provide a prioritized action plan with estimated performance impact for each fix.
+```
 
-- **Combine operations:**  
-  You can request multiple coordinated changes in a single prompt.
+### Fix Core Web Vitals
+
+```text Fix Core Web Vitals
+My page ID [PAGE_ID] has poor Core Web Vitals. Please:
+
+1. **Fix LCP issues:**
+   - Identify the LCP element
+   - Optimize its loading (preload if image, inline if CSS)
+   - Remove render-blocking resources above the fold
+
+2. **Fix CLS issues:**
+   - Find elements causing layout shift
+   - Add explicit width/height to images
+   - Reserve space for dynamic content
+
+3. **Fix INP issues:**
+   - Identify heavy JavaScript
+   - Suggest code splitting or deferral
+   - Optimize event handlers
+
+Apply fixes and show me the expected improvement.
+```
+
+### Image Optimization
+
+```text Image Optimization
+Analyze all images on page ID [PAGE_ID] and optimize them:
+
+1. List all images with:
+   - Current file size
+   - Dimensions vs display size
+   - Format (and recommended format)
+   - Alt text status
+
+2. For each image, recommend:
+   - Optimal dimensions
+   - Best format (WebP/AVIF for photos, SVG for icons)
+   - Compression level
+   - Lazy loading status
+
+3. Identify images causing CLS (missing dimensions)
+
+4. Check for:
+   - Hero/LCP images that should be preloaded
+   - Images that could be replaced with CSS
+   - Decorative images missing role="presentation"
+
+Apply alt text fixes and add missing dimensions to a duplicate page.
+```
+
+### Page Speed Quick Wins
+
+```text Page Speed Quick Wins
+Give me quick performance wins for page ID [PAGE_ID] that I can implement immediately:
+
+Focus on:
+1. Images that can be lazy-loaded
+2. Scripts that can be deferred
+3. Inline critical CSS opportunities
+4. Unnecessary plugins or scripts to remove
+5. Caching opportunities
+6. Easy compression wins
+
+For each recommendation, tell me the expected impact and implementation difficulty.
+```
+
+---
+
+## AEO (AI Engine Optimization) Prompts
+
+### Complete AEO Audit
+
+```text Complete AEO Audit
+Run an AI Engine Optimization (AEO) audit on page ID [PAGE_ID].
+
+AI search engines like Perplexity, ChatGPT, and Google AI Overviews need:
+
+1. **Structured Data Analysis:**
+   - Check existing JSON-LD schema markup
+   - Identify missing schema opportunities
+   - Validate schema syntax
+
+2. **Content Clarity:**
+   - Is content written in clear, factual statements?
+   - Are questions answered directly?
+   - Is information structured for easy extraction?
+
+3. **Semantic HTML:**
+   - Proper use of article, section, nav, header, footer
+   - Lists for enumerable items
+   - Tables for comparative data
+
+4. **Entity Recognition:**
+   - Are key entities (people, products, organizations) clearly identified?
+   - Is there sufficient context for entity disambiguation?
+
+5. **Content Depth:**
+   - Comprehensive topic coverage
+   - Authoritative tone and accuracy
+   - Citation-worthy content
+
+6. **FAQ Opportunities:**
+   - Questions users might ask about this content
+   - Answers formatted for featured snippets
+
+Provide specific recommendations to make this content more AI-parsable and citation-worthy.
+```
+
+### Add Schema Markup
+
+```text Add Schema Markup
+Add comprehensive schema markup to page ID [PAGE_ID].
+
+Based on the page content, implement appropriate schema types:
+- Organization/LocalBusiness for company pages
+- Person for about/team pages
+- Product for product pages
+- Article/BlogPosting for blog posts
+- FAQPage for FAQ content
+- HowTo for tutorial content
+- BreadcrumbList for navigation
+
+Generate valid JSON-LD that includes:
+- All required properties
+- Recommended properties for rich results
+- Proper nesting and relationships
+
+Add the schema to the page and validate it's error-free.
+```
+
+### Optimize for AI Citations
+
+```text Optimize for AI Citations
+Optimize page ID [PAGE_ID] to be cited by AI search engines:
+
+1. **Content Structure:**
+   - Add clear section headings as questions
+   - Provide direct, factual answers in the first sentence
+   - Use bullet points for key information
+
+2. **Add FAQ Section:**
+   - Identify 5-7 questions users might ask
+   - Write concise, authoritative answers
+   - Format with FAQ schema markup
+
+3. **Enhance Credibility:**
+   - Add author information with credentials
+   - Include publish and update dates
+   - Add sources/references where applicable
+
+4. **Improve Scannability:**
+   - Use summary boxes for key takeaways
+   - Add a TL;DR section
+   - Include definition lists for terminology
+
+Apply these changes to a duplicate page.
+```
+
+### Entity Optimization
+
+```text Entity Optimization
+Optimize page ID [PAGE_ID] for entity recognition:
+
+1. **Identify Key Entities:**
+   - List all people, organizations, products, and concepts mentioned
+   - Check if each is properly introduced with context
+
+2. **Add Entity Context:**
+   - Ensure first mention includes full name/description
+   - Add relevant attributes (job title, location, founding date)
+   - Link to authoritative sources where appropriate
+
+3. **Structured Entity Data:**
+   - Add schema markup for each key entity
+   - Use sameAs to link to Wikipedia, LinkedIn, official sites
+   - Implement proper entity relationships
+
+4. **Content Relationships:**
+   - Connect entities within the content logically
+   - Use clear language to describe relationships
+   - Avoid ambiguous pronoun references
+
+Apply changes and show me the entity graph.
+```
+
+---
+
+## Internal Linking Prompts
+
+### Internal Linking Audit
+
+```text Internal Linking Audit
+Run an internal linking audit across my site:
+
+1. **Current State Analysis:**
+   - Count internal links on page ID [PAGE_ID]
+   - Identify orphan pages (no internal links pointing to them)
+   - Find pages with too many/too few internal links
+
+2. **Link Quality Check:**
+   - Broken internal links
+   - Links with poor anchor text ("click here", "read more")
+   - Redirect chains in internal links
+
+3. **Content Clustering:**
+   - Identify topically related pages that should link together
+   - Find pillar pages that should link to cluster content
+   - Identify missing hub pages
+
+4. **Recommendations:**
+   - Specific links to add (from page X to page Y with anchor "Z")
+   - Anchor text improvements
+   - New content opportunities to strengthen linking
+
+Prioritize by SEO impact.
+```
+
+### Add Strategic Internal Links
+
+```text Add Strategic Internal Links
+Add strategic internal links to page ID [PAGE_ID]:
+
+1. **Analyze the Content:**
+   - Identify key topics and keywords mentioned
+   - Find natural linking opportunities
+
+2. **Find Link Targets:**
+   - Search my site for pages about each topic
+   - Prioritize high-value pages (services, pillar content)
+
+3. **Add Links:**
+   - Use descriptive, keyword-rich anchor text
+   - Place links where they add value to readers
+   - Aim for 3-5 internal links per 1000 words
+
+4. **Balance the Linking:**
+   - Ensure links are distributed throughout the content
+   - Avoid linking the same page multiple times
+   - Mix navigation links with contextual links
+
+Apply changes to a duplicate and list all links added.
+```
+
+### Fix Anchor Text
+
+```text Fix Anchor Text
+Find and fix poor anchor text on page ID [PAGE_ID]:
+
+1. **Identify problematic anchors:**
+   - Generic: "click here", "read more", "learn more", "this page"
+   - URL-based: raw URLs as anchor text
+   - Over-optimized: exact-match keywords repeated
+
+2. **Rewrite each anchor to:**
+   - Describe the destination page content
+   - Include relevant keywords naturally
+   - Provide context for users and search engines
+
+3. **Check for:**
+   - Consistent anchor text for same destinations across site
+   - Appropriate anchor text length (2-5 words ideal)
+   - Accessibility (descriptive enough out of context)
+
+Apply fixes and show before/after comparison.
+```
+
+### Create Content Hub
+
+```text Create Content Hub
+Help me create a content hub around the topic "[MAIN_TOPIC]":
+
+1. **Identify Existing Content:**
+   - Find all pages related to [MAIN_TOPIC]
+   - Categorize by subtopic
+
+2. **Plan the Hub Structure:**
+   - Pillar page (comprehensive overview)
+   - Cluster pages (specific subtopics)
+   - Linking strategy between them
+
+3. **Analyze Gaps:**
+   - Missing subtopics that should be covered
+   - Thin content that needs expansion
+
+4. **Implement Internal Links:**
+   - Add links from pillar to all cluster pages
+   - Add links from cluster pages back to pillar
+   - Cross-link related cluster pages
+
+5. **Create Hub Navigation:**
+   - Add a related content section to each page
+   - Consider a visual hub navigation element
+
+Start by showing me the current state and proposed structure.
+```
+
+---
+
+## Comprehensive Audit Prompts
+
+### Full Website Audit
+
+```text Full Website Audit
+Run a comprehensive audit of my WordPress site:
+
+1. **Technical SEO:**
+   - Crawl all pages for meta tag issues
+   - Check heading structures site-wide
+   - Identify duplicate content
+   - Review robots.txt and sitemap.xml
+
+2. **Content Audit:**
+   - List all pages with word count
+   - Identify thin content (< 300 words)
+   - Find outdated content (not updated in 1+ year)
+   - Check for content gaps
+
+3. **Performance:**
+   - Identify slowest loading pages
+   - Check Core Web Vitals across key pages
+   - Find heavy images and resources
+
+4. **Structure:**
+   - Review site hierarchy and navigation
+   - Check internal linking health
+   - Identify orphan pages
+
+5. **AEO Readiness:**
+   - Schema markup coverage
+   - Content structure for AI parsing
+   - FAQ and structured content opportunities
+
+Deliver a prioritized action plan with quick wins and long-term improvements.
+```
+
+### Page-Level Deep Audit
+
+```text Page-Level Deep Audit
+Run a deep audit on page ID [PAGE_ID] covering everything:
+
+**Content Analysis:**
+- Word count and reading time
+- Keyword usage and density
+- Content freshness and accuracy
+- Readability score
+- Call-to-action effectiveness
+
+**Technical SEO:**
+- All meta tags and their optimization
+- Heading structure and keyword usage
+- Image optimization (alt text, size, format)
+- Internal and external links
+- Schema markup
+
+**Performance:**
+- Page load time breakdown
+- Core Web Vitals scores
+- Resource loading analysis
+- Third-party script impact
+
+**User Experience:**
+- Mobile responsiveness
+- Above-the-fold content
+- Navigation and accessibility
+- Visual hierarchy
+
+**AEO:**
+- AI-parsability score
+- Entity recognition
+- Citation potential
+- Structured data completeness
+
+Give me a detailed report with scores and specific fix recommendations.
+```
+
+### Competitor Comparison Audit
+
+```text Competitor Comparison Audit
+Compare my [PAGE_TYPE] page (ID [PAGE_ID]) with this competitor URL: [COMPETITOR_URL]
+
+Analyze:
+1. **Content:**
+   - Length and depth comparison
+   - Topic coverage gaps
+   - Content format differences
+
+2. **SEO:**
+   - Keyword targeting comparison
+   - Meta tag comparison
+   - Heading structure comparison
+
+3. **Design/UX:**
+   - Layout differences
+   - Visual hierarchy
+   - Call-to-action placement
+
+4. **Performance:**
+   - Load time comparison (if detectable)
+   - Mobile optimization
+
+5. **Schema/AEO:**
+   - Schema markup comparison
+   - Structured content differences
+
+Tell me where I'm winning, losing, and how to gain competitive advantage.
+```
+
+### Pre-Launch Audit
+
+```text Pre-Launch Audit
+I'm about to launch/update page ID [PAGE_ID]. Run a pre-launch checklist:
+
+**Content:**
+- [ ] Spelling and grammar check
+- [ ] All placeholder text replaced
+- [ ] Links all working
+- [ ] Images all loading
+- [ ] CTAs present and clear
+
+**SEO:**
+- [ ] Meta title optimized (50-60 chars)
+- [ ] Meta description compelling (150-160 chars)
+- [ ] Single H1 with primary keyword
+- [ ] All images have alt text
+- [ ] Internal links added
+- [ ] Canonical URL correct
+
+**Technical:**
+- [ ] Mobile responsive
+- [ ] Core Web Vitals passing
+- [ ] No console errors
+- [ ] Forms working
+- [ ] Analytics tracking
+
+**AEO:**
+- [ ] Schema markup valid
+- [ ] Content structured for AI
+- [ ] FAQ section if applicable
+
+Flag any issues before I publish.
+```
+
+---
+
+## Redesign Prompts
+
+### Section Redesign
+
+```text Section Redesign
+Redesign the [SECTION_NAME] section on page ID [PAGE_ID]:
+
+**Current Issues:**
+[Describe what's wrong or what you want to improve]
+
+**Goals:**
+- Modern, clean aesthetic
+- Mobile-first design
+- Improved conversion rate
+- Faster loading
+
+**Requirements:**
+- Keep the same core content/message
+- Match the overall site design language
+- Improve visual hierarchy
+- Add appropriate whitespace
+
+**Technical:**
+- Use [DIVI/ELEMENTOR] builder
+- Include custom CSS as needed
+- Ensure accessibility (contrast, focus states)
+- Optimize any images
+
+Create a duplicate and implement the redesign with full code.
+```
+
+### Mobile Optimization Redesign
+
+```text Mobile Optimization Redesign
+The mobile experience on page ID [PAGE_ID] needs work. Please:
+
+1. **Audit Current Mobile Issues:**
+   - Elements that don't fit the viewport
+   - Touch targets too small
+   - Text too small to read
+   - Content that should be hidden on mobile
+   - Horizontal scrolling issues
+
+2. **Redesign for Mobile-First:**
+   - Simplify navigation for thumb reach
+   - Stack elements appropriately
+   - Increase tap targets to 44x44px minimum
+   - Optimize images for mobile bandwidth
+   - Consider mobile-specific content ordering
+
+3. **Implement Fixes:**
+   - Add responsive CSS
+   - Adjust module settings for mobile breakpoints
+   - Test on multiple device sizes
+
+Apply to a duplicate and show me before/after comparisons.
+```
+
+### Conversion-Focused Redesign
+
+```text Conversion-Focused Redesign
+Redesign page ID [PAGE_ID] to improve conversions:
+
+**Goal:** [e.g., "Get more form submissions", "Increase demo requests"]
+
+**Analyze Current Page:**
+- Identify conversion blockers
+- Find trust signal gaps
+- Check CTA visibility and clarity
+- Review the conversion path
+
+**Redesign Elements:**
+1. **Above the Fold:**
+   - Compelling headline with value proposition
+   - Clear primary CTA
+   - Trust indicators (logos, testimonials, stats)
+
+2. **Social Proof:**
+   - Add/improve testimonials
+   - Add client logos
+   - Add stats/results
+
+3. **Reduce Friction:**
+   - Simplify forms
+   - Add reassurance text near CTAs
+   - Remove distractions
+
+4. **Multiple CTAs:**
+   - Primary CTA in hero
+   - Secondary CTAs after each section
+   - Sticky CTA for mobile
+
+Implement on a duplicate with full styling.
+```
+
+### Full Page Redesign
+
+```text Full Page Redesign
+Completely redesign page ID [PAGE_ID]:
+
+**Brand Context:**
+- Primary brand color: [HEX]
+- Secondary color: [HEX]
+- Font family: [FONT]
+- Brand voice: [professional/friendly/bold/etc.]
+
+**Design Direction:**
+[Describe the look and feel you want: minimalist, bold, corporate, playful, etc.]
+
+**Page Goals:**
+[What should visitors do after viewing this page?]
+
+**Must Include:**
+- [List essential elements/sections]
+
+**Must Avoid:**
+- [List things you don't want]
+
+**Technical Requirements:**
+- Mobile-first responsive design
+- Core Web Vitals compliant
+- SEO optimized structure
+- AEO-ready with schema markup
+- [DIVI/ELEMENTOR] builder
+- Custom CSS for unique elements
+
+Create a complete redesign on a duplicate page with:
+1. Full page structure
+2. All content and imagery
+3. Complete custom CSS
+4. Schema markup
+5. Performance optimizations
+```
+
+### Design System Consistency
+
+```text Design System Consistency
+Review page ID [PAGE_ID] for design consistency issues:
+
+1. **Typography:**
+   - Inconsistent font sizes
+   - Mismatched font families
+   - Irregular line heights
+
+2. **Colors:**
+   - Off-brand colors
+   - Inconsistent color usage
+   - Poor contrast ratios
+
+3. **Spacing:**
+   - Irregular margins and padding
+   - Inconsistent section spacing
+   - Misaligned elements
+
+4. **Components:**
+   - Button style variations
+   - Card style inconsistencies
+   - Form styling differences
+
+5. **Images:**
+   - Inconsistent image treatments
+   - Mixed aspect ratios
+   - Style inconsistencies
+
+Fix all issues to match the site's design system and apply to a duplicate.
+```
+
+---
+
+## Module-Level Updates (Divi & Elementor)
+
+### Update by Admin Label
+
+```text
+Update the module with admin_label "[ADMIN_LABEL]" on page ID [PAGE_ID].
+Change the content to: [NEW_CONTENT]
+```
+
+### Update Module Styling
+
+```text
+Find the module with admin_label "[ADMIN_LABEL]" on page ID [PAGE_ID] and update:
+- Background color: [HEX]
+- Padding: [VALUES]
+- Border radius: [VALUE]
+```
+
+### Extract and Modify Module
+
+```text
+Extract the "[ADMIN_LABEL]" module from page ID [PAGE_ID], update the [SPECIFIC_CONTENT], and inject it back.
+```
+
+### Clone Module to Another Page
+
+```text
+Copy the module with admin_label "[ADMIN_LABEL]" from page ID [SOURCE_PAGE] to page ID [TARGET_PAGE], placing it after the [SECTION_NAME] section.
+```
+
+---
+
+## Content Updates
+
+### Simple Text Change
+
+```text
+Change the headline on my [PAGE_NAME] page to "[NEW_HEADLINE]".
+```
+
+### Bulk Updates
+
+```text
+Update all button texts from "[OLD_TEXT]" to "[NEW_TEXT]" across all pages.
+```
+
+### Rewrite Content
+
+```text
+Rewrite the [SECTION_NAME] section to be more [conversational/professional/concise/compelling].
+```
+
+### Add New Section
+
+```text
+Add a [SECTION_TYPE] section after the [EXISTING_SECTION] on page ID [PAGE_ID] with the following content: [CONTENT_BRIEF]
+```
+
+---
+
+## Pro Tips
+
+<AccordionGroup>
+  <Accordion title="Be Specific">
+    Clear instructions lead to better results. Instead of "make it better," say "change the hero button color to #2563eb and increase padding to 20px."
+  </Accordion>
+
+  <Accordion title="Reference Sections by Name">
+    Help the AI locate content: "In the testimonials section..." or "The module with admin_label 'Hero CTA'..."
+  </Accordion>
+
+  <Accordion title="Ask for Analysis First">
+    Let the AI understand the page before editing. Start with "Analyze the structure of page ID [PAGE_ID]" before requesting changes.
+  </Accordion>
+
+  <Accordion title="Always Use Duplicates">
+    Test major changes safely. Ask the AI to "create a duplicate first" before applying significant modifications.
+  </Accordion>
+
+  <Accordion title="Iterate in Small Steps">
+    Break large changes into smaller, reviewable steps rather than one massive update.
+  </Accordion>
+
+  <Accordion title="Check the Audit Log">
+    Review the Respira audit log in WordPress admin to confirm exactly what changed.
+  </Accordion>
+
+  <Accordion title="Use Module Admin Labels">
+    For Divi and Elementor, set descriptive admin_label values to enable precise module targeting.
+  </Accordion>
+
+  <Accordion title="Combine Related Operations">
+    You can bundle several related changes in a single prompt for efficiency, like "update text, adjust colors, and add alt text."
+  </Accordion>
+</AccordionGroup>
+
+---
 
 ## FAQ
 
-### Do these prompts work with Cursor, Claude, or both?
+<AccordionGroup>
+  <Accordion title="Do these prompts work with Cursor, Claude, or both?">
+    Yes. All prompts work with both Cursor and Claude Code, as long as Respira for WordPress is installed and connected via MCP.
+  </Accordion>
 
-Yes. All prompts on this page work with both Cursor and Claude Code, as long as Respira for WordPress is installed and connected.
+  <Accordion title="How specific should my prompts be?">
+    More specific prompts lead to better results. Always mention the page ID, section name or admin_label, your goal, and the desired outcome.
+  </Accordion>
 
-### How specific should my WordPress prompts be?
+  <Accordion title="Can I combine multiple changes in one prompt?">
+    Yes. You can bundle related changes like editing text, adjusting design, and optimizing SEO in a single prompt. For unrelated changes, separate prompts work better.
+  </Accordion>
 
-More specific prompts lead to better results. Mention the section, goal, and desired outcome when possible.
+  <Accordion title="What if a prompt doesn't work as expected?">
+    Visit the [Troubleshooting](/troubleshooting) page for guidance. Common fixes include being more specific, checking page IDs, and verifying your MCP connection.
+  </Accordion>
 
-### Can I combine multiple WordPress changes in one prompt?
+  <Accordion title="What's the difference between SEO and AEO?">
+    SEO (Search Engine Optimization) focuses on ranking in traditional search results. AEO (AI Engine Optimization) focuses on being cited by AI assistants like ChatGPT, Perplexity, and Google AI Overviews. Both are important for modern visibility.
+  </Accordion>
 
-Yes. You can bundle several related changes, such as editing text, adjusting design, and optimizing SEO in a single multi-step prompt.
-
-### What should I do if a prompt does not work as expected?
-
-Visit the [Troubleshooting](/troubleshooting) page for guidance on resolving common issues and verifying your setup.
+  <Accordion title="Should I use page IDs or page names in prompts?">
+    Page IDs are more reliable for precise targeting. Find your page ID in the WordPress URL when editing (e.g., post.php?post=**12345**&action=edit). Page names work for simple sites with unique titles.
+  </Accordion>
+</AccordionGroup>
