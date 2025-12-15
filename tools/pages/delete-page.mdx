@@ -1,0 +1,43 @@
+---
+title: "wordpress_delete_page"
+description: "Delete a WordPress page (by default, only Respira-created duplicates can be deleted)."
+---
+
+# wordpress_delete_page
+
+Delete a page. IMPORTANT: By default, this only works on Respira-created duplicates. The `force` parameter only works if \"Allow Direct Editing\" is enabled in Respira settings (disabled by default for safety).
+
+## Parameters
+
+| Parameter | Type | Required | Description |
+|-----------|------|----------|-------------|
+| id | number | Yes | Page ID |
+| force | boolean | No | Force delete even if not a duplicate |
+
+## Response
+
+```json
+{
+  "success": true,
+  "deleted": true,
+  "id": 156
+}
+```
+
+## Example Prompts
+
+- "Delete the duplicate page I just created"
+- "Delete page 156"
+- "Remove the draft duplicate for the homepage"
+
+## Related Tools
+
+- [wordpress_create_page_duplicate](/tools/pages/create-duplicate)
+- [wordpress_update_page](/tools/pages/update-page)
+
+## Notes
+
+- Prefer deleting duplicates instead of live pages
+- If you need to remove a live page, do it in WordPress Admin unless you fully understand the risk
+
+

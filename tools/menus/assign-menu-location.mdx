@@ -1,0 +1,38 @@
+---
+title: "wordpress_assign_menu_location"
+description: "Assign a WordPress menu to a theme menu location."
+---
+
+# wordpress_assign_menu_location
+
+Assign a menu to a theme location.
+
+## Parameters
+
+| Parameter | Type | Required | Description |
+|-----------|------|----------|-------------|
+| location | string | Yes | Location slug (e.g., \"primary\", \"footer\") |
+| menu_id | number | Yes | Menu ID to assign (use 0 to unassign) |
+
+## Response
+
+```json
+{
+  "success": true,
+  "updated": true,
+  "location": "primary",
+  "menu_id": 10
+}
+```
+
+## Example Prompts
+
+- "Assign menu 10 to the primary location"
+- "Unassign any menu from the footer location"
+
+## Related Tools
+
+- [wordpress_list_menu_locations](/tools/menus/list-menu-locations)
+- [wordpress_list_menus](/tools/menus/list-menus)
+
+

@@ -1,0 +1,41 @@
+---
+title: "wordpress_delete_user"
+description: "Delete a WordPress user (optionally reassign their posts)."
+---
+
+# wordpress_delete_user
+
+Delete a user.
+
+## Parameters
+
+| Parameter | Type | Required | Description |
+|-----------|------|----------|-------------|
+| id | number | Yes | User ID |
+| reassign | number | No | User ID to reassign posts to (optional) |
+
+## Response
+
+```json
+{
+  "success": true,
+  "deleted": true,
+  "id": 55
+}
+```
+
+## Example Prompts
+
+- "Delete user 55 and reassign posts to user 1"
+- "Remove the old contractor account"
+
+## Related Tools
+
+- [wordpress_get_user](/tools/users/get-user)
+- [wordpress_list_users](/tools/users/list-users)
+
+## Notes
+
+- Prefer reassigning content to an admin/editor instead of deleting posts
+
+

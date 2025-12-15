@@ -1,0 +1,100 @@
+---
+title: "wordpress_analyze_aeo"
+description: "Analyze content for AI Engine Optimization (AEO) to improve how AI search engines parse and cite your pages."
+---
+
+# wordpress_analyze_aeo
+
+Analyze content for AI Engine Optimization (optimizing for AI search engines like Perplexity, ChatGPT). Checks structured data, content clarity, semantic HTML, entities, content depth, and FAQ opportunities.
+
+## Parameters
+
+| Parameter | Type | Required | Description |
+|-----------|------|----------|-------------|
+| pageId | number | Yes | WordPress page ID to analyze |
+
+## Response
+
+```json
+{
+  "success": true,
+  "score": 72,
+  "grade": "C",
+  "signals": {
+    "has_structured_data": false,
+    "has_faq_section": false,
+    "has_clear_entities": true,
+    "uses_semantic_headings": true,
+    "has_step_by_step": false
+  },
+  "issues": [
+    {
+      "type": "warning",
+      "severity": "medium",
+      "message": "Missing FAQ section for common questions",
+      "fix": "Add a short FAQ with 3-5 questions and answers"
+    }
+  ],
+  "recommendations": [
+    {
+      "priority": "high",
+      "action": "Add JSON-LD structured data",
+      "details": "Add Organization / WebSite / FAQPage schema where appropriate"
+    }
+  ]
+}
+```
+
+## Example Prompts
+
+- "Analyze AEO on my homepage"
+- "Is page 42 optimized for AI search?"
+- "Check if my services page is easy for ChatGPT to cite"
+
+## Full Example
+
+**Prompt:** "Analyze AEO on the About page (ID: 20)"
+
+**Response:**
+
+```json
+{
+  "success": true,
+  "score": 58,
+  "grade": "D",
+  "issues": [
+    {
+      "type": "error",
+      "severity": "high",
+      "message": "No structured data detected",
+      "fix": "Add JSON-LD schema markup (Organization + WebSite)."
+    },
+    {
+      "type": "warning",
+      "severity": "medium",
+      "message": "Content lacks scannable sections",
+      "fix": "Add clear H2 sections like 'What we do', 'Who we serve', 'How to contact us'."
+    }
+  ],
+  "recommendations": [
+    {
+      "priority": "high",
+      "action": "Add a small FAQ section",
+      "details": "Write answers in 1-3 sentences each for easy extraction by AI."
+    }
+  ]
+}
+```
+
+## Related Tools
+
+- [wordpress_check_structured_data](/tools/analysis/check-structured-data) - Validate schema markup
+- [wordpress_analyze_readability](/tools/analysis/analyze-readability) - Improve clarity and scanability
+- [wordpress_analyze_seo](/tools/analysis/analyze-seo) - SEO analysis (search engines)
+
+## Notes
+
+- Read-only tool - doesn’t modify content
+- AEO focuses on **how machines understand and cite your content**, not just ranking factors
+
+

@@ -1,0 +1,38 @@
+---
+title: "wordpress_update_comment"
+description: "Update a WordPress comment's content or approval status."
+---
+
+# wordpress_update_comment
+
+Update a comment.
+
+## Parameters
+
+| Parameter | Type | Required | Description |
+|-----------|------|----------|-------------|
+| id | number | Yes | Comment ID |
+| content | string | No | Comment content |
+| status | number | No | Comment status |
+
+## Response
+
+```json
+{
+  "success": true,
+  "updated": true,
+  "id": 9001
+}
+```
+
+## Example Prompts
+
+- "Approve comment 9001"
+- "Update comment 9001 content to fix a typo"
+
+## Related Tools
+
+- [wordpress_get_comment](/tools/comments/get-comment)
+- [wordpress_list_comments](/tools/comments/list-comments)
+
+

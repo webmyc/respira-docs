@@ -1,0 +1,48 @@
+---
+title: "wordpress_inject_builder_content"
+description: "Inject structured builder content into a page builder page (replaces the builder structure)."
+---
+
+# wordpress_inject_builder_content
+
+Inject structured content into a page builder.
+
+## Parameters
+
+| Parameter | Type | Required | Description |
+|-----------|------|----------|-------------|
+| builder | string | Yes | Builder name |
+| pageId | number | Yes | Page ID |
+| content | object | Yes | Structured content to inject |
+
+## Response
+
+```json
+{
+  "success": true,
+  "message": "Builder content injected successfully",
+  "builder": "divi",
+  "pageId": 42,
+  "duplicate_created": true,
+  "duplicate_id": 156,
+  "approval_url": "https://yoursite.com/wp-admin/admin.php?page=respira-approvals"
+}
+```
+
+## Example Prompts
+
+- "Replace the Elementor layout on page 42 with this new structure"
+- "Inject this builder JSON into my homepage"
+- "Overwrite the Divi structure with a simpler layout"
+
+## Related Tools
+
+- [wordpress_extract_builder_content](/tools/builders/extract-content) - View existing structure first
+- [wordpress_update_module](/tools/builders/update-module) - Prefer targeted module updates when possible
+
+## Notes
+
+- This is a write operation and will use Respira’s safety workflow (duplicate-first)
+- Use when you need to replace the entire builder structure (large refactors)
+
+

@@ -1,0 +1,51 @@
+---
+title: "wordpress_check_seo_issues"
+description: "Quick SEO issue check with prioritized recommendations."
+---
+
+# wordpress_check_seo_issues
+
+Check for common SEO issues and get quick recommendations.
+
+## Parameters
+
+| Parameter | Type | Required | Description |
+|-----------|------|----------|-------------|
+| pageId | number | Yes | WordPress page ID to analyze |
+
+## Response
+
+```json
+{
+  "success": true,
+  "issues": [
+    {
+      "severity": "high",
+      "message": "Missing meta description",
+      "fix": "Add a 120-160 character meta description"
+    }
+  ],
+  "next_steps": [
+    "Fix high severity issues first",
+    "Re-run after updates"
+  ]
+}
+```
+
+## Example Prompts
+
+- "Check SEO issues on my homepage"
+- "Quick SEO check for page 42"
+- "What SEO problems does the contact page have?"
+
+## Related Tools
+
+- [wordpress_analyze_seo](/tools/analysis/analyze-seo) - Full SEO analysis
+- [wordpress_analyze_readability](/tools/analysis/analyze-readability) - Improve clarity and structure
+
+## Notes
+
+- Read-only tool - doesn’t modify content
+- Use `wordpress_analyze_seo` when you need full metrics and scoring
+
+

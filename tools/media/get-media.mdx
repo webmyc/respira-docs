@@ -1,0 +1,39 @@
+---
+title: "wordpress_get_media"
+description: "Get details for a single WordPress media item."
+---
+
+# wordpress_get_media
+
+Get single media item details.
+
+## Parameters
+
+| Parameter | Type | Required | Description |
+|-----------|------|----------|-------------|
+| id | number | Yes | Media ID |
+
+## Response
+
+```json
+{
+  "success": true,
+  "id": 501,
+  "title": "Hero Image",
+  "alt": "A person working on a laptop",
+  "caption": "",
+  "sourceUrl": "https://example.com/wp-content/uploads/hero.jpg"
+}
+```
+
+## Example Prompts
+
+- "Get media 501"
+- "Show details for the logo image"
+
+## Related Tools
+
+- [wordpress_list_media](/tools/media/list-media)
+- [wordpress_update_media](/tools/media/update-media)
+
+

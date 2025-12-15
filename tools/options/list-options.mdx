@@ -1,0 +1,40 @@
+---
+title: "wordpress_list_options"
+description: "List WordPress options (settings) with optional search filtering."
+---
+
+# wordpress_list_options
+
+List WordPress options (with optional search filter).
+
+## Parameters
+
+| Parameter | Type | Required | Description |
+|-----------|------|----------|-------------|
+| search | string | No | Search term to filter option names |
+
+## Response
+
+```json
+{
+  "success": true,
+  "options": [
+    {
+      "option": "blogname",
+      "value": "My Site"
+    }
+  ]
+}
+```
+
+## Example Prompts
+
+- "List options containing 'blog'"
+- "Show me WordPress options related to 'timezone'"
+
+## Related Tools
+
+- [wordpress_get_option](/tools/options/get-option)
+- [wordpress_update_option](/tools/options/update-option)
+
+

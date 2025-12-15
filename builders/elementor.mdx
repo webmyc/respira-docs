@@ -1,0 +1,48 @@
+---
+title: "Elementor Builder Reference"
+description: "Technical notes for using Respira with Elementor: JSON-based layouts, widgets, and module-level updates."
+---
+
+# Elementor Builder Reference
+
+Elementor stores page layouts as structured JSON (post meta) and renders content through widgets, sections/containers, and nested elements.
+
+## How Respira Works With Elementor
+
+1. Detect Elementor on a page (or site-wide)
+2. Extract a structured representation of the page
+3. Update a specific widget/module using labels, paths, or types
+4. Preserve all other widgets and settings
+
+## Recommended Targeting: Labels
+
+Use Elementor's Navigator to name important widgets/sections (or use an admin label pattern your team follows). Then target them with:
+
+```json
+{ "admin_label": "Hero CTA Button" }
+```
+
+## Common Widgets
+
+| Widget | Typical Use |
+|--------|-------------|
+| Heading | Headlines and section titles |
+| Text Editor | Body content |
+| Button | Calls to action |
+| Image | Images with alt text |
+| Icon List | Feature lists |
+| Form | Lead capture / contact forms |
+
+## Example Prompts
+
+- "Update the widget labeled 'Hero Heading' to say 'Start Here'"
+- "Change the CTA button link to /pricing"
+- "Extract the Elementor structure for page 42"
+
+## See Also
+
+- [wordpress_extract_builder_content](/tools/builders/extract-content)
+- [wordpress_update_module](/tools/builders/update-module)
+- [wordpress_inject_builder_content](/tools/builders/inject-content)
+
+

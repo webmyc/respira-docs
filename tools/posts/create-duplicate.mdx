@@ -1,0 +1,39 @@
+---
+title: "wordpress_create_post_duplicate"
+description: "Create a duplicate of an existing post for safe editing."
+---
+
+# wordpress_create_post_duplicate
+
+Create a duplicate of an existing post for safe editing. After creating a duplicate, edit the duplicate using [wordpress_update_post](/tools/posts/update-post), then approve in WordPress Admin (Respira → Approve Edits).
+
+## Parameters
+
+| Parameter | Type | Required | Description |
+|-----------|------|----------|-------------|
+| originalId | number | Yes | Original post ID |
+| suffix | string | No | Optional suffix |
+
+## Response
+
+```json
+{
+  "success": true,
+  "original_id": 101,
+  "duplicate_id": 202,
+  "status": "draft",
+  "approval_url": "https://yoursite.com/wp-admin/admin.php?page=respira-approvals"
+}
+```
+
+## Example Prompts
+
+- "Duplicate post 101"
+- "Create a safe copy of my latest blog post"
+
+## Related Tools
+
+- [wordpress_update_post](/tools/posts/update-post)
+- [wordpress_delete_post](/tools/posts/delete-post)
+
+

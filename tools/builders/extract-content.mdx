@@ -1,0 +1,64 @@
+---
+title: "wordpress_extract_builder_content"
+description: "Extract structured page builder content (Divi, Elementor, Bricks, etc.) for inspection and targeted edits."
+---
+
+# wordpress_extract_builder_content
+
+Extract structured content from a page builder (Divi, Elementor, etc.).
+
+## Parameters
+
+| Parameter | Type | Required | Description |
+|-----------|------|----------|-------------|
+| builder | string | Yes | Builder name (gutenberg, divi, elementor, etc.) |
+| pageId | number | Yes | Page ID |
+
+## Response
+
+```json
+{
+  "success": true,
+  "builder": "divi",
+  "pageId": 42,
+  "structure": {
+    "sections": [
+      {
+        "rows": [
+          {
+            "columns": [
+              {
+                "modules": [
+                  {
+                    "type": "et_pb_text",
+                    "admin_label": "Hero Text",
+                    "content": "<h1>Welcome</h1>"
+                  }
+                ]
+              }
+            ]
+          }
+        ]
+      }
+    ]
+  }
+}
+```
+
+## Example Prompts
+
+- "Show me the structure of the homepage"
+- "Extract the Divi layout for page 42"
+- "What modules are on the first section of my About page?"
+
+## Related Tools
+
+- [wordpress_update_module](/tools/builders/update-module) - Update a specific module
+- [wordpress_inject_builder_content](/tools/builders/inject-content) - Replace the builder structure
+
+## Notes
+
+- Read-only tool - doesn’t modify content
+- Use this before updating modules by `path` or `type`
+
+

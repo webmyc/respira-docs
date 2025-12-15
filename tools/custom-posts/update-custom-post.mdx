@@ -1,0 +1,49 @@
+---
+title: "wordpress_update_custom_post"
+description: "Update a custom post by type and ID. Supports meta fields and builder custom CSS."
+---
+
+# wordpress_update_custom_post
+
+Update a custom post. Supports meta fields and custom CSS for Divi/Elementor builders.
+
+## Parameters
+
+| Parameter | Type | Required | Description |
+|-----------|------|----------|-------------|
+| type | string | Yes | Post type name |
+| id | number | Yes | Post ID |
+| title | string | No | Post title |
+| content | string | No | Post content |
+| status | string | No | Post status |
+| meta | object | No | Post meta data (e.g., `{ "_et_pb_custom_css": "/* CSS */" }`) |
+| customCss | string | No | Custom CSS for page builders (Divi/Elementor). Saved to appropriate meta field based on detected builder. |
+
+## Response
+
+```json
+{
+  "success": true,
+  "type": "product",
+  "id": 3001,
+  "updated": true
+}
+```
+
+## Example Prompts
+
+- "Update product 3001 title to 'Pro Plan'"
+- "Update portfolio item 42 content"
+- "Set custom CSS on product 3001"
+
+## Related Tools
+
+- [wordpress_get_custom_post](/tools/custom-posts/get-custom-post)
+- [wordpress_update_page](/tools/pages/update-page)
+
+## Notes
+
+- If you pass `customCss`, Respira will store it in the correct builder meta field when possible
+- Use `meta` for advanced builder/meta workflows
+
+

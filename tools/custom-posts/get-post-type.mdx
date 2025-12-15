@@ -1,0 +1,37 @@
+---
+title: "wordpress_get_post_type"
+description: "Get details for a specific WordPress post type."
+---
+
+# wordpress_get_post_type
+
+Get post type details.
+
+## Parameters
+
+| Parameter | Type | Required | Description |
+|-----------|------|----------|-------------|
+| type | string | Yes | Post type name |
+
+## Response
+
+```json
+{
+  "success": true,
+  "type": "product",
+  "label": "Products",
+  "public": true
+}
+```
+
+## Example Prompts
+
+- "Get post type details for 'product'"
+- "Tell me about the 'event' post type"
+
+## Related Tools
+
+- [wordpress_list_post_types](/tools/custom-posts/list-post-types)
+- [wordpress_list_custom_posts](/tools/custom-posts/list-custom-posts)
+
+

@@ -1,0 +1,45 @@
+---
+title: "wordpress_list_terms"
+description: "List terms in a taxonomy with optional search and pagination."
+---
+
+# wordpress_list_terms
+
+List terms in a taxonomy.
+
+## Parameters
+
+| Parameter | Type | Required | Description |
+|-----------|------|----------|-------------|
+| taxonomy | string | Yes | Taxonomy name |
+| search | string | No | Search term |
+| page | number | No | Page number |
+| perPage | number | No | Items per page |
+
+## Response
+
+```json
+{
+  "success": true,
+  "taxonomy": "category",
+  "terms": [
+    {
+      "id": 12,
+      "name": "News",
+      "slug": "news"
+    }
+  ]
+}
+```
+
+## Example Prompts
+
+- "List terms in category"
+- "Search tags for 'seo'"
+
+## Related Tools
+
+- [wordpress_get_term](/tools/taxonomies/get-term)
+- [wordpress_create_term](/tools/taxonomies/create-term)
+
+

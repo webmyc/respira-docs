@@ -1,0 +1,44 @@
+---
+title: "wordpress_list_media"
+description: "List WordPress media items with optional search and pagination."
+---
+
+# wordpress_list_media
+
+List all media files (images, videos, etc.).
+
+## Parameters
+
+| Parameter | Type | Required | Description |
+|-----------|------|----------|-------------|
+| search | string | No | Search term |
+| page | number | No | Page number |
+| perPage | number | No | Items per page |
+
+## Response
+
+```json
+{
+  "success": true,
+  "media": [
+    {
+      "id": 501,
+      "title": "Hero Image",
+      "mimeType": "image/jpeg",
+      "sourceUrl": "https://example.com/wp-content/uploads/hero.jpg"
+    }
+  ]
+}
+```
+
+## Example Prompts
+
+- "List my media library"
+- "Search media for 'logo'"
+
+## Related Tools
+
+- [wordpress_get_media](/tools/media/get-media)
+- [wordpress_upload_media](/tools/media/upload-media)
+
+

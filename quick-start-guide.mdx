@@ -1,0 +1,73 @@
+---
+title: "Quick Start Guide"
+description: "Install Respira, connect your AI assistant, and make your first safe WordPress edit in minutes."
+---
+
+# Quick Start Guide
+
+This guide gets you from zero to your first safe AI-driven WordPress change as fast as possible.
+
+## Step 1: Install the WordPress plugin
+
+1. Download the latest plugin ZIP from `https://respira.press/releases`
+2. In WordPress Admin go to **Plugins → Add New → Upload Plugin**
+3. Upload the ZIP and **Activate**
+
+## Step 2: Generate an API key
+
+1. In WordPress Admin go to **Respira → API Keys**
+2. Click **Generate API Key**
+3. Copy and save it (you won’t be able to view it again)
+
+<Callout kind="alert">
+Treat the API key like a password. If it leaks, revoke it and generate a new one.
+</Callout>
+
+## Step 3: Run the MCP setup wizard
+
+Run the interactive setup:
+
+```bash
+npx @respira/wordpress-mcp-server --setup
+```
+
+The wizard will validate your site URL and API key, test the connection, and generate your MCP configuration.
+
+## Step 4: Configure your AI tool
+
+Use the configuration from the wizard, then restart your AI tool.
+
+Common tools:
+
+- Cursor (MCP)
+- Claude Code
+- Windsurf
+
+For detailed steps, see the [Configuration Guide](/configuration).
+
+## Step 5: Try your first commands
+
+Start with read-only actions:
+
+- “List all pages on my WordPress site”
+- “Read page 42”
+- “What page builder is my homepage using?”
+
+Then try a safe edit (duplicate-first workflow):
+
+- “Update the homepage headline to ‘Welcome’”
+
+Respira will create a draft duplicate, apply the change there, and give you an approval link.
+
+## Approve edits in WordPress
+
+1. Go to **WordPress Admin → Respira → Approve Edits**
+2. Review the duplicate draft
+3. Approve to replace the original (or reject to discard)
+
+## Next steps
+
+- Tools list: [Tools Reference](/tools/overview)
+- Page builder edits: [Page Builders](/builders/overview)
+- Examples: [Prompts & Examples](/prompts)
+

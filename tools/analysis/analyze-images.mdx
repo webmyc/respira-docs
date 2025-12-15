@@ -1,0 +1,58 @@
+---
+title: "wordpress_analyze_images"
+description: "Analyze image optimization opportunities including missing alt text, large files, and unoptimized formats."
+---
+
+# wordpress_analyze_images
+
+Analyze image optimization opportunities including missing alt text, large files, and unoptimized formats.
+
+## Parameters
+
+| Parameter | Type | Required | Description |
+|-----------|------|----------|-------------|
+| pageId | number | Yes | WordPress page ID to analyze |
+
+## Response
+
+```json
+{
+  "success": true,
+  "summary": {
+    "images_total": 10,
+    "missing_alt": 2,
+    "largest_image_kb": 820
+  },
+  "issues": [
+    {
+      "type": "warning",
+      "severity": "medium",
+      "message": "2 images missing alt text",
+      "fix": "Add descriptive alt text to improve accessibility and SEO"
+    }
+  ],
+  "recommendations": [
+    "Compress large images",
+    "Use WebP/AVIF where possible",
+    "Add width/height to prevent layout shift"
+  ]
+}
+```
+
+## Example Prompts
+
+- "Analyze images on my homepage"
+- "Which images on page 42 are too large?"
+- "Do any images on the services page miss alt text?"
+
+## Related Tools
+
+- [wordpress_analyze_seo](/tools/analysis/analyze-seo)
+- [wordpress_analyze_performance](/tools/analysis/analyze-performance)
+
+## Notes
+
+- Read-only tool - doesn’t modify content
+- Pair with `wordpress_update_media` to fix alt text/title/captions
+
+

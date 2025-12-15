@@ -1,0 +1,46 @@
+---
+title: "wordpress_get_menu"
+description: "Get a WordPress navigation menu with all its items (includes WPML translation info if available)."
+---
+
+# wordpress_get_menu
+
+Get a navigation menu with all its items. Includes WPML translation info if available.
+
+## Parameters
+
+| Parameter | Type | Required | Description |
+|-----------|------|----------|-------------|
+| id | number | Yes | Menu ID |
+
+## Response
+
+```json
+{
+  "success": true,
+  "menu": {
+    "id": 10,
+    "name": "Primary Menu",
+    "items": [
+      {
+        "id": 1001,
+        "title": "Home",
+        "url": "/",
+        "parent": 0
+      }
+    ]
+  }
+}
+```
+
+## Example Prompts
+
+- "Get menu 10"
+- "Show me the items in the primary menu"
+
+## Related Tools
+
+- [wordpress_list_menu_items](/tools/menus/list-menu-items)
+- [wordpress_create_menu_item](/tools/menus/create-menu-item)
+
+

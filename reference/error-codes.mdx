@@ -1,0 +1,54 @@
+---
+title: "Error Codes Reference"
+description: "Common Respira error codes, what they mean, and how to resolve them quickly."
+---
+
+# Error Codes Reference
+
+Common error codes and how to resolve them.
+
+## Authentication Errors
+
+| Code | Message | Solution |
+|------|---------|----------|
+| `respira_invalid_api_key` | Invalid or expired API key | Generate new key in WordPress Admin |
+| `respira_missing_api_key` | No API key provided | Add key to MCP config |
+| `respira_key_revoked` | API key has been revoked | Generate new key |
+
+## Permission Errors
+
+| Code | Message | Solution |
+|------|---------|----------|
+| `respira_insufficient_permissions` | User lacks required capability | Check WordPress user role |
+| `respira_direct_edit_disabled` | Direct editing not enabled | Enable in Respira settings or use duplicate workflow |
+
+## Content Errors
+
+| Code | Message | Solution |
+|------|---------|----------|
+| `respira_page_not_found` | Page ID doesn't exist | Verify page ID with [wordpress_list_pages](/tools/pages/list-pages) |
+| `respira_post_not_found` | Post ID doesn't exist | Verify post ID with [wordpress_list_posts](/tools/posts/list-posts) |
+| `respira_content_validation_failed` | Content failed security check | Remove suspicious code/scripts or validate with [wordpress_validate_security](/tools/other/validate-security) |
+
+## Builder Errors
+
+| Code | Message | Solution |
+|------|---------|----------|
+| `respira_builder_not_detected` | No page builder found | Page may use classic editor or Gutenberg |
+| `respira_module_not_found` | Module identifier didn't match | Use admin_label or extract structure first |
+| `respira_invalid_builder_content` | Malformed builder data | Re-extract builder content; page may be corrupted |
+
+## Connection Errors
+
+| Code | Message | Solution |
+|------|---------|----------|
+| `ECONNREFUSED` | Can't connect to WordPress | Check site URL, verify site is online |
+| `ETIMEDOUT` | Connection timed out | Check hosting/network; retry |
+| `CERT_ERROR` | SSL certificate issue | Verify SSL is valid |
+
+## See Also
+
+- [Troubleshooting](/troubleshooting)
+- [Configuration](/configuration)
+
+

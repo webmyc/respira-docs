@@ -1,0 +1,41 @@
+---
+title: "wordpress_create_term"
+description: "Create a new taxonomy term."
+---
+
+# wordpress_create_term
+
+Create a new term.
+
+## Parameters
+
+| Parameter | Type | Required | Description |
+|-----------|------|----------|-------------|
+| taxonomy | string | Yes | Taxonomy name |
+| name | string | Yes | Term name |
+| slug | string | No | Term slug |
+| description | string | No | Term description |
+| parent | number | No | Parent term ID |
+
+## Response
+
+```json
+{
+  "success": true,
+  "taxonomy": "category",
+  "id": 123,
+  "name": "Announcements"
+}
+```
+
+## Example Prompts
+
+- "Create a new category called 'Announcements'"
+- "Add a tag named 'wordpress-mcp'"
+
+## Related Tools
+
+- [wordpress_update_term](/tools/taxonomies/update-term)
+- [wordpress_delete_term](/tools/taxonomies/delete-term)
+
+

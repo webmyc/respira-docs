@@ -1,0 +1,45 @@
+---
+title: "wordpress_read_page"
+description: "Read a WordPress page including meta and builder information."
+---
+
+# wordpress_read_page
+
+Get full content of a specific page including meta data and builder information.
+
+## Parameters
+
+| Parameter | Type | Required | Description |
+|-----------|------|----------|-------------|
+| id | number | Yes | Page ID |
+
+## Response
+
+```json
+{
+  "success": true,
+  "id": 2,
+  "title": "Home",
+  "status": "publish",
+  "content": "<h1>Welcome</h1>",
+  "meta": {},
+  "builder": {
+    "name": "divi",
+    "detected": true
+  }
+}
+```
+
+## Example Prompts
+
+- "Read page 42"
+- "Show me the content of the About page"
+- "What page builder is page 2 using?"
+
+## Related Tools
+
+- [wordpress_list_pages](/tools/pages/list-pages)
+- [wordpress_extract_builder_content](/tools/builders/extract-content)
+- [wordpress_update_page](/tools/pages/update-page)
+
+

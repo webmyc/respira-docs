@@ -1,0 +1,41 @@
+---
+title: "wordpress_delete_plugin"
+description: "EXPERIMENTAL: Permanently delete a WordPress plugin (must be deactivated first)."
+---
+
+# wordpress_delete_plugin
+
+EXPERIMENTAL: Permanently delete a plugin. Requires plugin management to be enabled in Respira settings. The plugin must be deactivated first.
+
+## Parameters
+
+| Parameter | Type | Required | Description |
+|-----------|------|----------|-------------|
+| slug | string | Yes | Plugin slug |
+
+## Response
+
+```json
+{
+  "success": true,
+  "deleted": true,
+  "slug": "some-plugin"
+}
+```
+
+## Example Prompts
+
+- "Delete the plugin slug 'hello-dolly'"
+- "Remove the unused plugin 'some-plugin'"
+
+## Related Tools
+
+- [wordpress_deactivate_plugin](/tools/plugins/deactivate-plugin)
+- [wordpress_list_plugins](/tools/plugins/list-plugins)
+
+## Notes
+
+- Experimental: enable plugin management in Respira settings first
+- Deleting plugins can break a site; prefer doing this on staging first
+
+

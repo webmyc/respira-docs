@@ -1,0 +1,37 @@
+---
+title: "wordpress_delete_post"
+description: "Delete a WordPress post (by default, only Respira-created duplicates can be deleted)."
+---
+
+# wordpress_delete_post
+
+Delete a post. IMPORTANT: By default, this only works on Respira-created duplicates. The `force` parameter only works if \"Allow Direct Editing\" is enabled in Respira settings (disabled by default for safety).
+
+## Parameters
+
+| Parameter | Type | Required | Description |
+|-----------|------|----------|-------------|
+| id | number | Yes | Post ID |
+| force | boolean | No | Force delete even if not a duplicate |
+
+## Response
+
+```json
+{
+  "success": true,
+  "deleted": true,
+  "id": 202
+}
+```
+
+## Example Prompts
+
+- "Delete the duplicate post I just created"
+- "Delete post 202"
+
+## Related Tools
+
+- [wordpress_create_post_duplicate](/tools/posts/create-duplicate)
+- [wordpress_update_post](/tools/posts/update-post)
+
+

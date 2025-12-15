@@ -1,0 +1,41 @@
+---
+title: "wordpress_create_page_duplicate"
+description: "Create a duplicate of an existing page for safe editing."
+---
+
+# wordpress_create_page_duplicate
+
+Create a duplicate of an existing page for safe editing. After creating a duplicate, edit the duplicate using [wordpress_update_page](/tools/pages/update-page), then approve in WordPress Admin (Respira → Approve Edits).
+
+## Parameters
+
+| Parameter | Type | Required | Description |
+|-----------|------|----------|-------------|
+| originalId | number | Yes | ID of the original page to duplicate |
+| suffix | string | No | Optional suffix for the duplicated page title |
+
+## Response
+
+```json
+{
+  "success": true,
+  "original_id": 42,
+  "duplicate_id": 43,
+  "status": "draft",
+  "approval_url": "https://yoursite.com/wp-admin/admin.php?page=respira-approvals"
+}
+```
+
+## Example Prompts
+
+- "Create a duplicate of the About page"
+- "Duplicate page 42"
+- "Make a safe copy of my homepage so I can edit it"
+
+## Related Tools
+
+- [wordpress_update_page](/tools/pages/update-page)
+- [wordpress_delete_page](/tools/pages/delete-page)
+- [wordpress_read_page](/tools/pages/read-page)
+
+

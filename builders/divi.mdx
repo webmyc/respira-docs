@@ -1,0 +1,102 @@
+---
+title: "Divi Builder Reference"
+description: "Technical documentation for using Respira with Divi Builder (shortcode-based pages and module-level updates)."
+---
+
+# Divi Builder Reference
+
+Technical documentation for using Respira with Divi Builder (200+ modules).
+
+## Data Structure
+
+Divi stores content as shortcodes in `post_content`:
+
+```text
+[et_pb_section fb_built="1" _builder_version="4.16"]
+  [et_pb_row]
+    [et_pb_column type="4_4"]
+      [et_pb_text admin_label="Hero Text"]
+        <h1>Welcome</h1>
+      [/et_pb_text]
+      [et_pb_button admin_label="CTA" button_text="Get Started" button_url="/contact"]
+      [/et_pb_button]
+    [/et_pb_column]
+  [/et_pb_row]
+[/et_pb_section]
+```
+
+## Module Identification
+
+### By Admin Label (Recommended)
+
+Set in Divi: Module Settings → Advanced → Admin Label
+
+```json
+{ "admin_label": "Hero CTA Button" }
+```
+
+### By Path
+
+```json
+{ "path": "sections[0].rows[0].columns[0].modules[1]" }
+```
+
+### By Type
+
+```json
+{ "type": "et_pb_button", "match_content": "Get Started" }
+```
+
+## Common Divi Modules
+
+| Module | Shortcode | Key Attributes |
+|--------|-----------|----------------|
+| Text | et_pb_text | content (HTML) |
+| Button | et_pb_button | button_text, button_url |
+| Image | et_pb_image | src, alt, url |
+| Blurb | et_pb_blurb | title, content, image |
+| Code | et_pb_code | content (raw HTML/JS) |
+| Accordion | et_pb_accordion | nested et_pb_accordion_item |
+| Tabs | et_pb_tabs | nested et_pb_tab |
+| Slider | et_pb_slider | nested et_pb_slide |
+| CTA | et_pb_cta | title, button_text, button_url |
+| Contact Form | et_pb_contact_form | email, title |
+
+## Example Prompts for Divi
+
+**Content Updates:**
+
+- "Change the hero headline to 'Welcome Home'"
+- "Update all button colors to #FF5733"
+- "Replace the about section image"
+
+**Structure Queries:**
+
+- "Show me all sections on this page"
+- "List all buttons and their text"
+- "What modules are in the first row?"
+
+**Bulk Updates:**
+
+- "Find all buttons with 'Learn More' and change to 'Get Started'"
+- "Update the copyright year in the footer to 2025"
+
+## Global Modules
+
+Respira detects Divi Global Modules. Updates to global modules appear everywhere they're used.
+
+- "List all global modules" → Shows global module library
+- "Update the global footer email address" → Changes it site-wide
+
+## Limitations
+
+- Visual-only settings (hover states) may need Divi builder
+- Per-module custom CSS is supported but complex styling may need builder
+- Dynamic content tokens are preserved but not directly editable
+
+## See Also
+
+- [wordpress_update_module](/tools/builders/update-module)
+- [wordpress_extract_builder_content](/tools/builders/extract-content)
+
+

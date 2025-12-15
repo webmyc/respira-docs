@@ -1,0 +1,39 @@
+---
+title: "wordpress_switch_site"
+description: "Switch the active WordPress site when you have multiple sites configured in the MCP server."
+---
+
+# wordpress_switch_site
+
+Switch to a different WordPress site (for multi-site setups).
+
+## Parameters
+
+| Parameter | Type | Required | Description |
+|-----------|------|----------|-------------|
+| siteId | string | Yes | Site ID from configuration |
+
+## Response
+
+```json
+{
+  "success": true,
+  "activeSite": "staging"
+}
+```
+
+## Example Prompts
+
+- "Switch to my staging site"
+- "Use siteId 'production'"
+
+## Related Tools
+
+- [wordpress_get_site_context](/tools/context/get-site-context)
+
+## Notes
+
+- Useful for agencies and multi-site workflows
+- After switching, subsequent tool calls operate on the selected site
+
+

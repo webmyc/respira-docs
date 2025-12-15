@@ -1,0 +1,40 @@
+---
+title: "wordpress_validate_security"
+description: "Validate content for security issues before saving (XSS, suspicious code patterns)."
+---
+
+# wordpress_validate_security
+
+Validate content for security issues before saving.
+
+## Parameters
+
+| Parameter | Type | Required | Description |
+|-----------|------|----------|-------------|
+| content | string | Yes | Content to validate |
+
+## Response
+
+```json
+{
+  "success": true,
+  "safe": true,
+  "issues": []
+}
+```
+
+## Example Prompts
+
+- "Validate this HTML before saving"
+- "Check if this content contains unsafe scripts"
+
+## Related Tools
+
+- [wordpress_update_page](/tools/pages/update-page)
+- [wordpress_update_post](/tools/posts/update-post)
+
+## Notes
+
+- Use this when you are about to inject HTML/JS/CSS and want an extra safety check
+
+

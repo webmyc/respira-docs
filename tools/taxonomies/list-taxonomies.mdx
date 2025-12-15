@@ -1,0 +1,42 @@
+---
+title: "wordpress_list_taxonomies"
+description: "List all registered WordPress taxonomies."
+---
+
+# wordpress_list_taxonomies
+
+List all registered taxonomies.
+
+## Parameters
+
+This tool takes no parameters.
+
+## Response
+
+```json
+{
+  "success": true,
+  "taxonomies": [
+    {
+      "name": "category",
+      "label": "Categories"
+    },
+    {
+      "name": "post_tag",
+      "label": "Tags"
+    }
+  ]
+}
+```
+
+## Example Prompts
+
+- "List all taxonomies"
+- "What taxonomies are available on this site?"
+
+## Related Tools
+
+- [wordpress_list_terms](/tools/taxonomies/list-terms)
+- [wordpress_get_taxonomy](/tools/taxonomies/get-taxonomy)
+
+

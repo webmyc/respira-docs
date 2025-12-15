@@ -1,0 +1,47 @@
+---
+title: "wordpress_list_custom_posts"
+description: "List posts for a given custom post type with optional filters and pagination."
+---
+
+# wordpress_list_custom_posts
+
+List posts of a custom post type.
+
+## Parameters
+
+| Parameter | Type | Required | Description |
+|-----------|------|----------|-------------|
+| type | string | Yes | Post type name |
+| status | string | No | Post status |
+| search | string | No | Search term |
+| page | number | No | Page number |
+| perPage | number | No | Items per page |
+
+## Response
+
+```json
+{
+  "success": true,
+  "type": "product",
+  "posts": [
+    {
+      "id": 3001,
+      "title": "Product A",
+      "status": "publish"
+    }
+  ]
+}
+```
+
+## Example Prompts
+
+- "List products"
+- "List custom posts for type 'portfolio'"
+- "Search products for 'starter'"
+
+## Related Tools
+
+- [wordpress_get_custom_post](/tools/custom-posts/get-custom-post)
+- [wordpress_create_custom_post](/tools/custom-posts/create-custom-post)
+
+

@@ -1,0 +1,40 @@
+---
+title: "wordpress_delete_option"
+description: "Delete a WordPress option."
+---
+
+# wordpress_delete_option
+
+Delete an option.
+
+## Parameters
+
+| Parameter | Type | Required | Description |
+|-----------|------|----------|-------------|
+| option | string | Yes | Option name |
+
+## Response
+
+```json
+{
+  "success": true,
+  "deleted": true,
+  "option": "some_option"
+}
+```
+
+## Example Prompts
+
+- "Delete option 'some_option'"
+- "Remove the legacy setting option"
+
+## Related Tools
+
+- [wordpress_get_option](/tools/options/get-option)
+- [wordpress_update_option](/tools/options/update-option)
+
+## Notes
+
+- Deleting options can break plugins/themes; use caution
+
+

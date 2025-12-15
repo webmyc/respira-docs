@@ -1,0 +1,62 @@
+---
+title: "How Respira Security Works"
+description: "Respira is designed with security as a core principle: API keys, request validation, safe editing, content sanitization, and audit logging."
+---
+
+# How Respira Security Works
+
+Respira is designed with security as a core principle.
+
+## Authentication Flow
+
+1. You generate an API key in WordPress Admin
+2. MCP server sends the key with each request
+3. WordPress validates the key before processing
+4. Actions run through WordPress permissions and capabilities
+
+## API Key Security
+
+- Keys start with `respira_`
+- Cryptographically random
+- Stored securely (not meant to be shared)
+- Revokable at any time from WordPress Admin
+
+## Request Validation
+
+Every request is validated for:
+
+- Valid API key
+- User permissions for the action
+- Content security (basic XSS / injection safety checks)
+
+## Safe Editing Workflow
+
+By default, Respira never modifies live content directly:
+
+1. Edit request received
+2. Duplicate created as draft
+3. Changes applied to duplicate
+4. Admin reviews in Approve Edits
+5. Approve → duplicate replaces original
+6. Reject → duplicate deleted
+
+## Content Security
+
+Use [wordpress_validate_security](/tools/other/validate-security) to validate content before saving.
+
+## Audit Logging
+
+Many actions are logged (depending on your plan / plugin version). Logs typically include:
+
+- API key used (or key ID/prefix)
+- Action performed
+- Timestamp
+- Success/failure
+
+## See Also
+
+- [API Key Management](/security/api-key-management)
+- [Audit Logging](/security/audit-logging)
+- [Data Privacy](/security/data-privacy)
+
+

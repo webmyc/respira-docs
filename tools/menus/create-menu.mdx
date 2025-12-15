@@ -1,0 +1,37 @@
+---
+title: "wordpress_create_menu"
+description: "Create a new WordPress navigation menu."
+---
+
+# wordpress_create_menu
+
+Create a new navigation menu.
+
+## Parameters
+
+| Parameter | Type | Required | Description |
+|-----------|------|----------|-------------|
+| name | string | Yes | Menu name |
+| description | string | No | Menu description |
+
+## Response
+
+```json
+{
+  "success": true,
+  "id": 10,
+  "name": "Primary Menu"
+}
+```
+
+## Example Prompts
+
+- "Create a new menu called 'Footer Menu'"
+- "Create a menu named 'Resources'"
+
+## Related Tools
+
+- [wordpress_update_menu](/tools/menus/update-menu)
+- [wordpress_assign_menu_location](/tools/menus/assign-menu-location)
+
+

@@ -1,0 +1,39 @@
+---
+title: "wordpress_read_post"
+description: "Read a WordPress post, including its content and metadata."
+---
+
+# wordpress_read_post
+
+Get full content of a specific post.
+
+## Parameters
+
+| Parameter | Type | Required | Description |
+|-----------|------|----------|-------------|
+| id | number | Yes | Post ID |
+
+## Response
+
+```json
+{
+  "success": true,
+  "id": 101,
+  "title": "Hello World",
+  "status": "publish",
+  "content": "<p>...</p>",
+  "meta": {}
+}
+```
+
+## Example Prompts
+
+- "Read post 101"
+- "Show me the content of my latest blog post"
+
+## Related Tools
+
+- [wordpress_list_posts](/tools/posts/list-posts)
+- [wordpress_update_post](/tools/posts/update-post)
+
+

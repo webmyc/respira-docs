@@ -1,0 +1,41 @@
+---
+title: "Audit Logging"
+description: "What Respira logs, why it matters, and how to use logs for accountability and debugging."
+---
+
+# Audit Logging
+
+Audit logs help you understand what actions were performed through Respira and when.
+
+## What gets logged
+
+Typical log entries include:
+
+- Timestamp
+- Tool/action performed (e.g., update page, delete duplicate)
+- Success/failure
+- Site identifier (in multi-site setups)
+
+Depending on your plan and plugin version, logs may also include:
+
+- API key identifier/prefix used
+- Request metadata (e.g., IP address)
+
+## Why it matters
+
+- Debug unexpected changes
+- Support compliance and team accountability
+- Trace safe-edit approvals and rejections
+
+## Best Practices
+
+- Keep a staging site for risky actions
+- Review approvals in WordPress Admin before publishing
+- Revoke unused keys
+
+## See Also
+
+- [How Respira Security Works](/security/how-it-works)
+- [API Key Management](/security/api-key-management)
+
+

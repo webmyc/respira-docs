@@ -1,0 +1,40 @@
+---
+title: "wordpress_delete_menu"
+description: "Delete a WordPress navigation menu."
+---
+
+# wordpress_delete_menu
+
+Delete a navigation menu.
+
+## Parameters
+
+| Parameter | Type | Required | Description |
+|-----------|------|----------|-------------|
+| id | number | Yes | Menu ID |
+
+## Response
+
+```json
+{
+  "success": true,
+  "deleted": true,
+  "id": 10
+}
+```
+
+## Example Prompts
+
+- "Delete menu 10"
+- "Remove the unused footer menu"
+
+## Related Tools
+
+- [wordpress_list_menus](/tools/menus/list-menus)
+- [wordpress_get_menu](/tools/menus/get-menu)
+
+## Notes
+
+- Deleting a menu does not delete pages/posts it links to
+
+

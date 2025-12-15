@@ -1,0 +1,63 @@
+---
+title: "wordpress_get_site_context"
+description: "Get comprehensive information about your WordPress site: version, theme, plugins, post types, and detected builders."
+---
+
+# wordpress_get_site_context
+
+Get comprehensive information about the WordPress site including version, theme, plugins, custom post types, and page builder.
+
+## Parameters
+
+This tool takes no parameters.
+
+## Response
+
+```json
+{
+  "success": true,
+  "site": {
+    "url": "https://example.com",
+    "wp_version": "6.5.3",
+    "php_version": "8.2"
+  },
+  "theme": {
+    "name": "My Theme",
+    "version": "1.0.0"
+  },
+  "plugins": [
+    {
+      "name": "Respira for WordPress",
+      "version": "2.0.9",
+      "active": true
+    }
+  ],
+  "builders": [
+    "divi",
+    "elementor"
+  ],
+  "custom_post_types": [
+    "page",
+    "post",
+    "product"
+  ]
+}
+```
+
+## Example Prompts
+
+- "Get site context"
+- "What theme and plugins are installed?"
+- "What page builders are active on this site?"
+
+## Related Tools
+
+- [wordpress_get_theme_docs](/tools/context/get-theme-docs) - Theme templates and docs
+- [wordpress_get_builder_info](/tools/context/get-builder-info) - Active builder modules/widgets
+
+## Notes
+
+- Read-only tool - doesn’t modify content
+- Best first step before doing any major content or builder changes
+
+

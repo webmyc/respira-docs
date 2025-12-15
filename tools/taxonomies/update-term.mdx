@@ -1,0 +1,42 @@
+---
+title: "wordpress_update_term"
+description: "Update an existing taxonomy term."
+---
+
+# wordpress_update_term
+
+Update a term.
+
+## Parameters
+
+| Parameter | Type | Required | Description |
+|-----------|------|----------|-------------|
+| taxonomy | string | Yes | Taxonomy name |
+| id | number | Yes | Term ID |
+| name | string | No | Term name |
+| slug | string | No | Term slug |
+| description | string | No | Term description |
+| parent | number | No | Parent term ID |
+
+## Response
+
+```json
+{
+  "success": true,
+  "updated": true,
+  "taxonomy": "category",
+  "id": 123
+}
+```
+
+## Example Prompts
+
+- "Rename category 123 to 'News & Updates'"
+- "Update the description for tag 99"
+
+## Related Tools
+
+- [wordpress_get_term](/tools/taxonomies/get-term)
+- [wordpress_list_terms](/tools/taxonomies/list-terms)
+
+

@@ -1,0 +1,39 @@
+---
+title: "wordpress_list_menu_locations"
+description: "List all registered menu locations and the menus assigned to them."
+---
+
+# wordpress_list_menu_locations
+
+List all registered menu locations and their assigned menus.
+
+## Parameters
+
+This tool takes no parameters.
+
+## Response
+
+```json
+{
+  "success": true,
+  "locations": [
+    {
+      "location": "primary",
+      "description": "Primary Menu",
+      "menu_id": 10
+    }
+  ]
+}
+```
+
+## Example Prompts
+
+- "List menu locations"
+- "Which menu is assigned to the primary navigation?"
+
+## Related Tools
+
+- [wordpress_assign_menu_location](/tools/menus/assign-menu-location)
+- [wordpress_list_menus](/tools/menus/list-menus)
+
+

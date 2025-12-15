@@ -1,0 +1,140 @@
+---
+title: "wordpress_analyze_seo"
+description: "Comprehensive SEO analysis including meta tags, heading structure, image alt text, internal linking, content quality, and schema markup."
+---
+
+# wordpress_analyze_seo
+
+Comprehensive SEO analysis including meta tags, heading structure, image alt text, internal linking, content quality, and schema markup.
+
+## Parameters
+
+| Parameter | Type | Required | Description |
+|-----------|------|----------|-------------|
+| pageId | number | Yes | WordPress page ID to analyze |
+
+## Response
+
+```json
+{
+  "success": true,
+  "score": 78,
+  "grade": "C",
+  "issues": [
+    {
+      "type": "warning",
+      "message": "Meta description too short",
+      "severity": "medium",
+      "fix": "Expand meta description to 120-160 characters"
+    }
+  ],
+  "recommendations": [
+    {
+      "priority": "high",
+      "action": "Add schema markup",
+      "details": "Add JSON-LD for better search engine understanding"
+    }
+  ],
+  "metrics": {
+    "meta_title_length": 45,
+    "meta_description_length": 89,
+    "h1_count": 1,
+    "h2_count": 4,
+    "word_count": 1250,
+    "images_with_alt": 8,
+    "images_without_alt": 2,
+    "internal_links": 5,
+    "external_links": 3,
+    "has_schema": false
+  }
+}
+```
+
+## What It Checks
+
+- **Meta Tags**: Title (50-60 chars), description (120-160 chars), Open Graph
+- **Headings**: H1 presence (exactly one), hierarchy (H2→H3→H4)
+- **Images**: Alt text presence and quality
+- **Links**: Internal link count, external link count
+- **Content**: Word count (300+ recommended), keyword density
+- **Schema**: JSON-LD presence, appropriate types
+
+## Example Prompts
+
+- "Analyze the SEO of my homepage"
+- "Check SEO on page 42"
+- "Run an SEO audit on the About page"
+- "What SEO issues does my contact page have?"
+- "Give me SEO recommendations for the services page"
+
+## Full Example
+
+**Prompt:** "Analyze SEO on my homepage"
+
+**Response:**
+
+```json
+{
+  "success": true,
+  "score": 65,
+  "grade": "D",
+  "issues": [
+    {
+      "type": "error",
+      "message": "Missing meta title",
+      "severity": "critical",
+      "fix": "Add a meta title using Yoast or RankMath"
+    },
+    {
+      "type": "warning",
+      "message": "3 images missing alt text",
+      "severity": "medium",
+      "fix": "Add descriptive alt text to all images"
+    }
+  ],
+  "recommendations": [
+    {
+      "priority": "high",
+      "action": "Install an SEO plugin",
+      "details": "Yoast SEO or RankMath for meta tag management"
+    }
+  ],
+  "metrics": {
+    "meta_title_length": 0,
+    "meta_description_length": 0,
+    "h1_count": 1,
+    "h2_count": 3,
+    "word_count": 450,
+    "images_with_alt": 5,
+    "images_without_alt": 3,
+    "alt_text_coverage": 62.5,
+    "internal_links": 2,
+    "external_links": 4,
+    "has_schema": false
+  }
+}
+```
+
+## Score Calculation
+
+- Starts at 100
+- Critical issues: -25 points each
+- High severity: -15 points each
+- Medium severity: -10 points each
+- Low severity: -5 points each
+- Bonus: +5 for 90%+ alt text coverage
+- Bonus: +5 for 500+ word count
+
+## Related Tools
+
+- [wordpress_check_seo_issues](/tools/analysis/check-seo-issues) - Quick issue check
+- [wordpress_analyze_readability](/tools/analysis/analyze-readability) - Content readability
+- [wordpress_analyze_aeo](/tools/analysis/analyze-aeo) - AI Engine Optimization
+
+## Notes
+
+- Read-only tool - doesn't modify content
+- Works with Yoast SEO, RankMath, and All in One SEO
+- If no SEO plugin is installed, falls back to post title for meta title
+
+

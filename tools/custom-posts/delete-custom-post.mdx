@@ -1,0 +1,38 @@
+---
+title: "wordpress_delete_custom_post"
+description: "Delete a custom post by type and ID."
+---
+
+# wordpress_delete_custom_post
+
+Delete a custom post.
+
+## Parameters
+
+| Parameter | Type | Required | Description |
+|-----------|------|----------|-------------|
+| type | string | Yes | Post type name |
+| id | number | Yes | Post ID |
+
+## Response
+
+```json
+{
+  "success": true,
+  "deleted": true,
+  "type": "product",
+  "id": 3001
+}
+```
+
+## Example Prompts
+
+- "Delete product 3001"
+- "Remove portfolio item 42"
+
+## Related Tools
+
+- [wordpress_list_custom_posts](/tools/custom-posts/list-custom-posts)
+- [wordpress_update_custom_post](/tools/custom-posts/update-custom-post)
+
+

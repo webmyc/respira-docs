@@ -1,0 +1,42 @@
+---
+title: "wordpress_install_plugin"
+description: "EXPERIMENTAL: Install a plugin from WordPress.org or a ZIP URL."
+---
+
+# wordpress_install_plugin
+
+EXPERIMENTAL: Install a plugin from WordPress.org or a ZIP URL. Requires plugin management to be enabled in Respira settings. Use with caution.
+
+## Parameters
+
+| Parameter | Type | Required | Description |
+|-----------|------|----------|-------------|
+| slugOrUrl | string | Yes | Plugin slug (from WordPress.org) or ZIP file URL |
+| source | string | No | Source type: \"wordpress.org\" or \"url\" |
+
+## Response
+
+```json
+{
+  "success": true,
+  "installed": true,
+  "slug": "wordpress-seo"
+}
+```
+
+## Example Prompts
+
+- "Install Yoast SEO"
+- "Install plugin from this ZIP URL: https://example.com/plugin.zip"
+
+## Related Tools
+
+- [wordpress_activate_plugin](/tools/plugins/activate-plugin)
+- [wordpress_delete_plugin](/tools/plugins/delete-plugin)
+
+## Notes
+
+- Experimental: enable plugin management in Respira settings first
+- Always verify plugin source before installing
+
+

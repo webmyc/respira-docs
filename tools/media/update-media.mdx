@@ -1,0 +1,39 @@
+---
+title: "wordpress_update_media"
+description: "Update media metadata (title, alt text, caption) for a WordPress media item."
+---
+
+# wordpress_update_media
+
+Update media metadata (title, alt text, caption).
+
+## Parameters
+
+| Parameter | Type | Required | Description |
+|-----------|------|----------|-------------|
+| id | number | Yes | Media ID |
+| title | string | No | Media title |
+| alt | string | No | Alt text |
+| caption | string | No | Caption |
+
+## Response
+
+```json
+{
+  "success": true,
+  "id": 501,
+  "updated": true
+}
+```
+
+## Example Prompts
+
+- "Set alt text for media 501 to 'Respira logo'"
+- "Update the caption for image 777"
+
+## Related Tools
+
+- [wordpress_get_media](/tools/media/get-media)
+- [wordpress_analyze_images](/tools/analysis/analyze-images)
+
+

@@ -1,0 +1,48 @@
+---
+title: "wordpress_list_posts"
+description: "List WordPress blog posts with optional filtering and pagination."
+---
+
+# wordpress_list_posts
+
+List all blog posts with optional filtering.
+
+## Parameters
+
+| Parameter | Type | Required | Description |
+|-----------|------|----------|-------------|
+| status | string | No | Filter by status |
+| search | string | No | Search term |
+| page | number | No | Page number |
+| perPage | number | No | Items per page |
+
+## Response
+
+```json
+{
+  "success": true,
+  "posts": [
+    {
+      "id": 101,
+      "title": "Hello World",
+      "status": "publish",
+      "slug": "hello-world"
+    }
+  ],
+  "page": 1,
+  "perPage": 20
+}
+```
+
+## Example Prompts
+
+- "List my latest blog posts"
+- "List draft posts"
+- "Search posts for 'seo'"
+
+## Related Tools
+
+- [wordpress_read_post](/tools/posts/read-post)
+- [wordpress_update_post](/tools/posts/update-post)
+
+

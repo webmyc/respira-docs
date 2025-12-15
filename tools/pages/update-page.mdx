@@ -1,0 +1,107 @@
+---
+title: "wordpress_update_page"
+description: "Update a WordPress page using Respira's duplicate-first safety workflow."
+---
+
+# wordpress_update_page
+
+Update a WordPress page. Respira automatically creates a duplicate for safety - your live page stays untouched until you approve changes.
+
+## Parameters
+
+| Parameter | Type | Required | Description |
+|-----------|------|----------|-------------|
+| id | number | Yes | Page ID to update |
+| title | string | No | New page title |
+| content | string | No | New page content (HTML) |
+| status | string | No | Page status: publish, draft, pending |
+| customCss | string | No | Custom CSS for the page |
+| meta | object | No | Post meta data |
+| force | boolean | No | ⚠️ Force direct edit (not recommended) |
+
+## Safety Workflow
+
+By default, Respira never edits live pages directly:
+
+1. You request an update to page 42
+2. Respira creates a duplicate (page 43)
+3. Changes are applied to the duplicate
+4. You review in WordPress Admin → Respira → Approve Edits
+5. Approve: duplicate replaces original
+6. Reject: duplicate deleted, original untouched
+
+## Response
+
+```json
+{
+  "id": 43,
+  "title": "Updated Title",
+  "status": "draft",
+  "respira_message": "Respira says: ✅ Created duplicate for safe editing",
+  "duplicate_created": true,
+  "duplicate_id": 43,
+  "original_id": 42,
+  "approval_url": "https://yoursite.com/wp-admin/admin.php?page=respira-approvals"
+}
+```
+
+## Example Prompts
+
+- "Update the homepage title to 'Welcome Home'"
+- "Change the about page content to include our new mission statement"
+- "Set the contact page to draft status"
+- "Update page 42 with the new pricing information"
+
+## Full Example
+
+**Prompt:** "Update the homepage title to 'Welcome to Acme Corp'"
+
+**Response:**
+
+```json
+{
+  "id": 156,
+  "title": "Welcome to Acme Corp",
+  "slug": "home-respira-draft",
+  "status": "draft",
+  "respira_message": "Respira says: ✅ Created duplicate of 'Home' for safe editing. Review and approve at Respira → Approve Edits.",
+  "respira_instructions": "Go to WordPress Admin → Respira → Approve Edits to review and publish changes.",
+  "duplicate_created": true,
+  "duplicate_id": 156,
+  "original_id": 2,
+  "approval_url": "https://yoursite.com/wp-admin/admin.php?page=respira-approvals"
+}
+```
+
+## The `force` Parameter
+
+Setting `force: true` bypasses the safety workflow and edits the live page directly.
+
+**Requirements for force editing:**
+
+1. \"Allow Direct Editing\" must be enabled in Respira settings
+2. Three separate confirmations are required
+3. Not recommended for production sites
+
+## Updating Page Builder Content
+
+For pages built with Divi, Elementor, etc., use:
+
+- [wordpress_update_module](/tools/builders/update-module) - Update specific modules
+- [wordpress_inject_builder_content](/tools/builders/inject-content) - Replace builder structure
+
+Direct content updates work best for Gutenberg/classic editor pages.
+
+## Related Tools
+
+- [wordpress_read_page](/tools/pages/read-page) - Read page content first
+- [wordpress_create_page_duplicate](/tools/pages/create-duplicate) - Manual duplicate
+- [wordpress_update_module](/tools/builders/update-module) - Page builder updates
+
+## Notes
+
+- Always creates a duplicate unless `force: true` and direct editing is enabled
+- Preserves all page meta, featured images, and builder data
+- Original page remains published and unchanged until approval
+
+

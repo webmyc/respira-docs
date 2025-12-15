@@ -1,0 +1,62 @@
+---
+title: "Bulk Content Updates"
+description: "Safely update many pages/posts with AI using Respira: inventory content, define rules, apply changes to duplicates, and approve in batches."
+---
+
+# Bulk Content Updates
+
+Use Respira to apply consistent updates across many pages/posts without risking your live site.
+
+## Recommended Workflow
+
+## Step 1: Inventory what exists
+
+- Pages: [wordpress_list_pages](/tools/pages/list-pages)
+- Posts: [wordpress_list_posts](/tools/posts/list-posts)
+
+## Step 2: Define exact rules (avoid ambiguity)
+
+Examples:
+
+- Replace all occurrences of “Book a call” with “Schedule a call”
+- Update footer address everywhere
+- Change CTA button text from “Learn More” → “Get Started”
+
+<Callout kind="info">
+When doing bulk edits, be extremely explicit about what should change and what must not change. Ask the AI to show a summary before applying edits.
+</Callout>
+
+## Step 3: Use duplicates (default safety)
+
+For each page/post update, Respira creates a draft duplicate. You approve the batch after review.
+
+- Pages: [wordpress_update_page](/tools/pages/update-page)
+- Posts: [wordpress_update_post](/tools/posts/update-post)
+
+## Step 4: Prefer module-level updates for builder sites
+
+If your site uses a page builder, module updates are safer than replacing full page HTML:
+
+- [wordpress_extract_builder_content](/tools/builders/extract-content)
+- [wordpress_update_module](/tools/builders/update-module)
+
+## Step 5: Verify
+
+Re-run checks after updates:
+
+- SEO: [wordpress_check_seo_issues](/tools/analysis/check-seo-issues)
+- Readability: [wordpress_analyze_readability](/tools/analysis/analyze-readability)
+
+## Example Bulk Update Prompt
+
+```text
+I want to update 10 pages safely.
+
+1) List all published pages and identify the ones that contain the phrase “Book a call”.
+2) For each matching page, create a safe update that replaces ONLY that phrase with “Schedule a call”.
+3) Do not change anything else. Keep the rest of the HTML and formatting identical.
+4) Return a summary of pages changed (page ID + old snippet + new snippet).
+5) Then apply the updates using Respira’s duplicate-first workflow.
+```
+
+

@@ -1,0 +1,72 @@
+---
+title: "wordpress_get_core_web_vitals"
+description: "Get Core Web Vitals metrics (LCP, FID, CLS) for a WordPress page."
+---
+
+# wordpress_get_core_web_vitals
+
+Get Core Web Vitals metrics (LCP, FID, CLS) for a page.
+
+## Parameters
+
+| Parameter | Type | Required | Description |
+|-----------|------|----------|-------------|
+| pageId | number | Yes | WordPress page ID to analyze |
+
+## Response
+
+```json
+{
+  "success": true,
+  "metrics": {
+    "lcp_ms": 2400,
+    "fid_ms": 35,
+    "cls": 0.06
+  },
+  "ratings": {
+    "lcp": "needs-improvement",
+    "fid": "good",
+    "cls": "good"
+  }
+}
+```
+
+## Example Prompts
+
+- "Get Core Web Vitals for my homepage"
+- "What are the LCP/FID/CLS scores for page 42?"
+- "Check CLS on the pricing page"
+
+## Full Example
+
+**Prompt:** "Get Core Web Vitals for page 42"
+
+**Response:**
+
+```json
+{
+  "success": true,
+  "metrics": {
+    "lcp_ms": 1800,
+    "fid_ms": 22,
+    "cls": 0.02
+  },
+  "ratings": {
+    "lcp": "good",
+    "fid": "good",
+    "cls": "good"
+  }
+}
+```
+
+## Related Tools
+
+- [wordpress_analyze_performance](/tools/analysis/analyze-performance) - Detailed performance analysis
+- [wordpress_analyze_images](/tools/analysis/analyze-images) - Image optimization opportunities
+
+## Notes
+
+- Read-only tool - doesn’t modify content
+- Use it to establish a baseline before/after performance changes
+
+

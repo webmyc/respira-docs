@@ -1,0 +1,40 @@
+---
+title: "wordpress_update_user"
+description: "Update a WordPress user's email, display name, password, or role."
+---
+
+# wordpress_update_user
+
+Update user information.
+
+## Parameters
+
+| Parameter | Type | Required | Description |
+|-----------|------|----------|-------------|
+| id | number | Yes | User ID |
+| email | string | No | Email address |
+| display_name | string | No | Display name |
+| password | string | No | Password |
+| role | string | No | User role |
+
+## Response
+
+```json
+{
+  "success": true,
+  "updated": true,
+  "id": 55
+}
+```
+
+## Example Prompts
+
+- "Change user 55 role to editor"
+- "Update user 55 display name to 'John Smith'"
+
+## Related Tools
+
+- [wordpress_get_user](/tools/users/get-user)
+- [wordpress_list_users](/tools/users/list-users)
+
+

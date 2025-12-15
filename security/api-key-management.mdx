@@ -1,0 +1,39 @@
+---
+title: "API Key Management"
+description: "How to generate, store, rotate, and revoke Respira API keys safely."
+---
+
+# API Key Management
+
+API keys authenticate your AI assistant (via the MCP server) to your WordPress site.
+
+## Generate an API Key
+
+1. Go to **WordPress Admin → Respira → API Keys**
+2. Click **Generate API Key**
+3. Copy the key and store it securely (you won’t see it again)
+
+## Store Keys Safely
+
+- Treat the key like a password
+- Do not paste it into public tickets or screenshots
+- Prefer environment variables or local config files
+
+## Rotate Keys
+
+If you suspect a leak or want to rotate regularly:
+
+1. Generate a new key
+2. Update your MCP config
+3. Revoke the old key
+
+## Revoke Keys
+
+Revoke any key you no longer need in **Respira → API Keys**.
+
+## See Also
+
+- [How Respira Security Works](/security/how-it-works)
+- [Data Privacy](/security/data-privacy)
+
+

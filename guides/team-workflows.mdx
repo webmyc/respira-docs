@@ -1,0 +1,53 @@
+---
+title: "Team Workflows"
+description: "How teams use Respira: define roles, use safe approvals, standardize module labels, and keep changes reviewable."
+---
+
+# Team Workflows
+
+Respira’s duplicate-first workflow makes it practical for teams to use AI safely.
+
+## Recommended Team Pattern
+
+## 1) Agree on naming (admin labels)
+
+Label key modules consistently:
+
+- HeroHeading
+- HeroCTAButton
+- FooterEmail
+- PricingTable
+
+Then edits become deterministic:
+
+```text
+Update the module labeled "HeroCTAButton" to say "Start Free Trial"
+```
+
+## 2) Always read before you write
+
+Make the AI inspect the current state first:
+
+- [wordpress_read_page](/tools/pages/read-page)
+- [wordpress_extract_builder_content](/tools/builders/extract-content)
+
+## 3) Use approvals as a team checkpoint
+
+All edits land in drafts/duplicates first. A designated reviewer approves or rejects.
+
+## 4) Use analysis tools in review
+
+- [wordpress_analyze_seo](/tools/analysis/analyze-seo)
+- [wordpress_analyze_performance](/tools/analysis/analyze-performance)
+- [wordpress_analyze_aeo](/tools/analysis/analyze-aeo)
+
+## 5) Track changes with consistent prompts
+
+Have a shared “house style” prompt, including:
+
+- What to change
+- What must not change
+- How to report changes (diff summary)
+- Which tools to use (module-level vs full-page edits)
+
+

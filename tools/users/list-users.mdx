@@ -1,0 +1,44 @@
+---
+title: "wordpress_list_users"
+description: "List WordPress users with optional search and pagination."
+---
+
+# wordpress_list_users
+
+List all users with optional filtering by search term.
+
+## Parameters
+
+| Parameter | Type | Required | Description |
+|-----------|------|----------|-------------|
+| search | string | No | Search term |
+| page | number | No | Page number |
+| perPage | number | No | Items per page |
+
+## Response
+
+```json
+{
+  "success": true,
+  "users": [
+    {
+      "id": 1,
+      "username": "admin",
+      "email": "admin@example.com",
+      "role": "administrator"
+    }
+  ]
+}
+```
+
+## Example Prompts
+
+- "List all users"
+- "Search users for 'john'"
+
+## Related Tools
+
+- [wordpress_get_user](/tools/users/get-user)
+- [wordpress_update_user](/tools/users/update-user)
+
+

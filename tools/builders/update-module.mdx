@@ -1,0 +1,154 @@
+---
+title: "wordpress_update_module"
+description: "Update a specific module within a page builder page by admin label, path, or type—preserving all other content."
+---
+
+# wordpress_update_module
+
+Update a specific module within a page builder page. Find modules by `admin_label`, `path`, or `type`. Only updates the targeted module - all other content is preserved.
+
+## Parameters
+
+| Parameter | Type | Required | Description |
+|-----------|------|----------|-------------|
+| builder | string | Yes | Builder name: divi, elementor, bricks, etc. |
+| pageId | number | Yes | Page ID |
+| moduleIdentifier | object | Yes | How to find the module (see below) |
+| updates | object | Yes | Changes to apply |
+
+### moduleIdentifier Options
+
+**By admin_label** (recommended):
+
+```json
+{
+  "admin_label": "Hero CTA Button"
+}
+```
+
+**By path**:
+
+```json
+{
+  "path": "sections[0].rows[0].modules[2]"
+}
+```
+
+**By type**:
+
+```json
+{
+  "type": "et_pb_button",
+  "match_content": "Get Started"
+}
+```
+
+### updates Object
+
+```json
+{
+  "content": "New content for the module",
+  "attributes": {
+    "button_text": "Click Here",
+    "button_url": "/contact"
+  }
+}
+```
+
+## Response
+
+```json
+{
+  "success": true,
+  "message": "Module updated successfully",
+  "module_found": true,
+  "module_type": "et_pb_button",
+  "changes_applied": {
+    "button_text": "Click Here"
+  }
+}
+```
+
+## Example Prompts
+
+- "Update the Hero CTA Button text to 'Contact Us'"
+- "Change the button in the first section to link to /pricing"
+- "Find all buttons that say 'Learn More' and change them to 'Get Started'"
+- "Update the module labeled 'Footer Email' with our new address"
+
+## Full Example
+
+**Prompt:** "Change the hero button text to 'Start Free Trial'"
+
+**Request:**
+
+```json
+{
+  "builder": "divi",
+  "pageId": 42,
+  "moduleIdentifier": {
+    "admin_label": "Hero CTA"
+  },
+  "updates": {
+    "attributes": {
+      "button_text": "Start Free Trial"
+    }
+  }
+}
+```
+
+**Response:**
+
+```json
+{
+  "success": true,
+  "message": "Module 'Hero CTA' updated successfully",
+  "module_found": true,
+  "module_type": "et_pb_button",
+  "module_path": "sections[0].rows[0].columns[0].modules[1]",
+  "changes_applied": {
+    "button_text": "Start Free Trial"
+  },
+  "duplicate_created": true,
+  "duplicate_id": 156,
+  "approval_url": "https://yoursite.com/wp-admin/admin.php?page=respira-approvals"
+}
+```
+
+## Setting Admin Labels
+
+For reliable targeting, set admin labels in your page builder:
+
+**Divi:** Advanced tab → Admin Label  
+**Elementor:** Advanced tab → CSS ID or Navigator name  
+**Bricks:** Settings → Admin Label  
+**Oxygen:** Structure panel → Label  
+
+## Supported Builders
+
+| Builder | Module Identifier Support |
+|---------|--------------------------|
+| Divi | admin_label, path, type ✓ |
+| Elementor | admin_label, path, type ✓ |
+| Bricks | admin_label, path, type ✓ |
+| Oxygen | admin_label, path, type ✓ |
+| WPBakery | path, type ✓ |
+| Beaver Builder | admin_label, path, type ✓ |
+| Brizy | path, type ✓ |
+| Visual Composer | path, type ✓ |
+| Thrive | path, type ✓ |
+| Gutenberg | path, type ✓ |
+
+## Related Tools
+
+- [wordpress_extract_builder_content](/tools/builders/extract-content) - View structure first
+- [wordpress_inject_builder_content](/tools/builders/inject-content) - Replace entire structure
+- [Builder Reference: Divi](/builders/divi) - Divi-specific documentation
+
+## Notes
+
+- Automatically creates duplicate for safety (same as wordpress_update_page)
+- Preserves all other modules, sections, and styling
+- If module not found, returns error with available modules list
+
+

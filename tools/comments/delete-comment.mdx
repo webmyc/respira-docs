@@ -1,0 +1,36 @@
+---
+title: "wordpress_delete_comment"
+description: "Delete a WordPress comment."
+---
+
+# wordpress_delete_comment
+
+Delete a comment.
+
+## Parameters
+
+| Parameter | Type | Required | Description |
+|-----------|------|----------|-------------|
+| id | number | Yes | Comment ID |
+
+## Response
+
+```json
+{
+  "success": true,
+  "deleted": true,
+  "id": 9001
+}
+```
+
+## Example Prompts
+
+- "Delete comment 9001"
+- "Remove the spam comment with ID 9001"
+
+## Related Tools
+
+- [wordpress_list_comments](/tools/comments/list-comments)
+- [wordpress_update_comment](/tools/comments/update-comment)
+
+

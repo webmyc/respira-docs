@@ -1,0 +1,42 @@
+---
+title: "wordpress_get_term"
+description: "Get a taxonomy term by ID."
+---
+
+# wordpress_get_term
+
+Get term details.
+
+## Parameters
+
+| Parameter | Type | Required | Description |
+|-----------|------|----------|-------------|
+| taxonomy | string | Yes | Taxonomy name |
+| id | number | Yes | Term ID |
+
+## Response
+
+```json
+{
+  "success": true,
+  "taxonomy": "category",
+  "term": {
+    "id": 12,
+    "name": "News",
+    "slug": "news",
+    "description": ""
+  }
+}
+```
+
+## Example Prompts
+
+- "Get term 12 in taxonomy category"
+- "Show me term details for tag ID 99"
+
+## Related Tools
+
+- [wordpress_list_terms](/tools/taxonomies/list-terms)
+- [wordpress_update_term](/tools/taxonomies/update-term)
+
+

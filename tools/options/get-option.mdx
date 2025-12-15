@@ -1,0 +1,36 @@
+---
+title: "wordpress_get_option"
+description: "Get a WordPress option value by option name."
+---
+
+# wordpress_get_option
+
+Get option value by name.
+
+## Parameters
+
+| Parameter | Type | Required | Description |
+|-----------|------|----------|-------------|
+| option | string | Yes | Option name |
+
+## Response
+
+```json
+{
+  "success": true,
+  "option": "blogname",
+  "value": "My Site"
+}
+```
+
+## Example Prompts
+
+- "Get the blogname option"
+- "What is the value of option 'permalink_structure'?"
+
+## Related Tools
+
+- [wordpress_list_options](/tools/options/list-options)
+- [wordpress_update_option](/tools/options/update-option)
+
+

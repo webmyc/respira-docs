@@ -1,0 +1,47 @@
+---
+title: "wordpress_list_comments"
+description: "List WordPress comments with optional filters (status, post ID, pagination)."
+---
+
+# wordpress_list_comments
+
+List all comments with optional filtering.
+
+## Parameters
+
+| Parameter | Type | Required | Description |
+|-----------|------|----------|-------------|
+| status | string | No | Comment status (approve, hold, spam, trash) |
+| post_id | number | No | Filter by post ID |
+| page | number | No | Page number |
+| perPage | number | No | Items per page |
+
+## Response
+
+```json
+{
+  "success": true,
+  "comments": [
+    {
+      "id": 9001,
+      "post_id": 101,
+      "author": "Jane",
+      "status": "approve",
+      "content": "Great post!"
+    }
+  ]
+}
+```
+
+## Example Prompts
+
+- "List approved comments"
+- "Show comments waiting for moderation"
+- "List comments on post 101"
+
+## Related Tools
+
+- [wordpress_get_comment](/tools/comments/get-comment)
+- [wordpress_update_comment](/tools/comments/update-comment)
+
+

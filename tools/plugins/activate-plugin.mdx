@@ -1,0 +1,40 @@
+---
+title: "wordpress_activate_plugin"
+description: "EXPERIMENTAL: Activate a WordPress plugin."
+---
+
+# wordpress_activate_plugin
+
+EXPERIMENTAL: Activate a plugin. Requires plugin management to be enabled in Respira settings. Monitor the site after activation.
+
+## Parameters
+
+| Parameter | Type | Required | Description |
+|-----------|------|----------|-------------|
+| slug | string | Yes | Plugin slug |
+
+## Response
+
+```json
+{
+  "success": true,
+  "activated": true,
+  "slug": "woocommerce"
+}
+```
+
+## Example Prompts
+
+- "Activate WooCommerce"
+- "Enable plugin slug 'rank-math'"
+
+## Related Tools
+
+- [wordpress_deactivate_plugin](/tools/plugins/deactivate-plugin)
+- [wordpress_list_plugins](/tools/plugins/list-plugins)
+
+## Notes
+
+- Experimental: enable plugin management in Respira settings first
+
+

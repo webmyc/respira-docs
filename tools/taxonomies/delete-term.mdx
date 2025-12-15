@@ -1,0 +1,38 @@
+---
+title: "wordpress_delete_term"
+description: "Delete a taxonomy term."
+---
+
+# wordpress_delete_term
+
+Delete a term.
+
+## Parameters
+
+| Parameter | Type | Required | Description |
+|-----------|------|----------|-------------|
+| taxonomy | string | Yes | Taxonomy name |
+| id | number | Yes | Term ID |
+
+## Response
+
+```json
+{
+  "success": true,
+  "deleted": true,
+  "taxonomy": "category",
+  "id": 123
+}
+```
+
+## Example Prompts
+
+- "Delete category 123"
+- "Remove the unused tag 99"
+
+## Related Tools
+
+- [wordpress_list_terms](/tools/taxonomies/list-terms)
+- [wordpress_update_term](/tools/taxonomies/update-term)
+
+

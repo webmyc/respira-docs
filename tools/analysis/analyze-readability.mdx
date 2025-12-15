@@ -1,0 +1,75 @@
+---
+title: "wordpress_analyze_readability"
+description: "Analyze readability (Flesch score, sentence length, and paragraph structure) for a WordPress page."
+---
+
+# wordpress_analyze_readability
+
+Analyze content readability including Flesch Reading Ease score, sentence length, and paragraph structure.
+
+## Parameters
+
+| Parameter | Type | Required | Description |
+|-----------|------|----------|-------------|
+| pageId | number | Yes | WordPress page ID to analyze |
+
+## Response
+
+```json
+{
+  "success": true,
+  "score": 61,
+  "grade": "Plain English",
+  "metrics": {
+    "avg_sentence_length": 18.4,
+    "avg_paragraph_length": 3.2,
+    "passive_voice_pct": 9
+  },
+  "recommendations": [
+    "Shorten long sentences (aim for 12-18 words)",
+    "Break up long paragraphs (2-4 sentences each)"
+  ]
+}
+```
+
+## Example Prompts
+
+- "Analyze readability on my homepage"
+- "Check readability on page 42"
+- "Is my services page too complex?"
+
+## Full Example
+
+**Prompt:** "Analyze readability on page 42"
+
+**Response:**
+
+```json
+{
+  "success": true,
+  "score": 42,
+  "grade": "Difficult",
+  "metrics": {
+    "avg_sentence_length": 28.6,
+    "avg_paragraph_length": 6.7,
+    "passive_voice_pct": 21
+  },
+  "recommendations": [
+    "Rewrite long sentences into shorter, active-voice sentences",
+    "Add headings and bullet lists to improve scanning",
+    "Move key claims into the first 1-2 sentences of each section"
+  ]
+}
+```
+
+## Related Tools
+
+- [wordpress_analyze_seo](/tools/analysis/analyze-seo) - SEO analysis often correlates with readability
+- [wordpress_analyze_aeo](/tools/analysis/analyze-aeo) - AEO improves when content is structured and clear
+
+## Notes
+
+- Read-only tool - doesn’t modify content
+- Best results come from iterating: analyze → edit → analyze again
+
+

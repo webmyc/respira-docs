@@ -1,0 +1,42 @@
+---
+title: "wordpress_list_post_types"
+description: "List all registered WordPress post types."
+---
+
+# wordpress_list_post_types
+
+List all registered post types.
+
+## Parameters
+
+This tool takes no parameters.
+
+## Response
+
+```json
+{
+  "success": true,
+  "post_types": [
+    {
+      "type": "page",
+      "label": "Pages"
+    },
+    {
+      "type": "post",
+      "label": "Posts"
+    }
+  ]
+}
+```
+
+## Example Prompts
+
+- "List post types"
+- "What custom post types are available?"
+
+## Related Tools
+
+- [wordpress_list_custom_posts](/tools/custom-posts/list-custom-posts)
+- [wordpress_get_post_type](/tools/custom-posts/get-post-type)
+
+

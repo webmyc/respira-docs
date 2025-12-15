@@ -1,0 +1,40 @@
+---
+title: "wordpress_create_custom_post"
+description: "Create a new custom post for a given post type."
+---
+
+# wordpress_create_custom_post
+
+Create a new custom post.
+
+## Parameters
+
+| Parameter | Type | Required | Description |
+|-----------|------|----------|-------------|
+| type | string | Yes | Post type name |
+| title | string | Yes | Post title |
+| content | string | No | Post content |
+| status | string | No | Post status (default: draft) |
+
+## Response
+
+```json
+{
+  "success": true,
+  "type": "product",
+  "id": 3002,
+  "status": "draft"
+}
+```
+
+## Example Prompts
+
+- "Create a new product called 'Starter Plan'"
+- "Create a portfolio entry titled 'Case Study: Acme'"
+
+## Related Tools
+
+- [wordpress_update_custom_post](/tools/custom-posts/update-custom-post)
+- [wordpress_delete_custom_post](/tools/custom-posts/delete-custom-post)
+
+

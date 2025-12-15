@@ -1,0 +1,190 @@
+---
+title: "Tools Reference"
+description: "Complete reference for Respira's MCP tools. Learn what each tool does, its parameters, responses, and example prompts."
+---
+
+# Tools Reference
+
+Respira provides 60+ MCP tools for AI assistants to interact with WordPress. This reference documents every available tool.
+
+## Tool Categories
+
+### Context Tools (3 tools)
+
+Get information about your WordPress site, theme, and page builder.
+
+- [wordpress_get_site_context](/tools/context/get-site-context)
+- [wordpress_get_theme_docs](/tools/context/get-theme-docs)
+- [wordpress_get_builder_info](/tools/context/get-builder-info)
+
+### Page Tools (5 tools)
+
+List, read, create, update, and delete pages.
+
+- [wordpress_list_pages](/tools/pages/list-pages)
+- [wordpress_read_page](/tools/pages/read-page)
+- [wordpress_create_page_duplicate](/tools/pages/create-duplicate)
+- [wordpress_update_page](/tools/pages/update-page)
+- [wordpress_delete_page](/tools/pages/delete-page)
+
+### Post Tools (5 tools)
+
+Manage blog posts with full CRUD operations.
+
+- [wordpress_list_posts](/tools/posts/list-posts)
+- [wordpress_read_post](/tools/posts/read-post)
+- [wordpress_create_post_duplicate](/tools/posts/create-duplicate)
+- [wordpress_update_post](/tools/posts/update-post)
+- [wordpress_delete_post](/tools/posts/delete-post)
+
+### Builder Tools (3 tools)
+
+Work directly with page builder structures (Divi, Elementor, Bricks, etc.).
+
+- [wordpress_extract_builder_content](/tools/builders/extract-content)
+- [wordpress_inject_builder_content](/tools/builders/inject-content)
+- [wordpress_update_module](/tools/builders/update-module)
+
+### Analysis Tools (8 tools)
+
+Read-only analysis of SEO, performance, images, and AI Engine Optimization (AEO).
+
+- [wordpress_analyze_seo](/tools/analysis/analyze-seo)
+- [wordpress_check_seo_issues](/tools/analysis/check-seo-issues)
+- [wordpress_analyze_readability](/tools/analysis/analyze-readability)
+- [wordpress_analyze_performance](/tools/analysis/analyze-performance)
+- [wordpress_get_core_web_vitals](/tools/analysis/get-core-web-vitals)
+- [wordpress_analyze_images](/tools/analysis/analyze-images)
+- [wordpress_analyze_aeo](/tools/analysis/analyze-aeo)
+- [wordpress_check_structured_data](/tools/analysis/check-structured-data)
+
+### Menu Tools (12 tools)
+
+Manage WordPress navigation menus and menu items.
+
+- [wordpress_list_menus](/tools/menus/list-menus)
+- [wordpress_get_menu](/tools/menus/get-menu)
+- [wordpress_create_menu](/tools/menus/create-menu)
+- [wordpress_update_menu](/tools/menus/update-menu)
+- [wordpress_delete_menu](/tools/menus/delete-menu)
+- [wordpress_list_menu_locations](/tools/menus/list-menu-locations)
+- [wordpress_assign_menu_location](/tools/menus/assign-menu-location)
+- [wordpress_list_menu_items](/tools/menus/list-menu-items)
+- [wordpress_create_menu_item](/tools/menus/create-menu-item)
+- [wordpress_get_menu_item](/tools/menus/get-menu-item)
+- [wordpress_update_menu_item](/tools/menus/update-menu-item)
+- [wordpress_delete_menu_item](/tools/menus/delete-menu-item)
+
+### Media Tools (5 tools)
+
+Upload and manage media.
+
+- [wordpress_list_media](/tools/media/list-media)
+- [wordpress_get_media](/tools/media/get-media)
+- [wordpress_upload_media](/tools/media/upload-media)
+- [wordpress_update_media](/tools/media/update-media)
+- [wordpress_delete_media](/tools/media/delete-media)
+
+### User Tools (5 tools)
+
+Manage WordPress users.
+
+- [wordpress_list_users](/tools/users/list-users)
+- [wordpress_get_user](/tools/users/get-user)
+- [wordpress_create_user](/tools/users/create-user)
+- [wordpress_update_user](/tools/users/update-user)
+- [wordpress_delete_user](/tools/users/delete-user)
+
+### Taxonomy Tools (7 tools)
+
+Manage taxonomies and terms (categories, tags, custom taxonomies).
+
+- [wordpress_list_taxonomies](/tools/taxonomies/list-taxonomies)
+- [wordpress_get_taxonomy](/tools/taxonomies/get-taxonomy)
+- [wordpress_list_terms](/tools/taxonomies/list-terms)
+- [wordpress_get_term](/tools/taxonomies/get-term)
+- [wordpress_create_term](/tools/taxonomies/create-term)
+- [wordpress_update_term](/tools/taxonomies/update-term)
+- [wordpress_delete_term](/tools/taxonomies/delete-term)
+
+### Custom Post Type Tools (7 tools)
+
+Work with custom post types and their posts.
+
+- [wordpress_list_post_types](/tools/custom-posts/list-post-types)
+- [wordpress_get_post_type](/tools/custom-posts/get-post-type)
+- [wordpress_list_custom_posts](/tools/custom-posts/list-custom-posts)
+- [wordpress_get_custom_post](/tools/custom-posts/get-custom-post)
+- [wordpress_create_custom_post](/tools/custom-posts/create-custom-post)
+- [wordpress_update_custom_post](/tools/custom-posts/update-custom-post)
+- [wordpress_delete_custom_post](/tools/custom-posts/delete-custom-post)
+
+### Plugin Tools (6 tools)
+
+Experimental plugin management (install/activate/update/delete).
+
+- [wordpress_list_plugins](/tools/plugins/list-plugins)
+- [wordpress_install_plugin](/tools/plugins/install-plugin)
+- [wordpress_activate_plugin](/tools/plugins/activate-plugin)
+- [wordpress_deactivate_plugin](/tools/plugins/deactivate-plugin)
+- [wordpress_update_plugin](/tools/plugins/update-plugin)
+- [wordpress_delete_plugin](/tools/plugins/delete-plugin)
+
+### Options Tools (4 tools)
+
+Manage WordPress options (settings).
+
+- [wordpress_list_options](/tools/options/list-options)
+- [wordpress_get_option](/tools/options/get-option)
+- [wordpress_update_option](/tools/options/update-option)
+- [wordpress_delete_option](/tools/options/delete-option)
+
+### Comment Tools (5 tools)
+
+Read and manage comments.
+
+- [wordpress_list_comments](/tools/comments/list-comments)
+- [wordpress_get_comment](/tools/comments/get-comment)
+- [wordpress_create_comment](/tools/comments/create-comment)
+- [wordpress_update_comment](/tools/comments/update-comment)
+- [wordpress_delete_comment](/tools/comments/delete-comment)
+
+### Other Tools (2 tools)
+
+Miscellaneous utilities.
+
+- [wordpress_validate_security](/tools/other/validate-security)
+- [wordpress_switch_site](/tools/other/switch-site)
+
+## Quick Reference Table
+
+| Category | Tools | Read-Only | Write |
+|----------|-------|-----------|-------|
+| Context | 3 | 3 | 0 |
+| Pages | 5 | 2 | 3 |
+| Posts | 5 | 2 | 3 |
+| Builders | 3 | 1 | 2 |
+| Analysis | 8 | 8 | 0 |
+| Menus | 12 | 4 | 8 |
+| Media | 5 | 2 | 3 |
+| Users | 5 | 2 | 3 |
+| Taxonomies | 7 | 4 | 3 |
+| Custom Posts | 7 | 4 | 3 |
+| Plugins | 6 | 1 | 5 |
+| Options | 4 | 2 | 2 |
+| Comments | 5 | 2 | 3 |
+| Other | 2 | 1 | 1 |
+| **Total** | **77** | **38** | **39** |
+
+## Tool Naming Convention
+
+All tools follow the pattern: `wordpress_[action]_[resource]`
+
+- `list_*` - Get multiple items
+- `get_*` / `read_*` - Get single item
+- `create_*` - Create new item
+- `update_*` - Modify existing item
+- `delete_*` - Remove item
+- `analyze_*` - Read-only analysis
+- `check_*` - Quick validation
+

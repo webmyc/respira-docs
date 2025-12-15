@@ -1,0 +1,39 @@
+---
+title: "wordpress_get_taxonomy"
+description: "Get details for a WordPress taxonomy."
+---
+
+# wordpress_get_taxonomy
+
+Get taxonomy details.
+
+## Parameters
+
+| Parameter | Type | Required | Description |
+|-----------|------|----------|-------------|
+| taxonomy | string | Yes | Taxonomy name |
+
+## Response
+
+```json
+{
+  "success": true,
+  "taxonomy": {
+    "name": "category",
+    "label": "Categories",
+    "public": true
+  }
+}
+```
+
+## Example Prompts
+
+- "Get taxonomy details for 'category'"
+- "Tell me about the 'product_cat' taxonomy"
+
+## Related Tools
+
+- [wordpress_list_terms](/tools/taxonomies/list-terms)
+- [wordpress_create_term](/tools/taxonomies/create-term)
+
+

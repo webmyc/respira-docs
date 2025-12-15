@@ -1,0 +1,50 @@
+---
+title: "wordpress_get_builder_info"
+description: "Get information about the active page builder, including available modules/widgets."
+---
+
+# wordpress_get_builder_info
+
+Get information about the active page builder including available modules/widgets.
+
+## Parameters
+
+This tool takes no parameters.
+
+## Response
+
+```json
+{
+  "success": true,
+  "builder": "divi",
+  "modules": [
+    {
+      "type": "et_pb_text",
+      "label": "Text"
+    },
+    {
+      "type": "et_pb_button",
+      "label": "Button"
+    }
+  ]
+}
+```
+
+## Example Prompts
+
+- "What page builder is active on this site?"
+- "List available Divi modules"
+- "What Elementor widgets can I edit?"
+
+## Related Tools
+
+- [wordpress_get_site_context](/tools/context/get-site-context) - Site overview including detected builders
+- [wordpress_extract_builder_content](/tools/builders/extract-content) - Extract structure for a specific page
+- [Builder Reference: Divi](/builders/divi) - Builder-specific notes
+
+## Notes
+
+- Read-only tool - doesn’t modify content
+- Use this to confirm builder support before trying module-level edits
+
+

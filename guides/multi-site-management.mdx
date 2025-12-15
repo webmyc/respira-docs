@@ -1,0 +1,40 @@
+---
+title: "Multi-Site Management"
+description: "Manage multiple WordPress sites from one Respira MCP configuration and switch between them safely."
+---
+
+# Multi-Site Management
+
+Respira supports multiple WordPress sites in a single MCP server configuration. This is ideal for agencies and teams with staging/production environments.
+
+## Typical Setup
+
+You might have:
+
+- Production site
+- Staging site
+- A client site
+
+## Switching Sites
+
+Use [wordpress_switch_site](/tools/other/switch-site) to change the active site:
+
+```text
+Switch to siteId "staging"
+```
+
+Then run the rest of your tools normally (they’ll apply to the selected site).
+
+## Best Practices
+
+- Keep staging as your default site when doing risky edits
+- Run analysis tools (SEO/performance) on production first, but apply fixes on staging
+- Promote changes after approval/review
+
+## Useful Tool Pairs
+
+- Site overview: [wordpress_get_site_context](/tools/context/get-site-context)
+- Content inventory: [wordpress_list_pages](/tools/pages/list-pages), [wordpress_list_posts](/tools/posts/list-posts)
+- Safe updates: [wordpress_update_page](/tools/pages/update-page), [wordpress_update_post](/tools/posts/update-post)
+
+

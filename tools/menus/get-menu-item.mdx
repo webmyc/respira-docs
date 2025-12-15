@@ -1,0 +1,40 @@
+---
+title: "wordpress_get_menu_item"
+description: "Get a single WordPress menu item by ID."
+---
+
+# wordpress_get_menu_item
+
+Get a single menu item by ID.
+
+## Parameters
+
+| Parameter | Type | Required | Description |
+|-----------|------|----------|-------------|
+| item_id | number | Yes | Menu item ID |
+
+## Response
+
+```json
+{
+  "success": true,
+  "item": {
+    "id": 1001,
+    "title": "Home",
+    "url": "/",
+    "parent": 0
+  }
+}
+```
+
+## Example Prompts
+
+- "Get menu item 1001"
+- "Show details for the menu item that links to /pricing"
+
+## Related Tools
+
+- [wordpress_list_menu_items](/tools/menus/list-menu-items)
+- [wordpress_update_menu_item](/tools/menus/update-menu-item)
+
+

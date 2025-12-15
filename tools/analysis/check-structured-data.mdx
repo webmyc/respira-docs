@@ -1,0 +1,52 @@
+---
+title: "wordpress_check_structured_data"
+description: "Check schema markup and structured data (JSON-LD, microdata) for AI parsing."
+---
+
+# wordpress_check_structured_data
+
+Check schema markup and structured data (JSON-LD, microdata) for AI parsing.
+
+## Parameters
+
+| Parameter | Type | Required | Description |
+|-----------|------|----------|-------------|
+| pageId | number | Yes | WordPress page ID to analyze |
+
+## Response
+
+```json
+{
+  "success": true,
+  "has_json_ld": true,
+  "types": [
+    "Organization",
+    "WebSite"
+  ],
+  "issues": [
+    {
+      "severity": "low",
+      "message": "Missing FAQPage schema",
+      "fix": "Add FAQPage JSON-LD if the page includes FAQs"
+    }
+  ]
+}
+```
+
+## Example Prompts
+
+- "Check structured data on my homepage"
+- "Does page 42 have valid schema?"
+- "Do we have JSON-LD on the services page?"
+
+## Related Tools
+
+- [wordpress_analyze_aeo](/tools/analysis/analyze-aeo) - AEO analysis and recommendations
+- [wordpress_analyze_seo](/tools/analysis/analyze-seo) - SEO analysis
+
+## Notes
+
+- Read-only tool - doesn’t modify content
+- Best paired with an SEO plugin (Yoast/RankMath) or theme-level schema
+
+

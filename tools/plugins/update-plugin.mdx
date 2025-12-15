@@ -1,0 +1,41 @@
+---
+title: "wordpress_update_plugin"
+description: "EXPERIMENTAL: Update a WordPress plugin to the latest version."
+---
+
+# wordpress_update_plugin
+
+EXPERIMENTAL: Update a plugin to the latest version. Requires plugin management to be enabled in Respira settings. Make sure you have backups before updating.
+
+## Parameters
+
+| Parameter | Type | Required | Description |
+|-----------|------|----------|-------------|
+| slug | string | Yes | Plugin slug |
+
+## Response
+
+```json
+{
+  "success": true,
+  "updated": true,
+  "slug": "woocommerce"
+}
+```
+
+## Example Prompts
+
+- "Update WooCommerce"
+- "Update plugin slug 'rank-math'"
+
+## Related Tools
+
+- [wordpress_list_plugins](/tools/plugins/list-plugins)
+- [wordpress_activate_plugin](/tools/plugins/activate-plugin)
+
+## Notes
+
+- Experimental: enable plugin management in Respira settings first
+- Test after updates (staging is recommended)
+
+

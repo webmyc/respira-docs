@@ -1,0 +1,38 @@
+---
+title: "wordpress_update_menu"
+description: "Update a WordPress navigation menu (name/description)."
+---
+
+# wordpress_update_menu
+
+Update a navigation menu.
+
+## Parameters
+
+| Parameter | Type | Required | Description |
+|-----------|------|----------|-------------|
+| id | number | Yes | Menu ID |
+| name | string | No | Menu name |
+| description | string | No | Menu description |
+
+## Response
+
+```json
+{
+  "success": true,
+  "updated": true,
+  "id": 10
+}
+```
+
+## Example Prompts
+
+- "Rename menu 10 to 'Main Navigation'"
+- "Update the description for the footer menu"
+
+## Related Tools
+
+- [wordpress_get_menu](/tools/menus/get-menu)
+- [wordpress_delete_menu](/tools/menus/delete-menu)
+
+

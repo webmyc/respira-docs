@@ -1,0 +1,45 @@
+---
+title: "wordpress_list_plugins"
+description: "EXPERIMENTAL: List installed plugins with status, version, and update availability."
+---
+
+# wordpress_list_plugins
+
+EXPERIMENTAL: List all installed plugins with their status, version, and update availability. Requires plugin management to be enabled in Respira settings.
+
+## Parameters
+
+This tool takes no parameters.
+
+## Response
+
+```json
+{
+  "success": true,
+  "plugins": [
+    {
+      "slug": "woocommerce",
+      "name": "WooCommerce",
+      "status": "active",
+      "version": "9.0.0",
+      "update_available": false
+    }
+  ]
+}
+```
+
+## Example Prompts
+
+- "List installed plugins"
+- "Which plugins have updates available?"
+
+## Related Tools
+
+- [wordpress_update_plugin](/tools/plugins/update-plugin)
+- [wordpress_activate_plugin](/tools/plugins/activate-plugin)
+
+## Notes
+
+- Experimental: enable plugin management in Respira settings first
+
+

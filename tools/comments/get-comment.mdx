@@ -1,0 +1,39 @@
+---
+title: "wordpress_get_comment"
+description: "Get a WordPress comment by ID."
+---
+
+# wordpress_get_comment
+
+Get comment details by ID.
+
+## Parameters
+
+| Parameter | Type | Required | Description |
+|-----------|------|----------|-------------|
+| id | number | Yes | Comment ID |
+
+## Response
+
+```json
+{
+  "success": true,
+  "id": 9001,
+  "post_id": 101,
+  "author": "Jane",
+  "author_email": "jane@example.com",
+  "content": "Great post!"
+}
+```
+
+## Example Prompts
+
+- "Get comment 9001"
+- "Show me the full content of comment 9001"
+
+## Related Tools
+
+- [wordpress_list_comments](/tools/comments/list-comments)
+- [wordpress_update_comment](/tools/comments/update-comment)
+
+

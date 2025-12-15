@@ -1,0 +1,36 @@
+---
+title: "wordpress_delete_menu_item"
+description: "Delete a WordPress menu item."
+---
+
+# wordpress_delete_menu_item
+
+Delete a menu item.
+
+## Parameters
+
+| Parameter | Type | Required | Description |
+|-----------|------|----------|-------------|
+| item_id | number | Yes | Menu item ID |
+
+## Response
+
+```json
+{
+  "success": true,
+  "deleted": true,
+  "item_id": 1001
+}
+```
+
+## Example Prompts
+
+- "Delete menu item 1001"
+- "Remove the broken menu link from my primary menu"
+
+## Related Tools
+
+- [wordpress_list_menu_items](/tools/menus/list-menu-items)
+- [wordpress_update_menu_item](/tools/menus/update-menu-item)
+
+

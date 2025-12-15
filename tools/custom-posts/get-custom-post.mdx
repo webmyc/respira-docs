@@ -1,0 +1,40 @@
+---
+title: "wordpress_get_custom_post"
+description: "Get a custom post by type and ID."
+---
+
+# wordpress_get_custom_post
+
+Get custom post details.
+
+## Parameters
+
+| Parameter | Type | Required | Description |
+|-----------|------|----------|-------------|
+| type | string | Yes | Post type name |
+| id | number | Yes | Post ID |
+
+## Response
+
+```json
+{
+  "success": true,
+  "type": "product",
+  "id": 3001,
+  "title": "Product A",
+  "status": "publish",
+  "content": "<p>...</p>"
+}
+```
+
+## Example Prompts
+
+- "Get product 3001"
+- "Read custom post type 'portfolio' with ID 42"
+
+## Related Tools
+
+- [wordpress_list_custom_posts](/tools/custom-posts/list-custom-posts)
+- [wordpress_update_custom_post](/tools/custom-posts/update-custom-post)
+
+

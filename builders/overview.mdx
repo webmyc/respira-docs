@@ -1,0 +1,62 @@
+---
+title: "Page Builder Support"
+description: "How Respira understands and edits 10 WordPress page builders at the module level."
+---
+
+# Page Builder Support
+
+Respira understands 10 WordPress page builders at the module level. This means AI can update specific sections, buttons, or text blocks without affecting the rest of your page.
+
+## Supported Builders
+
+| Builder | Modules | Data Format | Module Editing |
+|---------|---------|-------------|----------------|
+| [Divi](/builders/divi) | 200+ | Shortcodes | ✓ Full |
+| [Elementor](/builders/elementor) | 100+ | JSON | ✓ Full |
+| [Bricks](/builders/bricks) | 80+ | JSON | ✓ Full |
+| [Oxygen](/builders/oxygen) | 60+ | JSON | ✓ Full |
+| [Gutenberg](/builders/gutenberg) | Core blocks | HTML comments | ✓ Full |
+| [WPBakery](/builders/wpbakery) | 50+ | Shortcodes | ✓ Full |
+| [Beaver Builder](/builders/beaver-builder) | 30+ | Serialized | ✓ Full |
+| [Brizy](/builders/brizy) | 40+ | JSON | ✓ Full |
+| [Visual Composer](/builders/visual-composer) | 50+ | JSON | ✓ Full |
+| [Thrive Architect](/builders/thrive-architect) | 40+ | Custom | ✓ Full |
+
+## How It Works
+
+1. **Extract**: Respira reads your page and parses the builder's data format
+2. **Identify**: AI finds the specific module you want to change
+3. **Update**: Changes are applied to just that module
+4. **Preserve**: All other content, styling, and settings remain intact
+
+## Key Tools
+
+- [wordpress_get_builder_info](/tools/context/get-builder-info) - Detect active builder
+- [wordpress_extract_builder_content](/tools/builders/extract-content) - View page structure
+- [wordpress_update_module](/tools/builders/update-module) - Update specific modules
+- [wordpress_inject_builder_content](/tools/builders/inject-content) - Replace structure
+
+## Example Workflow
+
+```text
+You: "What page builder is my site using?"
+AI: Uses wordpress_get_builder_info → "Your site uses Divi Builder"
+
+You: "Show me the structure of the homepage"
+AI: Uses wordpress_extract_builder_content → Shows sections, rows, modules
+
+You: "Update the hero button text to 'Get Started'"
+AI: Uses wordpress_update_module → Updates just that button
+```
+
+## Best Practice: Use Admin Labels
+
+Set descriptive admin labels on important modules. This makes them easy to target:
+
+- "Hero CTA Button"
+- "Footer Contact Form"
+- "Pricing Table Section"
+
+Then: "Update the module labeled 'Hero CTA Button' to say 'Contact Us'"
+
+

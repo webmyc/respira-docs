@@ -1,0 +1,89 @@
+---
+title: "wordpress_analyze_performance"
+description: "Analyze page performance including load time, image optimization, CSS/JS optimization, caching, and plugin performance impact."
+---
+
+# wordpress_analyze_performance
+
+Analyze page performance metrics including load time, image optimization, CSS/JS optimization, caching, and plugin performance impact.
+
+## Parameters
+
+| Parameter | Type | Required | Description |
+|-----------|------|----------|-------------|
+| pageId | number | Yes | WordPress page ID to analyze |
+
+## Response
+
+```json
+{
+  "success": true,
+  "summary": {
+    "grade": "B",
+    "score": 82
+  },
+  "opportunities": [
+    {
+      "priority": "high",
+      "category": "images",
+      "message": "Serve images in next-gen formats",
+      "details": "Convert JPEG/PNG to WebP/AVIF for faster loading"
+    }
+  ],
+  "metrics": {
+    "estimated_load_time_ms": 2100,
+    "total_page_weight_kb": 1860,
+    "image_weight_kb": 980,
+    "js_weight_kb": 520,
+    "css_weight_kb": 160
+  }
+}
+```
+
+## Example Prompts
+
+- "Analyze performance of my homepage"
+- "Check speed issues on page 42"
+- "What are the biggest performance problems on the services page?"
+
+## Full Example
+
+**Prompt:** "Analyze performance on page 42"
+
+**Response:**
+
+```json
+{
+  "success": true,
+  "summary": {
+    "grade": "C",
+    "score": 68
+  },
+  "opportunities": [
+    {
+      "priority": "high",
+      "category": "images",
+      "message": "Large hero image is unoptimized",
+      "details": "Compress and resize hero image; add responsive sizes"
+    },
+    {
+      "priority": "medium",
+      "category": "scripts",
+      "message": "Too much JS on initial load",
+      "details": "Delay non-critical scripts and remove unused plugins"
+    }
+  ]
+}
+```
+
+## Related Tools
+
+- [wordpress_get_core_web_vitals](/tools/analysis/get-core-web-vitals) - LCP/FID/CLS metrics
+- [wordpress_analyze_images](/tools/analysis/analyze-images) - Image-specific opportunities
+
+## Notes
+
+- Read-only tool - doesn’t modify content
+- Use it as the first step before a performance fix sprint
+
+

@@ -1,0 +1,44 @@
+---
+title: "wordpress_list_menu_items"
+description: "List all items in a WordPress menu (including hierarchy)."
+---
+
+# wordpress_list_menu_items
+
+List all items in a menu with their hierarchy.
+
+## Parameters
+
+| Parameter | Type | Required | Description |
+|-----------|------|----------|-------------|
+| menu_id | number | Yes | Menu ID |
+
+## Response
+
+```json
+{
+  "success": true,
+  "menu_id": 10,
+  "items": [
+    {
+      "id": 1001,
+      "title": "Home",
+      "url": "/",
+      "parent": 0,
+      "position": 1
+    }
+  ]
+}
+```
+
+## Example Prompts
+
+- "List menu items for menu 10"
+- "Show the navigation hierarchy for my primary menu"
+
+## Related Tools
+
+- [wordpress_create_menu_item](/tools/menus/create-menu-item)
+- [wordpress_update_menu_item](/tools/menus/update-menu-item)
+
+

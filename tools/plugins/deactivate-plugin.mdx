@@ -1,0 +1,36 @@
+---
+title: "wordpress_deactivate_plugin"
+description: "EXPERIMENTAL: Deactivate a WordPress plugin."
+---
+
+# wordpress_deactivate_plugin
+
+EXPERIMENTAL: Deactivate a plugin. Requires plugin management to be enabled in Respira settings.
+
+## Parameters
+
+| Parameter | Type | Required | Description |
+|-----------|------|----------|-------------|
+| slug | string | Yes | Plugin slug |
+
+## Response
+
+```json
+{
+  "success": true,
+  "deactivated": true,
+  "slug": "woocommerce"
+}
+```
+
+## Example Prompts
+
+- "Deactivate WooCommerce"
+- "Disable plugin slug 'elementor'"
+
+## Related Tools
+
+- [wordpress_activate_plugin](/tools/plugins/activate-plugin)
+- [wordpress_list_plugins](/tools/plugins/list-plugins)
+
+

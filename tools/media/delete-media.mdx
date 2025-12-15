@@ -1,0 +1,40 @@
+---
+title: "wordpress_delete_media"
+description: "Delete a WordPress media item."
+---
+
+# wordpress_delete_media
+
+Delete a media file.
+
+## Parameters
+
+| Parameter | Type | Required | Description |
+|-----------|------|----------|-------------|
+| id | number | Yes | Media ID |
+
+## Response
+
+```json
+{
+  "success": true,
+  "deleted": true,
+  "id": 501
+}
+```
+
+## Example Prompts
+
+- "Delete media 501"
+- "Remove the unused hero image from the media library"
+
+## Related Tools
+
+- [wordpress_list_media](/tools/media/list-media)
+- [wordpress_get_media](/tools/media/get-media)
+
+## Notes
+
+- Deleting media may break pages that reference it; check usage before removing
+
+

@@ -1,0 +1,38 @@
+---
+title: "wordpress_list_menus"
+description: "List all WordPress navigation menus (includes WPML translation info if available)."
+---
+
+# wordpress_list_menus
+
+List all navigation menus. Includes WPML translation info if available.
+
+## Parameters
+
+This tool takes no parameters.
+
+## Response
+
+```json
+{
+  "success": true,
+  "menus": [
+    {
+      "id": 10,
+      "name": "Primary Menu"
+    }
+  ]
+}
+```
+
+## Example Prompts
+
+- "List all menus"
+- "What navigation menus exist on my site?"
+
+## Related Tools
+
+- [wordpress_get_menu](/tools/menus/get-menu)
+- [wordpress_list_menu_locations](/tools/menus/list-menu-locations)
+
+

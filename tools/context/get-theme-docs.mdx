@@ -1,0 +1,48 @@
+---
+title: "wordpress_get_theme_docs"
+description: "Get theme documentation and available template files for the active WordPress theme."
+---
+
+# wordpress_get_theme_docs
+
+Get theme documentation and available template files.
+
+## Parameters
+
+This tool takes no parameters.
+
+## Response
+
+```json
+{
+  "success": true,
+  "theme": {
+    "name": "My Theme",
+    "version": "1.0.0"
+  },
+  "templates": [
+    "front-page.php",
+    "page.php",
+    "single.php",
+    "archive.php"
+  ],
+  "notes": "Theme-specific docs and template availability"
+}
+```
+
+## Example Prompts
+
+- "Show me theme docs"
+- "What templates does my active theme include?"
+- "Do we have a custom template for the homepage?"
+
+## Related Tools
+
+- [wordpress_get_site_context](/tools/context/get-site-context)
+
+## Notes
+
+- Read-only tool - doesn’t modify content
+- Useful before building custom page templates or debugging theme layout issues
+
+

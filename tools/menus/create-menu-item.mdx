@@ -1,0 +1,47 @@
+---
+title: "wordpress_create_menu_item"
+description: "Create a new menu item (page/post/category/custom URL) in a WordPress menu."
+---
+
+# wordpress_create_menu_item
+
+Create a new menu item. Can link to pages, posts, custom URLs, or categories.
+
+## Parameters
+
+| Parameter | Type | Required | Description |
+|-----------|------|----------|-------------|
+| menu_id | number | Yes | Menu ID |
+| title | string | Yes | Menu item title |
+| url | string | No | Custom URL (for custom links) |
+| object_type | string | No | Object type: \"post\", \"page\", \"category\", \"custom\", etc. |
+| object_id | number | No | ID of the linked object (post ID, page ID, etc.) |
+| parent | number | No | Parent menu item ID for nested items |
+| position | number | No | Position in menu (1-based) |
+| target | string | No | Link target (\"_blank\" for new window) |
+| classes | string | No | CSS classes (space-separated) |
+| attr_title | string | No | Title attribute (tooltip) |
+| description | string | No | Item description |
+
+## Response
+
+```json
+{
+  "success": true,
+  "item_id": 1005,
+  "menu_id": 10
+}
+```
+
+## Example Prompts
+
+- "Add a 'Contact' link to my primary menu pointing to /contact"
+- "Add page 42 to menu 10"
+- "Add an external link to the menu that opens in a new tab"
+
+## Related Tools
+
+- [wordpress_list_menu_items](/tools/menus/list-menu-items)
+- [wordpress_update_menu_item](/tools/menus/update-menu-item)
+
+

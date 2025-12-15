@@ -1,0 +1,45 @@
+---
+title: "wordpress_update_menu_item"
+description: "Update a WordPress menu item (title, url, parent, position, classes, etc.)."
+---
+
+# wordpress_update_menu_item
+
+Update a menu item.
+
+## Parameters
+
+| Parameter | Type | Required | Description |
+|-----------|------|----------|-------------|
+| item_id | number | Yes | Menu item ID |
+| title | string | No | Menu item title |
+| url | string | No | Custom URL (for custom links) |
+| parent | number | No | Parent menu item ID |
+| position | number | No | Position in menu |
+| target | string | No | Link target |
+| classes | string | No | CSS classes |
+| attr_title | string | No | Title attribute |
+| description | string | No | Item description |
+
+## Response
+
+```json
+{
+  "success": true,
+  "updated": true,
+  "item_id": 1001
+}
+```
+
+## Example Prompts
+
+- "Rename menu item 1001 to 'Start Here'"
+- "Move menu item 1005 under menu item 1002"
+- "Update the URL of menu item 1001 to /home"
+
+## Related Tools
+
+- [wordpress_get_menu_item](/tools/menus/get-menu-item)
+- [wordpress_list_menu_items](/tools/menus/list-menu-items)
+
+

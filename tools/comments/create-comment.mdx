@@ -1,0 +1,41 @@
+---
+title: "wordpress_create_comment"
+description: "Create a new WordPress comment (supports replies via parent ID)."
+---
+
+# wordpress_create_comment
+
+Create a new comment.
+
+## Parameters
+
+| Parameter | Type | Required | Description |
+|-----------|------|----------|-------------|
+| post_id | number | Yes | Post ID |
+| author | string | Yes | Author name |
+| author_email | string | Yes | Author email |
+| content | string | Yes | Comment content |
+| parent | number | No | Parent comment ID (for replies) |
+| status | number | No | Comment status (1=approved, 0=hold) |
+
+## Response
+
+```json
+{
+  "success": true,
+  "id": 9002,
+  "post_id": 101
+}
+```
+
+## Example Prompts
+
+- "Add a comment to post 101 from Jane saying 'Great post!'"
+- "Reply to comment 9001 with 'Thanks!'"
+
+## Related Tools
+
+- [wordpress_update_comment](/tools/comments/update-comment)
+- [wordpress_delete_comment](/tools/comments/delete-comment)
+
+

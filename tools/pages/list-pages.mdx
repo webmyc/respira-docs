@@ -1,0 +1,49 @@
+---
+title: "wordpress_list_pages"
+description: "List WordPress pages with optional filtering and pagination."
+---
+
+# wordpress_list_pages
+
+List all pages with optional filtering.
+
+## Parameters
+
+| Parameter | Type | Required | Description |
+|-----------|------|----------|-------------|
+| status | string | No | Filter by status (publish, draft, pending) |
+| search | string | No | Search term |
+| page | number | No | Page number for pagination |
+| perPage | number | No | Number of items per page |
+
+## Response
+
+```json
+{
+  "success": true,
+  "pages": [
+    {
+      "id": 2,
+      "title": "Home",
+      "status": "publish",
+      "slug": "home"
+    }
+  ],
+  "page": 1,
+  "perPage": 20
+}
+```
+
+## Example Prompts
+
+- "List all pages on my WordPress site"
+- "List draft pages"
+- "Search pages for 'pricing'"
+- "Show me pages 2 at a time"
+
+## Related Tools
+
+- [wordpress_read_page](/tools/pages/read-page) - Read full page content
+- [wordpress_update_page](/tools/pages/update-page) - Update a page (safe duplicate workflow)
+
+

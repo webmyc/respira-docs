@@ -1,0 +1,47 @@
+---
+title: "wordpress_upload_media"
+description: "Upload a media file (image, document, video) to WordPress from base64, URL, or a local file path."
+---
+
+# wordpress_upload_media
+
+Upload a media file (image, document, video) to WordPress. Supports base64 encoded files, file URLs, or file paths.
+
+## Parameters
+
+| Parameter | Type | Required | Description |
+|-----------|------|----------|-------------|
+| file | string | Yes | File content as base64 string, file URL to download, or file path |
+| filename | string | Yes | Filename for the uploaded file |
+| mimeType | string | No | MIME type (e.g., image/jpeg, image/png, application/pdf) |
+| title | string | No | Optional title for the media item |
+| alt | string | No | Optional alt text for images |
+| caption | string | No | Optional caption for the media item |
+
+## Response
+
+```json
+{
+  "success": true,
+  "id": 777,
+  "sourceUrl": "https://example.com/wp-content/uploads/logo.png"
+}
+```
+
+## Example Prompts
+
+- "Upload this image and set the alt text to 'Respira logo'"
+- "Upload the PDF at this URL to my media library"
+- "Upload /path/to/file.png as 'hero.png'"
+
+## Related Tools
+
+- [wordpress_update_media](/tools/media/update-media)
+- [wordpress_delete_media](/tools/media/delete-media)
+
+## Notes
+
+- Always provide a descriptive `alt` text for images (accessibility + SEO)
+- Use `mimeType` when uploading from base64 or a file path to avoid mis-detection
+
+

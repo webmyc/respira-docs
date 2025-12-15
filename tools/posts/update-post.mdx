@@ -1,0 +1,50 @@
+---
+title: "wordpress_update_post"
+description: "Update a WordPress post using Respira's duplicate-first safety workflow."
+---
+
+# wordpress_update_post
+
+Update a post. Respira automatically creates a duplicate for safety.
+
+## Parameters
+
+| Parameter | Type | Required | Description |
+|-----------|------|----------|-------------|
+| id | number | Yes | Post ID (Respira automatically creates a duplicate if editing an original post) |
+| title | string | No | New post title |
+| content | string | No | New post content (HTML) |
+| status | string | No | Post status (publish, draft, pending) |
+| customCss | string | No | Custom CSS for the post |
+| meta | object | No | Post meta data |
+| force | boolean | No | ⚠️ Force direct edit (not recommended) |
+
+## Response
+
+```json
+{
+  "id": 202,
+  "status": "draft",
+  "duplicate_created": true,
+  "duplicate_id": 202,
+  "original_id": 101,
+  "approval_url": "https://yoursite.com/wp-admin/admin.php?page=respira-approvals"
+}
+```
+
+## Example Prompts
+
+- "Update my latest blog post title"
+- "Set post 101 to draft"
+- "Update post 101 content with the new announcement"
+
+## Related Tools
+
+- [wordpress_read_post](/tools/posts/read-post)
+- [wordpress_create_post_duplicate](/tools/posts/create-duplicate)
+
+## Notes
+
+- Always creates a duplicate unless `force: true` and direct editing is enabled
+
+

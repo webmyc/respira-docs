@@ -1,0 +1,41 @@
+---
+title: "wordpress_get_user"
+description: "Get WordPress user details by user ID."
+---
+
+# wordpress_get_user
+
+Get user details by ID.
+
+## Parameters
+
+| Parameter | Type | Required | Description |
+|-----------|------|----------|-------------|
+| id | number | Yes | User ID |
+
+## Response
+
+```json
+{
+  "success": true,
+  "id": 1,
+  "username": "admin",
+  "email": "admin@example.com",
+  "display_name": "Site Admin",
+  "roles": [
+    "administrator"
+  ]
+}
+```
+
+## Example Prompts
+
+- "Get user 1"
+- "Show me details for the administrator account"
+
+## Related Tools
+
+- [wordpress_list_users](/tools/users/list-users)
+- [wordpress_update_user](/tools/users/update-user)
+
+

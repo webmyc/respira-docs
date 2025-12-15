@@ -1,0 +1,43 @@
+---
+title: "wordpress_create_user"
+description: "Create a new WordPress user."
+---
+
+# wordpress_create_user
+
+Create a new user.
+
+## Parameters
+
+| Parameter | Type | Required | Description |
+|-----------|------|----------|-------------|
+| username | string | Yes | Username |
+| email | string | Yes | Email address |
+| password | string | Yes | Password |
+| role | string | No | User role (default: subscriber) |
+
+## Response
+
+```json
+{
+  "success": true,
+  "id": 55,
+  "username": "newuser"
+}
+```
+
+## Example Prompts
+
+- "Create a new user for john@example.com"
+- "Create an editor account named 'content-team' with password X"
+
+## Related Tools
+
+- [wordpress_update_user](/tools/users/update-user)
+- [wordpress_delete_user](/tools/users/delete-user)
+
+## Notes
+
+- Use strong passwords and least-privilege roles
+
+
